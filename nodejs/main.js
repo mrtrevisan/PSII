@@ -1,14 +1,15 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const mysql = require('mysql2')
 
-var url = 'https://www.ufsm.br/wp-json/wp/v2/eventos'
-var url2 = 'https://jsonplaceholder.typicode.com/posts'
-
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "senha",
-    port: "3306"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_KEY,
+    port: process.env.DB_PORT
 });
+
 
 function connect() {
     con.connect(function (err) {
@@ -34,10 +35,10 @@ function saveData(data) {
     console.log("Fim do programa");
 }
 
-function getData() {
-    fetch(url)
+function main() {
+    fetch(process.env.API_URL)
         .then(response => response.json())
         .then(data => saveData(data))
 }
 
-getData();
+main();

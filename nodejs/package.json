@@ -1,20 +1,18 @@
 {
-  "name": "database-fetch",
+  "name": "nodejs",
   "version": "1.0.0",
-  "main": "main.js",
+  "main": "index.js",
+  "license": "MIT",
   "scripts": {
-    "start": "nodemon main.js",
+    "main": "nodemon main.js",
     "front": "nodemon front.js"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "express": "^4.18.2",
-    "nodemon": "^3.0.1"
-  },
-  "keywords": [],
-  "description": "",
   "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "mysql2": "^3.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

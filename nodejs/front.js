@@ -1,12 +1,16 @@
-const express = require('express')
-const app = express()
+const dotenv = require('dotenv');
+dotenv.config();
+
 const mysql = require('mysql2')
 
+const express = require('express')
+const app = express()
+
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "senha",
-    port: "3306"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_KEY,
+    port: process.env.DB_PORT
 });
 
 function connect() {
@@ -16,8 +20,7 @@ function connect() {
     });
 }
 
-const port = 8000
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
 
 app.get ('/', function (req, res) {
     connect();
