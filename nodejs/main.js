@@ -41,33 +41,26 @@ function saveDataMYSQL(data) {
 //PostgreSQL
 
 var pg = require('pg');
-
+var conString = process.env.PG_URL
+    
+var client = new pg.Client(conString);
 function saveData(data){
-
-    var conString = process.env.PG_URL
     
-    var client = new pg.Client(conString);
-    
-    client.connect(function(err) {
-        if(err) {
-            return console.error('Could not connect to postgres', err);
-        }
+    client.connect()
 
-        data.forEach(element => {
-            var query = "INSERT INTO evento (id, data_inicio, data_termino, localizacao, nome, link) VALUES ('"
-            + element.id + "', '" + element.acf.evento_inicio + "', '" + element.acf.evento_termino + 
-            "', '" + element.acf.evento_local + "', '" + element.acf.evento_nome + 
-            "', '" + element.link + "')";
-            
-            client.query(query, function(err, result) {
-                if(err) {
-                    return console.error('error running query', err);
-                }
-                console.log("1 record inserted");
-            });
-        });
-        client.end();
-    });
+    data.forEach(element => {
+        var query = "INSERT INTO evento (id, data_inicio, data_termino, localizacao, nome, link) VALUES ('"
+        + element.id + "', '" + element.acf.evento_inicio + "', '" + element.acf.evento_termino + 
+        "', '" + element.acf.evento_local + "', '" + element.acf.evento_nome + 
+        "', '" + element.link + "')";
+        
+        client.query(query, function(err, result) {
+            if(err) {
+                return console.error('error running query', err);
+            }
+            console.log("1 record inserted");
+        })
+    });    
 }
     
 
