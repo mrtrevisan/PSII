@@ -21,3 +21,17 @@ create table evento (
 */
 
 select * from evento;
+
+
+
+--postgresql
+/*
+CREATE TABLE evento (
+    id INTEGER PRIMARY KEY,
+    data_inicio VARCHAR(255),
+    data_termino VARCHAR(255),
+    localizacao VARCHAR(255),
+    nome VARCHAR(255),
+    link VARCHAR(255)
+);
+*/

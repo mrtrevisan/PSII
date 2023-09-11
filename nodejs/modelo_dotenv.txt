@@ -10,3 +10,5 @@ DB_PORT=3306
 DB_HOST= # IP do host ou localhost 
 DB_USER= # nome de usuário
 DB_KEY= # senha
+
+PG_URL=postgres://fdpgvqke:jEzhdo-wl5KoCAr5wGJVoy3CxLhqkkJT@silly.db.elephantsql.com/fdpgvqke
