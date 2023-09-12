@@ -32,11 +32,11 @@ app.get ('/', function (req, res) {
 var pg = require('pg');
 var conString = process.env.PG_URL
     
-var client = new pg.Client(conString);
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
 
 app.get('/', function(req, res){
+    var client = new pg.Client(conString);
     client.connect()
     var query = "SELECT * FROM evento"
     client.query(query, function(err, result){
