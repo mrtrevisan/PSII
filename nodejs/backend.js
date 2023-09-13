@@ -29,18 +29,29 @@ app.get ('/', function (req, res) {
 })
 */
 
-var pg = require('pg');
-var conString = process.env.PG_URL
-    
-var client = new pg.Client(conString);
+const {Pool} = require('pg');
+
+async function connect(){
+    if(global.connection) return global.connection.connect()
+    else {
+        const pool = new Pool({
+            connectionString: process.env.PG_URL
+        });
+        global.connection = pool
+        return pool.connect()
+    }
+}    
 
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
 
-app.get('/', function(req, res){
-    client.connect()
+app.get('/', async function(req, res){
+    var client = await connect();
     var query = "SELECT * FROM evento"
     client.query(query, function(err, result){
-        if(err) throw err;
+        if(err) {
+            return console.error('error running query', err);
+        }
+        client.release();
         res.send(result.rows);
     })
 })

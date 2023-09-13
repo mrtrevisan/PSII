@@ -40,13 +40,22 @@ function saveDataMYSQL(data) {
 
 //PostgreSQL
 
-var pg = require('pg');
-var conString = process.env.PG_URL
+const {Pool} = require('pg');
+
+async function connect(){
+    if(global.connection) return global.connection.connect()
+    else {
+        const pool = new Pool({
+            connectionString: process.env.PG_URL
+        });
+        global.connection = pool
+        return pool.connect()
+    }
+}    
+
     
-var client = new pg.Client(conString);
-function saveData(data){
-    
-    client.connect()
+async function saveData(data){
+    var client = await connect();
 
     data.forEach(element => {
         var query = "INSERT INTO evento (id, data_inicio, data_termino, localizacao, nome, link) VALUES ('"
@@ -60,10 +69,10 @@ function saveData(data){
             }
             console.log("1 record inserted");
         })
-    });    
+    });   
+    client.release(); 
 }
     
-
 function main() {
     fetch(process.env.API_URL)
         .then(response => response.json())
