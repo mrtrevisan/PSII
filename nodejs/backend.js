@@ -45,7 +45,7 @@ async function connect(){
 app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
 
 app.get('/', async function(req, res){
-    res.send('UfsmGO');
+    res.json('UfsmGO');
 })
 
 app.get('/centro', async function(req, res){
