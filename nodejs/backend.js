@@ -60,6 +60,20 @@ app.get('/centro', async function(req, res){
     })
 })
 
+app.get('/centro/:index', async function(req, res){
+    var {index} = req.params;
+    var client = await connect();
+    var query = "SELECT * FROM centro WHERE acronimo LIKE '%" + index.toUpperCase() + "%'";
+    //console.log(query)
+    client.query(query, function(err, result){
+        if(err){
+            return console.error('error running query', err);
+        }
+        client.release();
+        res.send(result.rows);
+    })
+})
+
 app.get('/evento', async function(req, res){
     var client = await connect();
     var query = "SELECT * FROM evento";

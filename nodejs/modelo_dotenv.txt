@@ -4,7 +4,6 @@ NODE_ENV=development
 PORT=3000 #ou outra, ex 8000
 
 API_URL=https://www.ufsm.br/wp-json/wp/v2/eventos
-DUMMY_URL=https://jsonplaceholder.typicode.com/posts
 
 DB_PORT=3306 
 DB_HOST= # IP do host ou localhost 
