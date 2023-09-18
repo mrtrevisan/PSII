@@ -3,18 +3,14 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "fetch": "nodemon fetch.js",
-    "backend": "nodemon backend.js",
-    "front": "nodemon front.js"
+    "fetch": "node fetch.js",
+    "backend": "node backend.js",
+    "front": "node front.js"
   },
   "dependencies": {
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mysql2": "^3.6.0",
-    "pg": "^8.11.3",
-    "string-similarity": "^4.0.4"
+    "pg": "^8.11.3"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "devDependencies": {}
 }
