@@ -25,7 +25,7 @@ app.get('/', async function(req, res){
 
 app.get('/centro', async function(req, res){
     var client = await connect();
-    var query = "SELECT * FROM centro";
+    var query = "SELECT * FROM centro ORDER BY id";
     client.query(query, function(err, result){
         if(err) {
             return console.error('error running query', err);
@@ -52,7 +52,7 @@ app.get('/centro/:index', async function(req, res){
 
 app.get('/evento', async function(req, res){
     var client = await connect();
-    var query = "SELECT * FROM evento";
+    var query = "SELECT * FROM evento ORDER BY id";
     client.query(query, function(err, result){
         if(err) {
             return console.error('error running query', err);
@@ -70,6 +70,6 @@ app.get('/healthcheck', async function(req, res){
             return console.error('error running query', err);
         }
         client.release();
-        res.status(200).send('ok')
+        res.status(200).json('ok')
     })
 })
