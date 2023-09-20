@@ -6,11 +6,7 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
     });
     osm.addTo(map);
 
-    // tentar entender para que serve esse ponto
-  //  var transformation = L.Transformation(1, 0, -1, 0); // (a*x + b, c*y + d)
-    //var ponto = L.point(-29.7209, -53.7148);
-    //var ponto2 = transformation.transform(ponto);
-    
+    //L.Control.geocoder().addTo(map);    
 
     var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -28,7 +24,8 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
 
     //var ct = L.marker([-29.7133, -53.7168], {icon: eventoIcon}).addTo(map);
     var ct = L.marker([-29.7133, -53.7168]).addTo(map);
-    ct.bindPopup('<b>Centro de Tecnologia </b><br>Universidade Federal de Santa Maria');
+    //ct.bindPopup('<b>Centro de Tecnologia </b><br>Universidade Federal de Santa Maria img src = "./img/ct-visao-area.jpg"');
+    ct.bindPopup("<h1>Centro de Tecnologia</h1><p>Universidade Federal de Santa Maria</p><img src = './img/ct.jpg' width = '250' height = '200'>");
 
     var reitoria = L.marker([-29.7209, -53.7148]).addTo(map);
     reitoria.bindPopup('<b>Reitoria</b><br>Universidade de Santa Maria');
@@ -50,27 +47,61 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
 
     var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 
-    // provavelmente é possivel criar os markers via geojson, e nomealos por la para dps exibir seus nomes
-
     /// EVENTOS
-    map.on('mousemove', function(e){
+/*  map.on('mousemove', function(e){
         document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + ' lng: ' + e.latlng.lng;
     });
+*/
+
+    navigator.geolocation.watchPosition(success, error);
+
+    var localization, range, zoomed, player;
+
+    function success(position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+
+        if(localization){
+            map.removeLayer(localization);
+            map.removeLayer(range);
+        }
+        localization = L.marker([lat, lng]).bindPopup('Você está aqui!');
+        range = L.circle([lat, lng], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 50
+        });
+
+        player = L.featureGroup([localization, range]).addTo(map);
+
+        if(!zoomed){
+            zoomed = map.fitBounds(player.getBounds());
+        }
+        map.setView([lat, lng]);
+    }
+    function error(err) {
+        if(err.code === 1){
+            alert("Please allow location access.");
+        }
+    }
+/*
+
     if (!navigator.geolocation) {
         console.log('Geolocation is not supported by your browser');
     } 
     else {
         setInterval(()=>{
-            navigator.geolocation.getCurrentPosition(getPosition)
-        },4000)
+            navigator.geolocation.getCurrentPosition(getPosition);
+        },4000);
     }
 
-    var localization, range
     function getPosition(position) {
         //console.log(position)
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        var accuracy = position.coords.accuracy;
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        accuracy = position.coords.accuracy;
 
         if(localization){
             map.removeLayer(localization)
@@ -92,3 +123,5 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
 
         console.log("Your Coordinates are: Lat " + lat + ", Long: " + lng + ", Acc: " + accuracy);
     }
+    */
+   
