@@ -47,16 +47,41 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
 
     var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 
+    // Crie um elemento <div> para a caixa de exibição
+    var pontuacao = 10;
+
+    var infoBox = L.DomUtil.create('div', 'info-box');
+    infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+
+    // Estilize a caixa usando CSS
+    infoBox.style.position = 'absolute';
+    infoBox.style.top = '10px';
+    infoBox.style.right = '10px';
+    infoBox.style.backgroundColor = 'white';
+    infoBox.style.padding = '10px';
+    infoBox.style.border = '1px solid #ccc';
+    infoBox.style.zIndex = 1000; // Valor maior para ficar acima do mapa
+
+    // Adicione a caixa diretamente ao DOM da página
+    document.body.appendChild(infoBox);
+
+
+
+
+
     /// EVENTOS
 /*  map.on('mousemove', function(e){
         document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + ' lng: ' + e.latlng.lng;
     });
 */
+var localization, range, zoomed, player;
 
+var player2 = L.featureGroup().addTo(map);
+
+var teste = L.marker([-29.71, -53.71],{draggable:true}).bindPopup('Vamos usar isso para testar colisao').addTo(map);
+
+// Função para pegar a localização do usuário em tempo real
     navigator.geolocation.watchPosition(success, error);
-
-    var localization, range, zoomed, player;
-
     function success(position) {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
@@ -66,15 +91,17 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
             map.removeLayer(localization);
             map.removeLayer(range);
         }
-        localization = L.marker([lat, lng]).bindPopup('Você está aqui!');
-        range = L.circle([lat, lng], {
+        localization = L.marker([lat, lng],{draggable:true}).bindPopup('Você está aqui!').addTo(player2);
+        
+        range = L.circle([localization.getLatLng().lat, localization.getLatLng().lng ], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
-            radius: 50
-        });
+            radius: 50,
+            draggable:true
+        }).addTo(player2);
 
-        player = L.featureGroup([localization, range]).addTo(map);
+        player = L.featureGroup([localization, range]);
 
         if(!zoomed){
             zoomed = map.fitBounds(player.getBounds());
@@ -86,42 +113,30 @@ var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom
             alert("Please allow location access.");
         }
     }
-/*
 
-    if (!navigator.geolocation) {
-        console.log('Geolocation is not supported by your browser');
-    } 
-    else {
-        setInterval(()=>{
-            navigator.geolocation.getCurrentPosition(getPosition);
-        },4000);
-    }
+    //Fired repeatedly while the user drags the marker.
+    teste.on('drag', function(e){
+        console.log("sua nova localizao eh: " + e.target.getLatLng());
+        //chamar uma funcao para testar colisao aqui dentro
+        // OBS: se quiser testar soh ao final da drag, trocar 'drag' por 'dragend'
+    });
 
-    function getPosition(position) {
-        //console.log(position)
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        accuracy = position.coords.accuracy;
+    document.addEventListener('keydown', function (e) {
+        var stepSize = 0.01; // Define o tamanho do passo para mover o mapa
 
-        if(localization){
-            map.removeLayer(localization)
+        switch (e.key) {
+            case 'ArrowUp':
+                map.panBy([0, -stepSize]);
+                break;
+            case 'ArrowDown':
+                map.panBy([0, stepSize]);
+                break;
+            case 'ArrowLeft':
+                map.panBy([-stepSize, 0]);
+                break;
+            case 'ArrowRight':
+                map.panBy([stepSize, 0]);
+                break;
         }
-        if(range){
-            map.removeLayer(range)
-        }
-
-        localization = L.marker([lat, lng]).bindPopup('Você está aqui!');
-        range = L.circle([lat, lng], {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 50
-        });
-
-        var player = L.featureGroup([localization, range]).addTo(map);
-        //map.fitBounds(player.getBounds());
-
-        console.log("Your Coordinates are: Lat " + lat + ", Long: " + lng + ", Acc: " + accuracy);
-    }
-    */
+    });
    
