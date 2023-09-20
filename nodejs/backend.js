@@ -38,7 +38,7 @@ app.get('/centro', async function(req, res){
 app.get('/centro/:index', async function(req, res){
     var {index} = req.params;
     var client = await connect();
-    var query = "SELECT * FROM centro WHERE acronimo LIKE '%" + index.toUpperCase() + "%'";
+    var query = "SELECT * FROM centro WHERE sigla LIKE '%" + index.toUpperCase() + "%'";
     //console.log(query)
     //comment
     client.query(query, function(err, result){
