@@ -1,9 +1,26 @@
-var stringSimilarity = require("string-similarity");
+async function healthcheck(){
+    var healthcheck = 'https://ufsmgo-gc8z.onrender.com/healthcheck'
+    var res = await fetch(healthcheck)
+    if (res.status != 200) return false
+    else return true
+}
 
-var maior = 0.0;
-var sim, result;
+async function get_centro(sigla){
+    if (!healthcheck) return
 
-async function main(){
+    var url = 'https://ufsmgo-gc8z.onrender.com/centro'
+    if (sigla == 'all'){
+        res = await fetch(url)
+        data = await res.json()
+        console.log(data)
+    } else {
+        res = await fetch(url + '/' + sigla)
+        data = await res.json()
+        console.log(data)
+    }
+}
+
+async function teste(){
     var data1, data2;
 
     var url = 'https://ufsmgo.onrender.com/evento'
@@ -16,22 +33,8 @@ async function main(){
 
     data1.forEach(item1 => {
         data2.forEach(item2 =>{
-            result = ""
-            sim = stringSimilarity.compareTwoStrings(item1.localizacao, item2.nome);
-            if( sim > maior){
-                maior = sim;
-                result = item2.nome;
-                console.log(result)
-            }
-            sim = stringSimilarity.compareTwoStrings(item1.localizacao, item2.acronimo);
-            if( sim > maior){
-                maior = sim;
-                result = item2.nome;
-                console.log(result)
-            }
-        })
-        console.log(`Evento ${item1.nome} diz que acontece em ${item1.localizacao} e acontece em ${result}`);
+        });     
     });
 }
 
-main();
+get_centro('ct');

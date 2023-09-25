@@ -1,3 +1,23 @@
+async function api_healthcheck(){
+    var healthcheck = 'https://ufsmgo-gc8z.onrender.com/healthcheck'
+    var res = await fetch(healthcheck)
+    if (res.status != 200) return false
+    else return true
+}
+
+async function get_centro(sigla){
+    if (!api_healthcheck) return
+
+    var url = 'https://ufsmgo-gc8z.onrender.com/centro'
+    if (sigla != 'all'){
+        url += '/' + sigla
+    }
+
+    res = await fetch(url);
+    data = await res.json();
+    return data;
+}
+
 var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
 
 // para outras opções de mapas, acesse: https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -21,20 +41,7 @@ var eventoIcon = L.icon({
     iconSize: [38, 95],
 });
 
-
-//var ct = L.marker([-29.7133, -53.7168], {icon: eventoIcon}).addTo(map);
-var ct = L.marker([-29.7133, -53.7168]).addTo(map);
-//ct.bindPopup('<b>Centro de Tecnologia </b><br>Universidade Federal de Santa Maria img src = "./img/ct-visao-area.jpg"');
-ct.bindPopup("<h1>Centro de Tecnologia</h1><p>Universidade Federal de Santa Maria</p><img src = './img/ct.jpg' width = '250' height = '200'>");
-
-var reitoria = L.marker([-29.7209, -53.7148]).addTo(map);
-reitoria.bindPopup('<b>Reitoria</b><br>Universidade de Santa Maria');
-
-var ccr = L.marker([-29.7184521203052, -53.71677597449196]); 
-ccr.bindPopup('<b>CCR</b><br>Universidade de Santa Maria');
-
-UFSM = L.layerGroup([ct, reitoria, ccr]).addTo(map);
-
+const UFSM = L.layerGroup([]).addTo(map)
 // Layer Control
 var baseMaps = {
     "OpenStreetMap": osm,
@@ -46,6 +53,81 @@ var overlayMaps = {
 };
 
 var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+const markers = []; // Array para armazenar os marcadores
+
+async function main() {
+    //UFSM.clearLayers(); // Limpar camadas antes de adicionar novos marcadores
+
+    const centros = await get_centro('all')
+    console.log(centros)
+    
+    if (centros) {
+        centros.forEach(centro => {
+            //const nome = centro.nome;
+            const lat = centro.latitude;
+            const long = centro.longitude;
+            var marker = new L.marker([lat, long]);
+            if (marker){
+                marker.addTo(map)
+                markers.push(marker)
+            }
+            else{
+                console.log("erro no marker")
+            }
+            //marker.bindPopup('<b>' + nome + '</b>' + '<br>Universidade Federal de Santa Maria </br>');
+        });
+    }
+    else{
+        console.log("erro nos centros")
+    }
+    
+    
+}
+markers.forEach(marker => {
+    USFM.addLayer(marker)
+})
+UFSM.addTo(map)
+// Chame a função main para iniciar o processo
+main();
+
+
+
+
+
+
+
+
+
+//UFSM = L.layerGroup([ct, reitoria, ccr]).addTo(map);
+
+
+
+
+/*
+var centros = get_centro("all")
+
+centros.forEach(centro => {
+    nome = centro.nome
+    lat = centro.latitude
+    long = centro.longitude
+    var marker = L.marker([lat, long])
+    marker.bindPopup('<b>' + nome + '</b>' + '<br>Universidade Federal de Santa Maria </br>')
+    marker.addTo(map)
+});
+
+var ct = L.marker([-29.7133, -53.7168], {icon: eventoIcon}).addTo(map);
+var ct = L.marker([-29.7133, -53.7168]).addTo(map);
+//ct.bindPopup('<b>Centro de Tecnologia </b><br>Universidade Federal de Santa Maria img src = "./img/ct-visao-area.jpg"');
+ct.bindPopup("<h1>Centro de Tecnologia</h1><p>Universidade Federal de Santa Maria</p><img src = './img/ct.jpg' width = '250' height = '200'>");
+
+var reitoria = L.marker([-29.7209, -53.7148]).addTo(map);
+reitoria.bindPopup('<b>Reitoria</b><br>Universidade de Santa Maria');
+
+var ccr = L.marker([-29.7184521203052, -53.71677597449196]); 
+ccr.bindPopup('<b>CCR</b><br>Universidade de Santa Maria');
+*/
+
 
 // Crie um elemento <div> para a caixa de exibição
 var pontuacao = 10;
