@@ -18,7 +18,7 @@ CREATE TABLE centro (
     latitude FLOAT
 );
 
-INSERT INTO centro (nome, sigla, longitude, latitude)
+INSERT INTO centro (nome, sigla, latitude, longitude)
 VALUES ('Centro de Tecnologia', 'CT', -29.713190291317783, -53.71682910622894),
        ('Centro de Ciêcnias da Saude', 'CCS', -29.71357791320489, -53.71387518235088),
        ('Centro de Ciências Naturais e Exatas', 'CCNE', -29.71448879726987, -53.716452165560874),
@@ -31,3 +31,4 @@ VALUES ('Centro de Tecnologia', 'CT', -29.713190291317783, -53.71682910622894),
        ('Colégio Técnico Industrial de Santa Maria', 'CTISM', -29.71121379030947, -53.717138986219815),
        ('Unidade de Educação Infantil Ipê Amarelo', 'IPE', -29.711742361807893, -53.71752996467574);
 */
+
