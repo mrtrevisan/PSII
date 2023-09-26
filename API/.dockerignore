@@ -1,0 +1,6 @@
+node_modules
+npm-debug.log
+Dockerfile
+modelo_dotenv.txt
+docker-compose-traefik.yml
+docker-compose.yml
