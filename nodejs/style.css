@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+#map{
+    width: 100%;
+    height: 100vh;
+}
+.coordinate{
+    position: absolute;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: black;
+    color: white;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+}
+
+.fixed-title {
+    position: fixed;
+    color: aqua;
+    z-index: 2000;
+    text-align: center;
+    align-items: center;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: blue;
+}
+
+.btn.btn-primary{
+    position: fixed;
+    z-index: 2001;
+    text-align: center;
+    right: 10%;
+    transform: translate( 20%, 0%);
+}
+
+.form-control{
+    position: fixed;
+    z-index: 2002;
+    text-align: left;
+    right: 10%;
+    transform: translate( 50%, 10%);
+}
