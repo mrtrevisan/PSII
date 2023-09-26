@@ -120,12 +120,6 @@ infoBox.style.zIndex = 1000; // Valor maior para ficar acima do mapa
 document.body.appendChild(infoBox);
 
 /// EVENTOS
-/*  map.on('mousemove', function(e){
-        document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + ' lng: ' + e.latlng.lng;
-    });
-*/
-
-
 
 UFSM.eachLayer(function (centro) {
     centro.on('click', function (event) {
@@ -186,9 +180,7 @@ player.on('drag', function(e){
 });
 
 player.on('move', function(e){
-    //console.log("sua nova localizao eh: " + e.target.getLatLng());
-    //chamar uma funcao para testar colisao aqui dentro
-    // OBS: se quiser testar soh ao final da drag, trocar 'drag' por 'dragend'
+
     // distance between the current position of the marker and the center of the circle
     
     var innerEntered = false;
