@@ -56,6 +56,10 @@ var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 const markers = []; // Array para armazenar os marcadores
 
+const ranges = []; // Array para armazenar os ranges
+
+var entered = false;
+
 async function main() {
     //UFSM.clearLayers(); // Limpar camadas antes de adicionar novos marcadores
 
@@ -67,12 +71,19 @@ async function main() {
             var long = centro.longitude;
             var marker = L.marker([lat,long]);
             marker.bindPopup('<b>' + nome + '</b>' + '<br>Universidade Federal de Santa Maria </br>');
-            
-
-            
 
             if (marker){
                 marker.addTo(UFSM)
+                var circle = L.circle([marker.getLatLng().lat, marker.getLatLng().lng ], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 50,
+                    draggable:false
+                }).addTo(UFSM);
+                
+                marker = L.featureGroup([marker, circle]);
+                ranges.push(circle)
                 markers.push(marker)
             }
             else{
@@ -91,7 +102,7 @@ main();
 
 
 // Crie um elemento <div> para a caixa de exibição
-var pontuacao = 10;
+var pontuacao = parseInt(localStorage.getItem('pontuacao')) || 0;
 
 var infoBox = L.DomUtil.create('div', 'info-box');
 infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
@@ -132,18 +143,6 @@ var player = L.marker([-29.7160, -53.7172],{draggable:true}).bindPopup('Player')
 
 var player2 = L.featureGroup().addTo(map);
 
-var teste = L.marker([-29.71, -53.71],{draggable:false}).bindPopup('Vamos usar isso para testar colisao').addTo(map);
-
-range = L.circle([teste.getLatLng().lat, teste.getLatLng().lng ], {
-    color: 'red',
-    fillColor: '#f03',
-    fillOpacity: 0.5,
-    radius: 100,
-    draggable:false
-}).addTo(map);
-
-teste = L.featureGroup([teste, range]);
-
 // Função para pegar a localização do usuário em tempo real
 watcher = navigator.geolocation.watchPosition(success, error);
 function success(position) {
@@ -183,21 +182,57 @@ function error(err) {
 }
 
 player.on('drag', function(e){
+    navigator.geolocation.clearWatch(watcher);
+});
+
+player.on('move', function(e){
     //console.log("sua nova localizao eh: " + e.target.getLatLng());
     //chamar uma funcao para testar colisao aqui dentro
     // OBS: se quiser testar soh ao final da drag, trocar 'drag' por 'dragend'
     // distance between the current position of the marker and the center of the circle
-    var d = map.distance(e.latlng, range.getLatLng());
-
-    // the marker is inside the circle when the distance is inferior to the radius
-    var isInside = d < range.getRadius();
-
-   // let's manifest this by toggling the color
-    range.setStyle({
-        fillColor: isInside ? 'green' : '#f03'
-    })
     
-    navigator.geolocation.clearWatch(watcher);
-});
+    var innerEntered = false;
+    var isInside = false;
+    var insideOf = null;
 
-   
+    ranges.every(range => {
+        if (isInside) return false
+        
+        var d = map.distance(e.latlng, range.getLatLng());
+
+        // the marker is inside the circle when the distance is inferior to the radius
+        isInside = d < range.getRadius();
+        
+       // let's manifest this by toggling the color
+        range.setStyle({
+            fillColor: isInside ? 'green' : '#f03'
+        })
+
+        if (isInside) {
+            insideOf = range;
+            return false
+        }
+        else return true
+    });
+
+    if (insideOf != null){
+        var d = map.distance(e.latlng, insideOf.getLatLng());
+
+        // the marker is inside the circle when the distance is inferior to the radius
+        isInside = d < insideOf.getRadius();
+        if (!isInside){
+            insideOf = null;
+        }
+    }
+
+    if(isInside && !entered){
+        entered = true;
+        pontuacao = pontuacao + 10;
+        infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+        localStorage.setItem('pontuacao', pontuacao);
+    }
+    else if(!isInside && entered){
+        entered = false;
+    }
+
+});
