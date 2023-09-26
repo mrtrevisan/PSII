@@ -1,0 +1,20 @@
+#editar e salvar como ".env"
+
+NODE_ENV = development
+PORT = 3000 
+
+API_URL     = https://www.ufsm.br/wp-json/wp/v2/eventos
+
+CT_URL      = https://www.ufsm.br/unidades-universitarias/CT/wp-json/wp/v2/eventos?per_page=100
+CCNE_URL    = https://www.ufsm.br/unidades-universitarias/CCNE/wp-json/wp/v2/eventos?per_page=100
+CCSH_URL    = https://www.ufsm.br/unidades-universitarias/CCSH/wp-json/wp/v2/eventos?per_page=100
+CE_URL      = https://www.ufsm.br/unidades-universitarias/ce/wp-json/wp/v2/eventos?per_page=100
+CCR_URL     = https://www.ufsm.br/unidades-universitarias/ccr/wp-json/wp/v2/eventos?per_page=100
+CAL_URL     = https://www.ufsm.br/unidades-universitarias/cal/wp-json/wp/v2/eventos?per_page=100
+CCS_URL     = https://www.ufsm.br/unidades-universitarias/ccs/wp-json/wp/v2/eventos?per_page=100
+CEFD_URL    = https://www.ufsm.br/unidades-universitarias/cefd/wp-json/wp/v2/eventos?per_page=100
+CTISM_URL   = https://www.ufsm.br/unidades-universitarias/ctism/wp-json/wp/v2/eventos?per_page=100
+POLI_URL    = https://www.ufsm.br/unidades-universitarias/politecnico/wp-json/wp/v2/eventos?per_page=100
+IPE_URL     = https://www.ufsm.br/unidades-universitarias/ipeamarelo/wp-json/wp/v2/eventos?per_page=100
+
+PG_URL      = postgres://fdpgvqke:jEzhdo-wl5KoCAr5wGJVoy3CxLhqkkJT@silly.db.elephantsql.com/fdpgvqke

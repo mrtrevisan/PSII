@@ -4,8 +4,7 @@
   "license": "MIT",
   "scripts": {
     "fetch": "node fetch.js",
-    "backend": "node backend.js",
-    "front": "node front.js"
+    "server": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

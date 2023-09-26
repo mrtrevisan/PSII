@@ -128,9 +128,6 @@ UFSM.eachLayer(function (centro) {
     });
 });
 
-
-
-
 var localization, range, zoomed;
 
 var player = L.marker([-29.7160, -53.7172],{draggable:true}).bindPopup('Player').addTo(map);
