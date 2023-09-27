@@ -4,3 +4,4 @@ Dockerfile
 modelo_dotenv.txt
 docker-compose-traefik.yml
 docker-compose.yml
+.DS_Store

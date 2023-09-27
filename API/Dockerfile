@@ -1,10 +1,11 @@
-FROM node:18
+FROM node:18-slim
 
 # Create app directory
 WORKDIR /app
 
 # Install app dependencies
 COPY package*.json ./
+COPY yarn.lock ./
 RUN yarn
 
 # Bundle app source
