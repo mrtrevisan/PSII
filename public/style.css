@@ -30,8 +30,8 @@ body{
     position: fixed;
     z-index: 2001;
     text-align: center;
-    right: 10%;
-    transform: translate( 20%, 0%);
+    left: 2%;
+    bottom : 2%;
 }
 
 .form-control{

@@ -26,33 +26,15 @@ var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 });
 osm.addTo(map);
 
-//L.Control.geocoder().addTo(map);    
 
-var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    minZoom: 16,
-    attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'
-});
-
-// MARKERS
 // como personalizar nossos icones
-var eventoIcon = L.icon({
-    iconUrl: 'img/evento.png',
-    iconSize: [38, 95],
+var playerIcon = L.icon({
+    iconUrl: 'img/corredor.png',
+    iconSize: [50, 50],
+    popupAnchor: [10, -25]
 });
 
-const UFSM = L.layerGroup([]).addTo(map)
-// Layer Control
-var baseMaps = {
-    "OpenStreetMap": osm,
-    "OpenStreetMap.HOT": osmHOT
-};
-
-var overlayMaps = {
-    "UFSM": UFSM
-};
-
-var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+var UFSM = L.featureGroup([]).addTo(map);
 
 const markers = []; // Array para armazenar os marcadores
 
@@ -120,17 +102,25 @@ infoBox.style.zIndex = 1000; // Valor maior para ficar acima do mapa
 document.body.appendChild(infoBox);
 
 /// EVENTOS
+UFSM.on('contextmenu', function (e) {
+    var marcadorClicado = e.layer; // Obtém o marcador clicado
 
-UFSM.eachLayer(function (centro) {
-    centro.on('click', function (event) {
-        // Seu código de tratamento de evento aqui
-        console.log("Clicou em um marcador do LayerGroup" + " " + centro.getLatLng() + " " + centro.getPopup().getContent());
-    });
+    // Verifique se o marcador possui um pop-up vinculado
+    if (marcadorClicado && marcadorClicado.getPopup()) {
+        var conteudoDoPopup = marcadorClicado.getPopup().getContent();
+        console.log("Conteúdo do pop-up:", conteudoDoPopup);
+    }
+    else if(marcadorClicado && marcadorClicado.getRadius()){
+        console.log("Clicou no circulo de um marcador:");
+    }
+
+    // aqui que iremos habilitar uma chamada aos eventos do centro clicado!
 });
+
 
 var localization, range, zoomed;
 
-var player = L.marker([-29.7160, -53.7172],{draggable:true}).bindPopup('Player').addTo(map);
+var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).bindPopup('Vamos explorar a UFSM!').addTo(map).openPopup();
 
 var player2 = L.featureGroup().addTo(map);
 
@@ -141,7 +131,7 @@ function success(position) {
     const lng = position.coords.longitude;
 
     player = player.setLatLng([lat, lng]).update();
-
+    
     /*
     if(localization){
         map.removeLayer(localization);

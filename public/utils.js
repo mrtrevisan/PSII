@@ -9,3 +9,7 @@ function getPoints(){
 var inputElement = document.getElementById("pontuacao");
 var valorDaFuncao = getPoints();
 inputElement.value = valorDaFuncao;
+
+function centraliza(){
+    map.setView([player.getLatLng().lat, player.getLatLng().lng]);
+}
