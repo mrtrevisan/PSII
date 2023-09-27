@@ -82,6 +82,19 @@ async function main() {
 // Chame a função main para iniciar o processo
 main();
 
+var box = document.getElementsByClassName('entered-box');
+
+function open_entered_box(){
+    if (box[0].style.display == 'none'){
+        box[0].style.display = 'block';
+    }
+}
+
+function close_entered_box(){
+    if (box[0].style.display == 'block'){
+        box[0].style.display = 'none';
+    }
+}
 
 // Crie um elemento <div> para a caixa de exibição
 var pontuacao = parseInt(localStorage.getItem('pontuacao')) || 0;
@@ -209,9 +222,11 @@ player.on('move', function(e){
         pontuacao = pontuacao + 10;
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
         localStorage.setItem('pontuacao', pontuacao);
+        open_entered_box();
     }
     else if(!isInside && entered){
         entered = false;
+        close_entered_box();
     }
 
 });
