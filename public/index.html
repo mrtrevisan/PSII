@@ -16,14 +16,13 @@
 
 </head>
 <body>
-    <h1 class="fixed-title">
-        UFSM GO
-    </h1>
+    <div class="fixed-title">
+        <h1>
+            UFSM GO
+        </h1>
+    </div>
 
-    <button onclick="centraliza()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Recentralizar
-    </button>
-    <p id="demo">ola mundo</p>
+    <p id="demo" style="display: none;">ola mundo</p>
 
     <div id="map" class="coordinate"></div>
 
@@ -32,8 +31,19 @@
             <h2>Parabéns!</h2>
             <p>Você entrou na área de um ponto de interesse!</p>
             <br>
-            <button onclick="close_entered_box()" type="button" class="btn btn-primary">Fechar</button>
+            <button id="back-button" onclick="close_entered_box()" type="button" class="btn btn-primary">Fechar</button>
         </div>
+    </div>
+
+    <div class="hud">
+        <div id="pontuacao">
+            <p>Seu score: <span id="score">0</span></p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="activateLocation()" type="button" class="btn btn-primary" id="gps-button" style="display: none;">Ativar Localização</button>
+        <button onclick="centraliza()" id="centralize-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Recentralizar</button>
     </div>
 
     <!-- Bootstrap JS (before your custom scripts) -->

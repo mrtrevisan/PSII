@@ -96,20 +96,13 @@ function close_entered_box(){
     }
 }
 
+var gps_button = document.getElementById('gps-button');
+
 // Crie um elemento <div> para a caixa de exibição
 var pontuacao = parseInt(localStorage.getItem('pontuacao')) || 0;
 
-var infoBox = L.DomUtil.create('div', 'info-box');
+var infoBox = document.getElementById('pontuacao');
 infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
-
-// Estilize a caixa usando CSS
-infoBox.style.position = 'absolute';
-infoBox.style.top = '10px';
-infoBox.style.right = '10px';
-infoBox.style.backgroundColor = 'white';
-infoBox.style.padding = '10px';
-infoBox.style.border = '1px solid #ccc';
-infoBox.style.zIndex = 1000; // Valor maior para ficar acima do mapa
 
 // Adicione a caixa diretamente ao DOM da página
 document.body.appendChild(infoBox);
@@ -137,9 +130,16 @@ var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).
 
 var player2 = L.featureGroup().addTo(map);
 
+function activateLocation() {
+    gps_button.style.display = 'none';
+    watcher = navigator.geolocation.watchPosition(success, error);
+}
+
 // Função para pegar a localização do usuário em tempo real
 watcher = navigator.geolocation.watchPosition(success, error);
+console.log(watcher);
 function success(position) {
+    gps_button.style.display = 'none';
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
 
@@ -177,10 +177,11 @@ function error(err) {
 
 player.on('drag', function(e){
     navigator.geolocation.clearWatch(watcher);
+    gps_button.style.display = 'block';
 });
 
 player.on('move', function(e){
-
+    console.log(watcher);
     // distance between the current position of the marker and the center of the circle
     
     var innerEntered = false;
