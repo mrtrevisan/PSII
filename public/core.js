@@ -1,3 +1,17 @@
+class Evento {
+    constructor(name, center)
+    {
+        this.name = name;
+        this.center = center;
+    }
+
+    print()
+    {
+        console.log(this.name);
+        console.log(this.center);
+    }
+}
+
 async function api_healthcheck(){
     var healthcheck = 'https://ufsmgo-gc8z.onrender.com/healthcheck'
     var res = await fetch(healthcheck)
@@ -9,6 +23,19 @@ async function get_centro(sigla){
     if (!api_healthcheck) return
 
     var url = 'https://ufsmgo-gc8z.onrender.com/centro'
+    if (sigla != 'all'){
+        url += '/' + sigla
+    }
+
+    res = await fetch(url);
+    data = await res.json();
+    return data;
+}
+
+async function get_evento(sigla){
+    if (!api_healthcheck) return
+
+    var url = 'https://ufsmgo-gc8z.onrender.com/evento'
     if (sigla != 'all'){
         url += '/' + sigla
     }
@@ -40,12 +67,15 @@ const markers = []; // Array para armazenar os marcadores
 
 const ranges = []; // Array para armazenar os ranges
 
+const eventos = []; // Array para armazenar os eventos
+
 var entered = false;
 
 async function main() {
     //UFSM.clearLayers(); // Limpar camadas antes de adicionar novos marcadores
 
     const centros = await get_centro('all')
+    const eventosAll = await get_evento('all')
     if (centros) {
         centros.forEach(centro => {
             const nome = centro.nome;
@@ -77,6 +107,24 @@ async function main() {
     else{
         console.log("erro nos centros")
     }
+
+    if(eventosAll)
+    {
+        eventosAll.forEach(evento => {
+            centros.forEach(centro => {
+                if (evento.centro == centro.sigla){
+                    eventos.push(new Evento(evento.nome, centro.sigla))     
+                }
+            });
+        });
+    }
+    else
+    {
+        console.log("erro nos eventos")
+    }
+    eventos.forEach(evento => {
+        evento.print()
+    });
 }
 
 // Chame a função main para iniciar o processo
@@ -181,7 +229,6 @@ player.on('drag', function(e){
 });
 
 player.on('move', function(e){
-    console.log(watcher);
     // distance between the current position of the marker and the center of the circle
     
     var innerEntered = false;

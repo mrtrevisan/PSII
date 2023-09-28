@@ -49,8 +49,11 @@ body{
 }
 
 .entered-box {
+    text-align: center;
+    color: white;
     border: 5px solid;
-    background-color: white;
+    border-color: white;
+    background-color: blue;
     position: absolute;
     z-index: 2003;
     top: 50%;
