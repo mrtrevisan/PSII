@@ -53,6 +53,21 @@ app.get('/centro/:index', async function(req, res){
     })
 })
 
+app.get('/evento/:index', async function(req, res){
+    var {index} = req.params;
+    var client = await connect();
+    var query = "SELECT * FROM evento WHERE centro LIKE " + index.toUpperCase() ;
+    //console.log(query)
+    //comment
+    client.query(query, function(err, result){
+        if(err){
+            return console.error('error running query', err);
+        }
+        client.release();
+        res.send(result.rows);
+    })
+})
+
 app.get('/evento', async function(req, res){
     var client = await connect();
     var query = "SELECT * FROM evento ORDER BY id";

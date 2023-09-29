@@ -146,23 +146,29 @@ function close_entered_box(){
 
 var gps_button = document.getElementById('gps-button');
 
-// Crie um elemento <div> para a caixa de exibição
-var pontuacao = parseInt(localStorage.getItem('pontuacao')) || 0;
 
-var infoBox = document.getElementById('pontuacao');
-infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
-
-// Adicione a caixa diretamente ao DOM da página
-document.body.appendChild(infoBox);
 
 /// EVENTOS
 UFSM.on('contextmenu', function (e) {
-    var marcadorClicado = e.layer; // Obtém o marcador clicado
+    const marcadorClicado = e.layer; // Obtém o marcador clicado
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
-        var conteudoDoPopup = marcadorClicado.getPopup().getContent();
-        console.log("Conteúdo do pop-up:", conteudoDoPopup);
+        //  var conteudoDoPopup = marcadorClicado.getPopup().getContent();
+        var nome = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0];
+        console.log("Clicou no marcador: " + nome);
+        //var eventosCentro = get_evento(nome);
+        //console.log(eventosCentro);
+
+
+        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+
+        // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
+        myModal.show(); // Exibe o modal
+
+
+        document.getElementsByClassName('modal-title')[0].innerHTML = 'Eventos do ' + nome + ':';
+        document.getElementsByClassName('modal-body')[0].innerHTML = 'Eventos 1 2 3 4 5: ' ;
     }
     else if(marcadorClicado && marcadorClicado.getRadius()){
         console.log("Clicou no circulo de um marcador:");
@@ -178,10 +184,7 @@ var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).
 
 var player2 = L.featureGroup().addTo(map);
 
-function activateLocation() {
-    gps_button.style.display = 'none';
-    watcher = navigator.geolocation.watchPosition(success, error);
-}
+
 
 // Função para pegar a localização do usuário em tempo real
 watcher = navigator.geolocation.watchPosition(success, error);

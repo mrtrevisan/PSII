@@ -43,7 +43,27 @@
 
     <div class="buttons">
         <button onclick="activateLocation()" type="button" class="btn btn-primary" id="gps-button" style="display: none;">Ativar Localização</button>
-        <button onclick="centraliza()" id="centralize-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Recentralizar</button>
+        <button onclick="centraliza()" type="button" class="btn btn-primary" id="centralize-button">Recentralizar</button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Título do Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    Conteúdo do Modal
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS (before your custom scripts) -->
