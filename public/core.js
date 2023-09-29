@@ -1,3 +1,6 @@
+api_url = 'https://ufsmgo.cloud.local'
+//  api_url = 'https://ufsmgo-gc8z.onrender.com'
+
 class Evento {
     constructor(name, center)
     {
@@ -13,7 +16,7 @@ class Evento {
 }
 
 async function api_healthcheck(){
-    var healthcheck = 'https://ufsmgo-gc8z.onrender.com/healthcheck'
+    var healthcheck = api_url+'/healthcheck'
     var res = await fetch(healthcheck)
     if (res.status != 200) return false
     else return true
@@ -22,7 +25,7 @@ async function api_healthcheck(){
 async function get_centro(sigla){
     if (!api_healthcheck) return
 
-    var url = 'https://ufsmgo-gc8z.onrender.com/centro'
+    var url = api_url+'/centro'
     if (sigla != 'all'){
         url += '/' + sigla
     }
@@ -32,14 +35,16 @@ async function get_centro(sigla){
     return data;
 }
 
-async function get_evento(sigla){
+async function get_evento(centro){
     if (!api_healthcheck) return
 
-    var url = 'https://ufsmgo-gc8z.onrender.com/evento'
-    if (sigla != 'all'){
-        url += '/' + sigla
+    var url = api_url+'/evento'
+    if (centro == 'all'){
+        url += "/all"
     }
-
+    else {
+        url += "?centro=" + centro + "&sort=data_inicio&order=ASC" 
+    }
     res = await fetch(url);
     data = await res.json();
     return data;
@@ -79,10 +84,11 @@ async function main() {
     if (centros) {
         centros.forEach(centro => {
             const nome = centro.nome;
+            const sigla = centro.sigla;
             var lat = centro.latitude;
             var long = centro.longitude;
             var marker = L.marker([lat,long]);
-            marker.bindPopup('<b>' + nome + '</b>' + '<br>Universidade Federal de Santa Maria </br>');
+            marker.bindPopup('<b>' + nome + ' - ' + sigla + '</b>' + '<br>Universidade Federal de Santa Maria </br>');
 
             if (marker){
                 marker.addTo(UFSM)
@@ -149,16 +155,18 @@ var gps_button = document.getElementById('gps-button');
 
 
 /// EVENTOS
-UFSM.on('contextmenu', function (e) {
+UFSM.on('contextmenu', async function (e) {
     const marcadorClicado = e.layer; // Obtém o marcador clicado
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
         //  var conteudoDoPopup = marcadorClicado.getPopup().getContent();
-        var nome = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0];
-        console.log("Clicou no marcador: " + nome);
-        //var eventosCentro = get_evento(nome);
-        //console.log(eventosCentro);
+        var sigla = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0].split(' - ')[1];
+        console.log("Clicou no marcador: " + sigla);
+        
+        var dados = await get_evento(sigla);
+        var eventosCentro = JSON.stringify(dados)
+        //console.log(eventosCentro)
 
 
         var myModal = new bootstrap.Modal(document.getElementById('myModal'));
@@ -167,8 +175,8 @@ UFSM.on('contextmenu', function (e) {
         myModal.show(); // Exibe o modal
 
 
-        document.getElementsByClassName('modal-title')[0].innerHTML = 'Eventos do ' + nome + ':';
-        document.getElementsByClassName('modal-body')[0].innerHTML = 'Eventos 1 2 3 4 5: ' ;
+        document.getElementsByClassName('modal-title')[0].innerHTML = 'Eventos do ' + sigla + ':';
+        document.getElementsByClassName('modal-body')[0].innerHTML = eventosCentro ;
     }
     else if(marcadorClicado && marcadorClicado.getRadius()){
         console.log("Clicou no circulo de um marcador:");
