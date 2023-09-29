@@ -1,5 +1,5 @@
-api_url = 'https://ufsmgo.cloud.local'
-//  api_url = 'https://ufsmgo-gc8z.onrender.com'
+//api_url = 'https://ufsmgo.cloud.local'
+  api_url = 'https://ufsmgo-gc8z.onrender.com'
 
 class Evento {
     constructor(name, center)

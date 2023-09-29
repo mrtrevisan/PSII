@@ -32,7 +32,7 @@ body{
 
 .btn.btn-primary{
     position: fixed;
-    z-index: 2001;
+    z-index: 2004;
     text-align: center;
     padding: 10px;
     background-color: blue;
@@ -62,6 +62,22 @@ body{
     padding: 10px;
 }
 
+.modal-dialog.modal-dialog-centered
+{
+    text-align: center;
+    align-items: center;
+    text-size-adjust: 100%;
+    word-wrap: break-word;
+}
+
+.modal-footer {
+    text-align: center;
+    align-items: center;
+    text-size-adjust: 100%;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
 #pontuacao {
     position: fixed;
     z-index: 2004;
@@ -84,6 +100,14 @@ body{
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    padding-block: 5px;
+}
+
+#event-button {
+    margin: 0;
+    position: relative;
+    left: -40%;
+    align-items: center;
     padding-block: 5px;
 }
 
