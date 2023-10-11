@@ -63,7 +63,7 @@ osm.addTo(map);
 var playerIcon = L.icon({
     iconUrl: 'img/corredor.png',
     iconSize: [50, 50],
-    popupAnchor: [10, -25]
+    popupAnchor: [0, -40]
 });
 
 var UFSM = L.featureGroup([]).addTo(map);

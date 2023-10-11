@@ -1,17 +1,90 @@
-<!--Gambiarra braba pra funcionar no replit-->
-<html>
-  <head>
-     <style>
-        iframe[iframetag] {
-            border: none;
-            width: 100%;
-            height: 100vh;
-        }
-     </style>
-  </head>
-  <body>
-     <div id="iframeDiv">
-        <iframe src="public/index.html" iframetag></iframe>
-     </div>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet test</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="fixed-title">
+        <h1>
+            UFSM GO
+        </h1>
+    </div>
+
+    <p id="demo" style="display: none;">ola mundo</p>
+
+    <div id="map" class="coordinate"></div>
+
+    <div class="entered-box" style="display: none;">
+        <div id="entered_box_content">
+            <h2>Parabéns!</h2>
+            <p>Você entrou na área de um ponto de interesse!</p>
+            <br>
+            <button id="back-button" onclick="close_entered_box()" type="button" class="btn btn-primary">Fechar</button>
+        </div>
+    </div>
+
+    <div class="hud">
+        <div id="pontuacao">
+            <p>Seu score: <span id="score">0</span></p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="activateLocation()" type="button" class="btn btn-primary" id="gps-button" style="display: none;">Ativar Localização</button>
+        <button onclick="centraliza()" type="button" class="btn btn-primary rounded-circle" id="centralize-button">
+            <img src="img/center.png" alt ="Recentralizar" width="30" length = "30"> </img>
+        </button>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Título do Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    Conteúdo do Modal
+                </div>
+                <div class="modal-footer">
+                    <button id="event-button" type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (before your custom scripts) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Leaflet JS (before your custom scripts) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!--Moment JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+    <!-- Your custom scripts (e.g., core.js) -->
+    <script src="utils.js"></script>
+    <script src="core.js"></script>
+
+</body>
 </html>
+
+<!-- Creditos a serem dados         
+<a href="https://www.flaticon.com/br/icones-gratis/corredor" title="corredor ícones">Corredor ícones criados por Flat Icons - Flaticon</a><input type="text" class="form-control" id = "pontuacao" readonly> </input>
+<a href="https://www.flaticon.com/free-icons/center" title="center icons">Center icons created by pictogramer - Flaticon</a>
+-->
