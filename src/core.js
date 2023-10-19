@@ -63,7 +63,7 @@ osm.addTo(map);
 var playerIcon = L.icon({
     iconUrl: 'img/corredor.png',
     iconSize: [50, 50],
-    popupAnchor: [10, -25]
+    popupAnchor: [0, -40]
 });
 
 var UFSM = L.featureGroup([]).addTo(map);
@@ -77,7 +77,6 @@ const eventos = []; // Array para armazenar os eventos
 var entered = false;
 
 async function main() {
-    //UFSM.clearLayers(); // Limpar camadas antes de adicionar novos marcadores
 
     const centros = await get_centro('all')
     const eventosAll = await get_evento('all')
@@ -152,7 +151,29 @@ function close_entered_box(){
 
 var gps_button = document.getElementById('gps-button');
 
+async function get_data_from_JSON(json){
+    var dados = ""
+    const option = {
+        year: 'numeric',
+        month: ('long' || 'short' || 'numeric'),
+        weekday: ('long' || 'short'),
+        day: 'numeric'
+    }
 
+    
+    json.forEach(e => {
+        dt_ini = new Date(e.data_inicio).toLocaleDateString('pt-br', option)
+        dt_fim = new Date(e.data_termino).toLocaleDateString('pt-br', option)
+        var modal = 
+            "<h4>" + e.nome + "</h4>" +
+            "<p>Início: " + dt_ini + "</p>" +
+            "<p>Fim: " + dt_fim + "</p>" +
+            "<p>Local: " + e.local + "</p>" +
+            '<a href="' + e.link + '" target="_blank">Link: ' + e.link + "</a>" + "<br/><br/>";
+        dados += modal
+    })
+    return dados;
+}
 
 /// EVENTOS
 UFSM.on('contextmenu', async function (e) {
@@ -165,8 +186,9 @@ UFSM.on('contextmenu', async function (e) {
         console.log("Clicou no marcador: " + sigla);
         
         var dados = await get_evento(sigla);
-        var eventosCentro = JSON.stringify(dados, null, 4)
-        console.log(eventosCentro)
+        var eventosCentro = await get_data_from_JSON(dados)
+        //var eventosCentro = JSON.stringify(dados)
+        //console.log(eventosCentro)
 
 
         var myModal = new bootstrap.Modal(document.getElementById('myModal'));
