@@ -169,7 +169,7 @@ async function get_data_from_JSON(json){
             "<p>Início: " + dt_ini + "</p>" +
             "<p>Fim: " + dt_fim + "</p>" +
             "<p>Local: " + e.local + "</p>" +
-            '<a href="' + e.link + '" target="_blank">Link: ' + e.link + "</a>" + "<br/><br/>";
+            '<a href="' + e.link + '" target="_blank">Link: ' + e.link + "</a>" + "<br>"+"<hr>";
         dados += modal
     })
     return dados;
@@ -198,7 +198,11 @@ UFSM.on('contextmenu', async function (e) {
 
 
         document.getElementsByClassName('modal-title')[0].innerHTML = 'Eventos do ' + sigla + ':';
+        if(eventosCentro == ""){
+            eventosCentro = "Não há eventos cadastrados para este centro!"
+        }
         document.getElementsByClassName('modal-body')[0].innerHTML = eventosCentro ;
+        
     }
     else if(marcadorClicado && marcadorClicado.getRadius()){
         console.log("Clicou no circulo de um marcador:");
