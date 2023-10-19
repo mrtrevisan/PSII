@@ -165,8 +165,8 @@ UFSM.on('contextmenu', async function (e) {
         console.log("Clicou no marcador: " + sigla);
         
         var dados = await get_evento(sigla);
-        var eventosCentro = JSON.stringify(dados)
-        //console.log(eventosCentro)
+        var eventosCentro = JSON.stringify(dados, null, 4)
+        console.log(eventosCentro)
 
 
         var myModal = new bootstrap.Modal(document.getElementById('myModal'));
