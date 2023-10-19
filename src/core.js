@@ -61,7 +61,7 @@ osm.addTo(map);
 
 // como personalizar nossos icones
 var playerIcon = L.icon({
-    iconUrl: 'img/corredor.png',
+    iconUrl: 'img/walking.png',
     iconSize: [50, 50],
     popupAnchor: [0, -40]
 });
@@ -172,6 +172,10 @@ async function get_data_from_JSON(json){
             '<a href="' + e.link + '" target="_blank">Link: ' + e.link + "</a>" + "<br/><br/>";
         dados += modal
     })
+
+    if (dados == "")
+        dados = "<p>Tudo quieto... <br>Não há enventos aqui por enquanto.</p>"
+
     return dados;
 }
 
