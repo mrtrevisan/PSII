@@ -96,7 +96,8 @@ async function main() {
                     fillColor: '#f03',
                     fillOpacity: 0.5,
                     radius: 50,
-                    draggable:false
+                    draggable:false,
+                    id: sigla
                 }).addTo(UFSM);
                 
                 marker = L.featureGroup([marker, circle]);
@@ -220,7 +221,7 @@ var localization, range, zoomed;
 
 var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).bindPopup('Vamos explorar a UFSM!').addTo(map).openPopup();
 
-var player2 = L.featureGroup().addTo(map);
+// var player2 = L.featureGroup().addTo(map);
 
 
 
@@ -268,7 +269,7 @@ player.on('drag', function(e){
     navigator.geolocation.clearWatch(watcher);
     gps_button.style.display = 'block';
 });
-
+/*
 player.on('move', function(e){
     // distance between the current position of the marker and the center of the circle
     
@@ -312,10 +313,61 @@ player.on('move', function(e){
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
         localStorage.setItem('pontuacao', pontuacao);
         open_entered_box();
+        console.log("entrou no circulo");
     }
     else if(!isInside && entered){
         entered = false;
         close_entered_box();
+        console.log("saiu do circulo");
     }
 
 });
+*/
+var qtd_cir=0;
+var insideCircles = [];
+player.on('move', function (e) {
+    // Loop para verificar todos os círculos
+    ranges.forEach(function (range) {
+        var d = map.distance(e.latlng, range.getLatLng());
+        // Verifica se o marcador está dentro do círculo
+        if (d < range.getRadius()) {
+            range.setStyle({
+                fillColor: 'green'
+            });
+            if(insideCircles.indexOf(range.options.id) == -1){
+                insideCircles.push(range.options.id);
+            }
+            console.log(insideCircles)
+        } 
+        else {
+            range.setStyle({
+                fillColor: '#f03'
+            });
+
+            // Remove o círculo da lista insideCircles se ele estiver lá
+            var index = insideCircles.indexOf(range.options.id);
+            if (index !== -1) {
+                insideCircles.splice(index, 1);
+            }
+        }
+    });
+
+    console.log(insideCircles+" "+insideCircles.length+" "+qtd_cir+" "+entered);
+    if (insideCircles.length > qtd_cir) {
+        qtd_cir = insideCircles.length;
+        entered = true;
+        pontuacao += 10;
+        infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+        open_entered_box();
+        console.log("entrou no círculo");
+    } else if (insideCircles.length == 0 && entered) {
+        entered = false;
+        qtd_cir = 0;
+        close_entered_box();
+        console.log("saiu do círculo");
+    }
+
+    
+
+});
+

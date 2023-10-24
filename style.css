@@ -1,24 +1,25 @@
-body{
+.body{
     margin: 0;
     padding: 0;
 }
 #map{
-    width: 100%;
+    margin-left: 10%;
+    width: 90%;
     height: 100vh;
-}
-.coordinate{
     position: absolute;
+    z-index: -1;
 }
+
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-    background: black;
-    color: white;
-    box-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    background: whitesmoke;
+    color:blue;
+    box-shadow: 0 3px 14px rgba(0,34,255,0.4);
+
 }
 
 .fixed-title {
     position: fixed;
     color: white;
-    z-index: 2000;
     text-align: center;
     align-items: center;
     left: 50%;
@@ -60,6 +61,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
+    box-shadow: 0 3px 14px rgba(0,34,255,0.9);
 }
 
 .modal-dialog.modal-dialog-centered
@@ -128,7 +130,7 @@ body{
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 122px;
+    width: 10%;
     background-color: #f1f1f1;
     position: fixed;
     height: 100%;
