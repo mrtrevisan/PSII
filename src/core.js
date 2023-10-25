@@ -1,4 +1,11 @@
-import * as http from './http.js'
+import {
+    get_centro, 
+    get_evento, 
+    getPoints, 
+    atualiza_pontos, 
+    get_data_from_JSON, 
+    leaderboard
+} from './http.js'
  
 var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
 
@@ -29,9 +36,42 @@ var infoBox;
 
 var pontuacao;
 
+class Evento {
+    constructor(name, center)
+    {
+        this.name = name;
+        this.center = center;
+    }
+
+    print()
+    {
+        console.log(this.name);
+        console.log(this.center);
+    }
+}
+
+
+// Em core.js
+document.getElementById('gps-button').addEventListener('click', function() {
+    gps_button.style.display = 'none';
+    watcher = navigator.geolocation.watchPosition(success, error);
+});
+
+document.getElementById('centralize-button').addEventListener('click', function() {
+    map.setView([player.getLatLng().lat, player.getLatLng().lng]);
+});
+
+document.getElementById('leaderboard-button').addEventListener('click', function() {
+    leaderboard();
+});
+
+
+
+
+
 async function main() {
 
-    const centros = await http.get_centro('all')
+    const centros = await get_centro('all')
     const eventosAll = await get_evento('all')
 
     pontuacao = await getPoints();
@@ -115,33 +155,7 @@ function close_entered_box(){
 
 var gps_button = document.getElementById('gps-button');
 
-async function get_data_from_JSON(json){
-    var dados = ""
-    const option = {
-        year: 'numeric',
-        month: ('long' || 'short' || 'numeric'),
-        weekday: ('long' || 'short'),
-        day: 'numeric'
-    }
 
-    
-    json.forEach(e => {
-        dt_ini = new Date(e.data_inicio).toLocaleDateString('pt-br', option)
-        dt_fim = new Date(e.data_termino).toLocaleDateString('pt-br', option)
-        var modal = 
-            "<h4>" + e.nome + "</h4>" +
-            "<p>Início: " + dt_ini + "</p>" +
-            "<p>Fim: " + dt_fim + "</p>" +
-            "<p>Local: " + e.local + "</p>" +
-            '<a href="' + e.link + '" target="_blank">Link: ' + e.link + "</a>" + "<br>"+"<hr>";
-        dados += modal
-    })
-
-    if (dados == "")
-        dados = "<p>Tudo quieto... <br>Não há enventos aqui por enquanto.</p>"
-
-    return dados;
-}
 
 /// EVENTOS
 UFSM.on('contextmenu', async function (e) {
@@ -182,13 +196,10 @@ UFSM.on('contextmenu', async function (e) {
 });
 
 
-var localization, range, zoomed;
-
 var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).bindPopup('Vamos explorar a UFSM!').addTo(map).openPopup();
 
 // Função para pegar a localização do usuário em tempo real
-watcher = navigator.geolocation.watchPosition(success, error);
-console.log(watcher);
+var watcher = navigator.geolocation.watchPosition(success, error);
 function success(position) {
     gps_button.style.display = 'none';
     const lat = position.coords.latitude;
@@ -243,7 +254,7 @@ player.on('move', function (e) {
         pontuacao = parseInt(pontuacao);
         pontuacao += 10;
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
-            atualiza_pontos(pontuacao);
+        atualiza_pontos(pontuacao);
         let beat = new Audio("audio/points.mp3");
         beat.play();
         open_entered_box();
@@ -256,13 +267,4 @@ player.on('move', function (e) {
     }
 });
 
-async function leaderboard(){
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-    var leaderboard = await get_leaderboard();
-    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
-    myModal.show(); // Exibe o modal
 
-    document.getElementsByClassName('modal-title')[0].innerHTML = 'Leaderboard';
-    
-    document.getElementsByClassName('modal-body')[0].innerHTML = JSON.stringify(leaderboard) ;
-}

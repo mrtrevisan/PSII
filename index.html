@@ -46,8 +46,8 @@
 
     <!-- Buttons -->
     <div class="buttons">
-        <button onclick="activateLocation()" type="button" class="btn btn-primary" id="gps-button" style="display: none;">Ativar Localização</button>
-        <button onclick="centraliza()" type="button" class="btn btn-primary rounded-circle" id="centralize-button">
+        <button type="button" class="btn btn-primary" id="gps-button" style="display: none;">Ativar Localização</button>
+        <button type="button" class="btn btn-primary rounded-circle" id="centralize-button">
             <img src="img/center.png" alt ="Recentralizar" width="30" length = "30"> </img>
         </button>
     </div>
@@ -74,7 +74,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a class="active" href="#home">Home</a>
-        <button onclick="leaderboard()" >Leaderboard</button>
+        <button type ="button" id="leaderboard-button" >Leaderboard</button>
         <a href="#contact">Contact</a>
         <a href="#about">About</a>
     </div>
@@ -91,7 +91,6 @@
     
     <!-- Nossos Scripts-->
     <script src="data/turismo.js"></script>
-    <script src="src/http.js" type="module"></script>
     <script src="src/utils.js"></script>
     <script src="src/core.js" type="module"></script>
 
