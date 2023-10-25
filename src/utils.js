@@ -1,3 +1,16 @@
+class Evento {
+    constructor(name, center)
+    {
+        this.name = name;
+        this.center = center;
+    }
+
+    print()
+    {
+        console.log(this.name);
+        console.log(this.center);
+    }
+}
 
 /*
 var inputElement = document.getElementById("pontuacao");
