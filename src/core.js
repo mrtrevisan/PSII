@@ -50,6 +50,34 @@ async function get_evento(centro){
     return data;
 }
 
+async function get_leaderboard(){
+    if (!api_healthcheck) return
+
+    var url = api_url+'/leaderboard'
+    res = await fetch(url);
+    data = await res.json();
+    
+    return data;
+}
+
+async function atualiza_pontos(pontos){
+    if (!api_healthcheck) return
+    var playerName = 'admin'
+    var url = api_url+'/player/' + playerName + '/pontos?value=' + String(pontos)
+    await fetch(url, {method: 'PUT'})
+    return
+}
+
+async function getPoints(){
+    if (!api_healthcheck) return
+    var playerName = 'admin'
+    var url = api_url+'/player/' + playerName + '/pontos'
+    //var url = 'https://ufsmgo-gc8z.onrender.com/player/admin/pontos'
+    res = await fetch(url);
+    data = await res.json();
+    return parseInt(data[0].pontos);
+}
+
 var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
 
 // para outras opções de mapas, acesse: https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -76,10 +104,24 @@ const eventos = []; // Array para armazenar os eventos
 
 var entered = false;
 
+var infoBox;
+
+var pontuacao;
+
 async function main() {
 
     const centros = await get_centro('all')
     const eventosAll = await get_evento('all')
+
+    pontuacao = await getPoints();
+
+    // Crie um elemento <div> para a caixa de exibição
+    infoBox = document.getElementById('pontuacao');
+    infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+
+    // Adicione a caixa diretamente ao DOM da página
+    document.body.appendChild(infoBox);
+
     if (centros) {
         centros.forEach(centro => {
             const nome = centro.nome;
@@ -186,6 +228,8 @@ UFSM.on('contextmenu', async function (e) {
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
+        let beat = new Audio("audio/center.mp3");
+        beat.play();
         //  var conteudoDoPopup = marcadorClicado.getPopup().getContent();
         var sigla = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0].split(' - ')[1];
         console.log("Clicou no marcador: " + sigla);
@@ -337,7 +381,6 @@ player.on('move', function (e) {
             if(insideCircles.indexOf(range.options.id) == -1){
                 insideCircles.push(range.options.id);
             }
-            console.log(insideCircles)
         } 
         else {
             range.setStyle({
@@ -352,12 +395,18 @@ player.on('move', function (e) {
         }
     });
 
-    console.log(insideCircles+" "+insideCircles.length+" "+qtd_cir+" "+entered);
     if (insideCircles.length > qtd_cir) {
         qtd_cir = insideCircles.length;
         entered = true;
+        console.log('type of antes do parseint' + String(typeof(pontuacao)) + String(pontuacao));
+        pontuacao = parseInt(pontuacao);
+        console.log('type of depois do parse' + String(typeof(pontuacao)) + String(pontuacao));
         pontuacao += 10;
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+        console.log('type of ' + String(typeof(pontuacao)));
+            atualiza_pontos(pontuacao);
+        let beat = new Audio("audio/points.mp3");
+        beat.play();
         open_entered_box();
         console.log("entrou no círculo");
     } else if (insideCircles.length == 0 && entered) {
@@ -366,8 +415,16 @@ player.on('move', function (e) {
         close_entered_box();
         console.log("saiu do círculo");
     }
-
-    
-
 });
 
+async function leaderboard(){
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    var leaderboard = await get_leaderboard();
+    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
+    myModal.show(); // Exibe o modal
+
+
+    document.getElementsByClassName('modal-title')[0].innerHTML = 'Leaderboard';
+    
+    document.getElementsByClassName('modal-body')[0].innerHTML = JSON.stringify(leaderboard) ;
+}
