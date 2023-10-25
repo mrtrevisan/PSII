@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusão de Usuário</title>
+</head>
+<body>
+    
+    <h1>Exclusão de Usuário</h1>
+    <form id ="excluir_form"  method="get">
+        <label for="username">Nome de Usuário:</label>
+        <br>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <br>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="password2">Digite: EXCLUIR</label>
+        <br>
+        <input type="text" id="confirmar" name="confirmar" required>
+        <br>
+        <input type="submit" value="excluir">
+    </form>
+
+    <script type="module">
+        //action="RENDER URL"
+        import {verify_player, deleta_usuario } from "../src/http.js";
+
+        const form = document.getElementById("excluir_form");
+
+        form.addEventListener("submit", async function(event) {            
+            event.preventDefault();
+            
+            const nome = document.getElementById("username").value;
+            const senha = document.getElementById("password").value;
+            const confirmar = document.getElementById("confirmar").value;
+
+            if(confirmar !== "EXCLUIR"){
+                alert("Confirmação incorreta");
+                return;
+            }
+
+            let resultado = await verify_player(nome, senha);
+            
+            if(resultado == 1){
+                await deleta_usuario(nome, senha);
+                alert("Usuário foi deletado.");
+                window.location.href = "./login.html";
+            }
+            else if(resultado == 0){
+                alert("Senha incorreta!")
+            }
+            else if(resultado == -1){ //usuário não existe
+                alert("Este usuário não existe");
+            }
+            else{
+                alert("Erro desconhecido PANIQUEI");
+            }
+            
+        });
+    </script>
+</body>
+</html>

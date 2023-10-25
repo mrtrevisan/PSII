@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+    
+    <h1>Cadastro de Usuário</h1>
+    <form id ="cadastro_form"  method="get">
+        <label for="username">Nome de Usuário:</label>
+        <br>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <br>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="password2">Repita sua senha:</label>
+        <br>
+        <input type="password" id="password2" name="password2" required>
+        <br>
+        <input type="submit" value="criar">
+    </form>
+
+    <script type="module">
+        //action="RENDER URL"
+        import { verify_player, cria_usuario } from "../src/http.js";
+
+        const form = document.getElementById("cadastro_form");
+
+        form.addEventListener("submit", async function(event) {            
+            event.preventDefault();
+            
+            const nome = document.getElementById("username").value;
+            const senha = document.getElementById("password").value;
+            const senha2 = document.getElementById("password2").value;
+
+            if(senha != senha2){
+                alert("As senhas não coincidem");
+                return;
+            }
+
+            let resultado = await verify_player(nome, senha);
+            console.log(resultado);
+            
+            if(resultado == 1 || resultado == 0){
+                alert("Usuário já existe.");
+            }
+            else if(resultado == -1){ //usuário não existe, será criado
+                await cria_usuario(nome, senha);
+                alert("Usuário criado com sucesso!");
+                // encaminha para o jogo
+                window.location.href = "../index.html";
+            }
+            else{
+                alert("Erro desconhecido PANIQUEI");
+            }
+            
+        });
+    </script>
+</body>
+</html>

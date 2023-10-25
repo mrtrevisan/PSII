@@ -124,11 +124,46 @@ async function leaderboard(){
     document.getElementsByClassName('modal-body')[0].innerHTML = JSON.stringify(leaderboard) ;
 }
 
+async function verify_player(nome, senha){
+    if (!api_healthcheck) return
+
+    var url = api_url+'/player/' + nome
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    if (data.length > 0){
+        if (data[0].senha == senha) return 1
+        else return 0
+    } else return -1
+};
+
+async function cria_usuario(nome, senha){
+    if (!api_healthcheck) return
+
+    var url = api_url + '/player?nome=' + nome + '&senha=' + senha;
+
+    await fetch(url, {method : 'POST'});
+    return;
+};
+
+async function deleta_usuario(nome,senha){
+    if (!api_healthcheck) return
+
+    var url = api_url + '/player?nome=' + nome + '&senha=' + senha;
+
+    await fetch(url, {method : 'DELETE'});
+    return;
+}
+
 export {
     get_centro,
     get_evento,
     atualiza_pontos,
     getPoints,
     get_data_from_JSON,
-    leaderboard
+    leaderboard,
+    verify_player,
+    cria_usuario,
+    deleta_usuario
 };

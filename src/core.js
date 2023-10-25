@@ -3,8 +3,8 @@ import {
     get_evento, 
     getPoints, 
     atualiza_pontos, 
-    get_data_from_JSON, 
-    leaderboard
+    get_data_from_JSON,
+    leaderboard 
 } from './http.js'
  
 var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
@@ -139,19 +139,7 @@ async function main() {
 // Chame a função main para iniciar o processo
 main();
 
-var box = document.getElementsByClassName('entered-box');
 
-function open_entered_box(){
-    if (box[0].style.display == 'none'){
-        box[0].style.display = 'block';
-    }
-}
-
-function close_entered_box(){
-    if (box[0].style.display == 'block'){
-        box[0].style.display = 'none';
-    }
-}
 
 var gps_button = document.getElementById('gps-button');
 

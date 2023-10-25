@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Usuário</title>
+</head>
+<body>
+    
+    <h1>Verificação de Usuário</h1>
+    <form id ="login_form"  method="get">
+        <label for="username">Nome de Usuário:</label>
+        <br>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Senha:</label>
+        <br>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="login">
+    </form>
+
+
+    <h2>Cadastre-se grátis:</h2>
+    <button id= "SignUp">Sign Up</button>
+
+    <script>
+        document.getElementById('SignUp').addEventListener('click', function() {
+            window.location.href = './cadastro.html';
+        });
+    </script>
+
+    <script type="module">
+        //action="RENDER URL"
+        import { verify_player } from "../src/http.js";
+        const form = document.getElementById("login_form");
+
+        form.addEventListener("submit", async function(event) {            
+            event.preventDefault();
+            
+            const nome = document.getElementById("username").value;
+            const senha = document.getElementById("password").value;
+            let resultado = await verify_player(nome, senha);
+            console.log(resultado);
+            
+            if(resultado == 1){
+                alert("Usuário verificado com sucesso!");
+                window.location.href = "../index.html";
+            }
+            else if(resultado == 0){
+                alert("Senha incorreta");
+            }
+            else if(resultado == -1){
+                alert("Usuário não encontrado");
+            }
+            else{
+                alert("Erro desconhecido PANIQUEI");
+            }
+            
+        });
+    </script>
+</body>
+</html>
