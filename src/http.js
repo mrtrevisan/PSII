@@ -1,5 +1,5 @@
-//api_url = 'https://ufsmgo.cloud.local'
-const api_url = 'https://ufsmgo-gc8z.onrender.com'
+const api_url = 'https://ufsmgo.cloud.local'
+//const api_url = 'https://ufsmgo-gc8z.onrender.com'
 
 async function api_healthcheck(){
     var healthcheck = api_url+'/healthcheck'
@@ -8,6 +8,7 @@ async function api_healthcheck(){
     else return true
 }
 
+//GET
 async function get_centro(sigla){
     if (!api_healthcheck) return
 
@@ -21,6 +22,7 @@ async function get_centro(sigla){
     return data;
 }
 
+//GET
 async function get_evento(centro){
     if (!api_healthcheck) return
 
@@ -36,6 +38,7 @@ async function get_evento(centro){
     return data;
 }
 
+//GET
 async function get_leaderboard(){
     if (!api_healthcheck) return
 
@@ -47,25 +50,86 @@ async function get_leaderboard(){
     return data;
 }
 
-async function atualiza_pontos(pontos){
-    if (!api_healthcheck) return
-    var playerName = 'admin'
-    var url = api_url+'/player/' + playerName + '/pontos?value=' + String(pontos)
-    await fetch(url, {method: 'PUT'})
-    return
-}
-
+//GET
 async function getPoints(){
     if (!api_healthcheck) return
 
     var playerName = 'admin'
-    var url = api_url+'/player/' + playerName + '/pontos'
+    var url = api_url+'/player/' + playerName;
 
     let res = await fetch(url);
     let data = await res.json();
     return parseInt(data[0].pontos);
 }
 
+//PUT
+async function atualiza_pontos(pontos){
+    if (!api_healthcheck) return
+    var playerName = 'admin'
+
+    var url = api_url+'/player';
+    const data = {"player" : playerName, "value" : String(pontos)}
+
+    await fetch(url, {
+        method: 'PUT',
+        body : JSON.stringify(data),
+        headers : {
+            "Content-Type" : "application/json; charset=UTF-8"
+        }
+    })
+    return
+}
+
+//ETL
+async function verify_player(nome, senha){
+    if (!api_healthcheck) return
+
+    var url = api_url+'/player/' + nome
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    if (data.length > 0){
+        if (data[0].senha == senha) return 1
+        else return 0
+    } else return -1
+};
+
+//POST
+async function cria_usuario(nome, senha){
+    if (!api_healthcheck) return
+
+    var url = api_url + '/player';
+    const data = {"nome" : nome, "senha" : senha};
+
+    await fetch(url, {
+        method : 'POST',
+        body : JSON.stringify(data),
+        headers : {
+            "Content-Type" : "application/json; charset=UTF-8"
+        }
+    });
+    return;
+};
+
+//DELETE
+async function deleta_usuario(nome,senha){
+    if (!api_healthcheck) return
+
+    var url = api_url + '/player';
+    const data = {"nome" : nome, "senha" : senha};
+
+    await fetch(url, {
+        method : 'DELETE',
+        body : JSON.stringify(data),
+        headers : {
+            "Content-Type" : "application/json; charset=UTF-8"
+        }
+    });
+    return;
+}
+
+//ETL
 async function get_data_from_JSON(json){
     var dados = ""
     console.log(json)
@@ -76,7 +140,6 @@ async function get_data_from_JSON(json){
         weekday: ('long' || 'short'),
         day: 'numeric'
     }
-    
     
     json.forEach(e => {
         let dt_ini = new Date(e.data_inicio).toLocaleDateString('pt-br', option)
@@ -96,6 +159,7 @@ async function get_data_from_JSON(json){
     return dados;
 }
 
+//ETL
 async function leaderboard_from_JSON(json){
     let rank = ""    
     var i = 1
@@ -112,6 +176,7 @@ async function leaderboard_from_JSON(json){
 
     return rank;
 }
+
 async function leaderboard(){
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
     var leaderboard = await get_leaderboard();
@@ -124,46 +189,22 @@ async function leaderboard(){
     document.getElementsByClassName('modal-body')[0].innerHTML = JSON.stringify(leaderboard) ;
 }
 
-async function verify_player(nome, senha){
-    if (!api_healthcheck) return
-
-    var url = api_url+'/player/' + nome
-
-    let res = await fetch(url);
-    let data = await res.json();
-
-    if (data.length > 0){
-        if (data[0].senha == senha) return 1
-        else return 0
-    } else return -1
-};
-
-async function cria_usuario(nome, senha){
-    if (!api_healthcheck) return
-
-    var url = api_url + '/player?nome=' + nome + '&senha=' + senha;
-
-    await fetch(url, {method : 'POST'});
-    return;
-};
-
-async function deleta_usuario(nome,senha){
-    if (!api_healthcheck) return
-
-    var url = api_url + '/player?nome=' + nome + '&senha=' + senha;
-
-    await fetch(url, {method : 'DELETE'});
-    return;
-}
-
 export {
+    //GET
     get_centro,
     get_evento,
-    atualiza_pontos,
+    get_leaderboard,
     getPoints,
-    get_data_from_JSON,
-    leaderboard,
+    //PUT
+    atualiza_pontos,
+    //ETL
     verify_player,
+    //POST
     cria_usuario,
-    deleta_usuario
+    //DELETE
+    deleta_usuario,
+    //ETL
+    get_data_from_JSON,
+    leaderboard_from_JSON,
+    leaderboard
 };
