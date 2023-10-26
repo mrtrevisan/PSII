@@ -1,10 +1,20 @@
 import {
-    get_centro, 
-    get_evento, 
-    getPoints, 
-    atualiza_pontos, 
+    //GET
+    get_centro,
+    get_evento,
+    get_leaderboard,
+    getPoints,
+    //PUT
+    atualiza_pontos,
+    //ETL
+    verify_player,
+    //POST
+    cria_usuario,
+    //DELETE
+    deleta_usuario,
+    //ETL
     get_data_from_JSON,
-    leaderboard 
+    leaderboard_from_JSON
 } from './http.js'
  
 var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
@@ -50,7 +60,6 @@ class Evento {
     }
 }
 
-
 // Em core.js
 document.getElementById('gps-button').addEventListener('click', function() {
     gps_button.style.display = 'none';
@@ -61,13 +70,20 @@ document.getElementById('centralize-button').addEventListener('click', function(
     map.setView([player.getLatLng().lat, player.getLatLng().lng]);
 });
 
+async function leaderboard(){
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    var leaderboard = await get_leaderboard();
+    leaderboard = await leaderboard_from_JSON(leaderboard);
+    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
+    myModal.show(); // Exibe o modal
+
+    document.getElementsByClassName('modal-title')[0].innerHTML = 'Leaderboard';
+    document.getElementsByClassName('modal-body')[0].innerHTML = leaderboard;
+}
+
 document.getElementById('leaderboard-button').addEventListener('click', function() {
     leaderboard();
 });
-
-
-
-
 
 async function main() {
 
@@ -139,11 +155,7 @@ async function main() {
 // Chame a função main para iniciar o processo
 main();
 
-
-
 var gps_button = document.getElementById('gps-button');
-
-
 
 /// EVENTOS
 UFSM.on('contextmenu', async function (e) {
@@ -162,12 +174,10 @@ UFSM.on('contextmenu', async function (e) {
         //var eventosCentro = JSON.stringify(dados)
         //console.log(eventosCentro)
 
-
         var myModal = new bootstrap.Modal(document.getElementById('myModal'));
 
         // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
         myModal.show(); // Exibe o modal
-
 
         document.getElementsByClassName('modal-title')[0].innerHTML = 'Eventos do ' + sigla + ':';
         if(eventosCentro == ""){
@@ -179,7 +189,6 @@ UFSM.on('contextmenu', async function (e) {
     else if(marcadorClicado && marcadorClicado.getRadius()){
         console.log("Clicou no circulo de um marcador:");
     }
-
     // aqui que iremos habilitar uma chamada aos eventos do centro clicado!
 });
 
@@ -188,6 +197,7 @@ var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).
 
 // Função para pegar a localização do usuário em tempo real
 var watcher = navigator.geolocation.watchPosition(success, error);
+
 function success(position) {
     gps_button.style.display = 'none';
     const lat = position.coords.latitude;
@@ -197,6 +207,7 @@ function success(position) {
 
     map.setView([lat, lng]);
 }
+
 function error(err) {
     if(err.code === 1){
         alert("Please allow location access.");
@@ -210,6 +221,7 @@ player.on('drag', function(e){
 
 var qtd_cir=0;
 var insideCircles = [];
+
 player.on('move', function (e) {
     // Loop para verificar todos os círculos
     ranges.forEach(function (range) {
@@ -239,17 +251,21 @@ player.on('move', function (e) {
     if (insideCircles.length > qtd_cir) {
         qtd_cir = insideCircles.length;
         entered = true;
+
         pontuacao = parseInt(pontuacao);
         pontuacao += 10;
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
         atualiza_pontos(pontuacao);
+
         let beat = new Audio("audio/points.mp3");
         beat.play();
         open_entered_box();
         console.log("entrou no círculo");
+
     } else if (insideCircles.length == 0 && entered) {
         entered = false;
         qtd_cir = 0;
+
         close_entered_box();
         console.log("saiu do círculo");
     }

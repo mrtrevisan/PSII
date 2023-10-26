@@ -177,18 +177,6 @@ async function leaderboard_from_JSON(json){
     return rank;
 }
 
-async function leaderboard(){
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-    var leaderboard = await get_leaderboard();
-    leaderboard = await leaderboard_from_JSON(leaderboard);
-    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
-    myModal.show(); // Exibe o modal
-
-    document.getElementsByClassName('modal-title')[0].innerHTML = 'Leaderboard';
-    
-    document.getElementsByClassName('modal-body')[0].innerHTML = JSON.stringify(leaderboard) ;
-}
-
 export {
     //GET
     get_centro,
@@ -205,6 +193,5 @@ export {
     deleta_usuario,
     //ETL
     get_data_from_JSON,
-    leaderboard_from_JSON,
-    leaderboard
+    leaderboard_from_JSON
 };
