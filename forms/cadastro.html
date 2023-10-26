@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="body">
     
-    <h1>Cadastro de Usuário</h1>
+    <h1 class="fixed-title">Cadastro de Usuário</h1>
     <form id ="cadastro_form"  method="get">
         <label for="username">Nome de Usuário:</label>
-        <br>
+        <br><hr>
         <input type="text" id="username" name="username" required>
-        <br>
+        <br><hr>
         <label for="password">Senha:</label>
-        <br>
+        <br><hr>
         <input type="password" id="password" name="password" required>
-        <br>
+        <br><hr>
         <label for="password2">Repita sua senha:</label>
-        <br>
+        <br><hr>
         <input type="password" id="password2" name="password2" required>
-        <br>
-        <input type="submit" value="criar">
+        <br><hr><hr>
+        <input class="btn-primary" type="submit" value="Cadastrar">
     </form>
 
     <script type="module">

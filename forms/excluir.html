@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exclusão de Usuário</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <h1>Exclusão de Usuário</h1>
+    <h1 class="fixed-title">Exclusão de Usuário</h1>
     <form id ="excluir_form"  method="get">
         <label for="username">Nome de Usuário:</label>
-        <br>
+        <br><hr>
         <input type="text" id="username" name="username" required>
-        <br>
+        <br><hr>
         <label for="password">Senha:</label>
-        <br>
+        <br><hr>
         <input type="password" id="password" name="password" required>
-        <br>
+        <br><hr>
         <label for="password2">Digite: EXCLUIR</label>
-        <br>
+        <br><hr>
         <input type="text" id="confirmar" name="confirmar" required>
-        <br>
-        <input type="submit" value="excluir">
+        <br><hr><hr>
+        <input class="btn-primary" type="submit" value="Excluir">
     </form>
 
     <script type="module">

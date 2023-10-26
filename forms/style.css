@@ -1,0 +1,77 @@
+body{
+    background-color: blue;
+    text-align: center;
+}
+
+.fixed-title {
+    color: white;
+    font-family:Georgia, sans-serif;;
+    align-items: center;
+    background-color: blue;
+    padding: 10px;
+    padding-inline: 20px;
+    border: 5px solid;
+    border-color: white;
+}
+
+.secundary-title {
+    color: white;
+    font-family:Georgia, sans-serif;;
+    align-items: center;
+    background-color: blue;
+    padding: 10px;
+    padding-inline: 20px;
+    margin: 10px;
+    font-size: 30px;
+}
+
+body hr {
+    clear: both;
+    visibility: hidden;
+}
+
+body label{
+    color: white;
+    font-family:Georgia, sans-serif;
+    font-style: bold;
+    font-size: 25px;
+    margin: 10px;
+}
+
+body input{
+    padding-top: 10px;
+    text-align: center;
+}
+
+.btn-primary{
+    text-align: center;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+    font-family:Georgia, sans-serif;
+    font-size: 40px;
+    background-color: blue;
+    border: 5px solid;
+    border-color: white;
+    font-style: oblique;
+}
+
+.btn-secundary{
+    text-align: center;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-family:Georgia, sans-serif;
+    font-size: 30px;
+    background-color: blue;
+    border: 5px solid;
+    border-color: white;
+    font-style: oblique;
+}
+
+body form{
+    padding: 10px;
+    padding-inline: 20px;
+}

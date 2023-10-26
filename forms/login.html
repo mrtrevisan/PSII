@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificação de Usuário</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-    <h1>Verificação de Usuário</h1>
+    <h1 class="fixed-title">Verificação de Usuário</h1>
     <form id ="login_form"  method="get">
         <label for="username">Nome de Usuário:</label>
-        <br>
+        <br><hr>
         <input type="text" id="username" name="username" required>
-        <br>
+        <br><hr>
         <label for="password">Senha:</label>
-        <br>
+        <br><hr>
         <input type="password" id="password" name="password" required>
-        <br>
-        <input type="submit" value="login">
+        <br><hr><hr>
+        <input class="btn-primary" type="submit" value="Login">
     </form>
 
 
-    <h2>Cadastre-se grátis:</h2>
-    <button id= "SignUp">Sign Up</button>
+    <h2 class="secundary-title">Cadastre-se grátis:</h2>
+    <button class="btn-secundary" id= "SignUp">Sign Up</button>
 
     <script>
         document.getElementById('SignUp').addEventListener('click', function() {
