@@ -1,5 +1,5 @@
-//const api_url = 'https://ufsmgo.cloud.local'
-const api_url = 'https://ufsmgo-gc8z.onrender.com'
+const api_url = 'https://ufsmgo-api.cloud.local'
+//const api_url = 'https://ufsmgo-gc8z.onrender.com'
 
 async function api_healthcheck(){
     var healthcheck = api_url+'/healthcheck'
