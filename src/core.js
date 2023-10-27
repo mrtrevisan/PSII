@@ -81,6 +81,28 @@ document.getElementById('leaderboard-button').addEventListener('click', function
     leaderboard();
 });
 
+function achievements(){
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
+    myModal.show(); // Exibe o modal
+
+    document.getElementsByClassName('modal-title')[0].innerHTML = 'Conquistas';
+    
+    document.getElementsByClassName('modal-body')[0].innerHTML = ''
+
+    for (let i = 0; i < 19; i++) {
+        if (pontuacao >= i * 50)
+            var imgHtml = '<img src="img/Icon.png" width="100" height="100">';
+        else
+            var imgHtml = '<img src="img/Blocked.png" width="100" height="100">';
+        document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
+    }
+}
+
+document.getElementById('achievement-button').addEventListener('click', function() {
+    achievements();
+});
+
 async function main() {
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
