@@ -90,9 +90,9 @@ function achievements(){
     
     document.getElementsByClassName('modal-body')[0].innerHTML = ''
 
-    for (let i = 0; i < 19; i++) {
-        if (pontuacao >= i * 50)
-            var imgHtml = '<img src="img/Icon.png" width="100" height="100">';
+    for (let i = 0; i < 4; i++) {
+        if (pontuacao >= i * 50 && pontuacao > 0)
+            var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100">';
         else
             var imgHtml = '<img src="img/Blocked.png" width="100" height="100">';
         document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
