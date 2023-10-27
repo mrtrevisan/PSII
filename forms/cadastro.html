@@ -8,31 +8,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="body">
-    
-    <h1 class="fixed-title">Cadastro de Usuário</h1>
-    <form id ="cadastro_form"  method="get">
-        <label for="username">Nome de Usuário:</label>
-        <br><hr>
-        <input type="text" id="username" name="username" required>
-        <br><hr>
-        <label for="password">Senha:</label>
-        <br><hr>
-        <input type="password" id="password" name="password" required>
-        <br><hr>
-        <label for="password2">Repita sua senha:</label>
-        <br><hr>
-        <input type="password" id="password2" name="password2" required>
-        <br><hr><hr>
-        <input class="btn-primary" type="submit" value="Cadastrar">
-    </form>
+    <div class="main">
+        <h1 class="fixed-title">Cadastro de Usuário</h1>
+        <form id ="cadastro_form"  method="get">
+            <label for="username">Nome de Usuário:</label>
+            <br><hr>
+            <input type="text" id="username" name="username" required>
+            <br><hr>
+            <label for="password">Senha:</label>
+            <br><hr>
+            <input type="password" id="password" name="password" required>
+            <br><hr>
+            <label for="password2">Repita sua senha:</label>
+            <br><hr>
+            <input type="password" id="password2" name="password2" required>
+            <br><hr><hr>
+        </form>
+        <button class="btn-primary Anim" id="submit">Cadastrar</button><br><br>
+    </div>
 
     <script type="module">
         //action="RENDER URL"
         import { verify_player, cria_usuario } from "../src/http.js";
+        const button = document.getElementById("submit");
 
-        const form = document.getElementById("cadastro_form");
-
-        form.addEventListener("submit", async function(event) {            
+        button.addEventListener("click", async function(event) {            
             event.preventDefault();
             
             const nome = document.getElementById("username").value;
@@ -44,17 +44,17 @@
                 return;
             }
 
-            let resultado = await verify_player(nome, senha);
-            console.log(resultado);
+            let resultado = await verify_player(nome);
+            //console.log(resultado);
             
-            if(resultado == 1 || resultado == 0){
+            if(resultado == 1){
                 alert("Usuário já existe.");
             }
-            else if(resultado == -1){ //usuário não existe, será criado
+            else if(resultado == 0){ //usuário não existe, será criado
                 await cria_usuario(nome, senha);
                 alert("Usuário criado com sucesso!");
                 // encaminha para o jogo
-                window.location.href = "../index.html";
+                window.location.href = "../index.html?user=" + nome;
             }
             else{
                 alert("Erro desconhecido PANIQUEI");

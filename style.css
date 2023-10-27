@@ -18,6 +18,7 @@
 }
 
 .fixed-title {
+    border-radius: 10px;
     position: fixed;
     color: white;
     text-align: center;
@@ -81,6 +82,7 @@
 }
 
 #pontuacao {
+    border-radius: 10px;
     position: fixed;
     z-index: 2004;
     top: 2%;
@@ -124,28 +126,28 @@
     z-index: 2007;
 }
 
-
-
 /* The side navigation menu */
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 10%;
-    background-color: #f1f1f1;
+    background-color: #b8b8b8;
     position: fixed;
     height: 100%;
-    overflow: auto;
+    overflow:auto;
     z-index: 2006;
-    border-radius: 8px;
   }
   
   /* Sidebar links */
   .sidebar a {
+    text-align: center;
     display: block;
     color: black;
     padding: 16px;
     text-decoration: none;
     font-weight: bold;
+    margin:inherit;
+    border: solid black;
+    border-radius: 10px;
   }
   
   /* Active/current link */
@@ -155,9 +157,34 @@
   }
   
   /* Links on mouse-over */
-  .sidebar a:hover:not(.active) {
-    background-color: #555;
+  .sidebar a:hover {
+    background-color: blue;
     color: white;
+    border: solid white;
+    border-radius: 10px;
+  } 
+
+  .sidebar button {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border : none;
+    border-radius: inherit;
+    margin: inherit;
+    background-color: #b8b8b8;
+    border: solid black;
+    border-radius: 10px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .sidebar button:hover{
+    background-color: blue;
+    color: white;
+    border: solid white;
+    border-radius: 10px;
   }
   
   /* Page content. The value of the margin-left property should match the value of the sidebar's width property */

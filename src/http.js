@@ -1,5 +1,5 @@
-const api_url = 'https://ufsmgo.cloud.local'
-//const api_url = 'https://ufsmgo-gc8z.onrender.com'
+//const api_url = 'https://ufsmgo.cloud.local'
+const api_url = 'https://ufsmgo-gc8z.onrender.com'
 
 async function api_healthcheck(){
     var healthcheck = api_url+'/healthcheck'
@@ -51,11 +51,10 @@ async function get_leaderboard(){
 }
 
 //GET
-async function getPoints(){
+async function get_player_points(playerName){
     if (!api_healthcheck) return
 
-    var playerName = 'admin'
-    var url = api_url+'/player/' + playerName;
+    var url = api_url+'/player/' + playerName + '?query=game_info';
 
     let res = await fetch(url);
     let data = await res.json();
@@ -63,12 +62,11 @@ async function getPoints(){
 }
 
 //PUT
-async function atualiza_pontos(pontos){
+async function atualiza_pontos(playerName, pontos){
     if (!api_healthcheck) return
-    var playerName = 'admin'
 
-    var url = api_url+'/player';
-    const data = {"player" : playerName, "value" : String(pontos)}
+    var url = api_url+'/player/pontos';
+    const data = {"nome" : playerName, "pontos" : String(pontos)}
 
     await fetch(url, {
         method: 'PUT',
@@ -81,18 +79,32 @@ async function atualiza_pontos(pontos){
 }
 
 //ETL
-async function verify_player(nome, senha){
+async function verify_player(nome){
     if (!api_healthcheck) return
 
-    var url = api_url+'/player/' + nome
+    var url = api_url+'/player/' + nome + '?query=verify'
 
     let res = await fetch(url);
     let data = await res.json();
 
     if (data.length > 0){
-        if (data[0].senha == senha) return 1
-        else return 0
-    } else return -1
+        //player existe
+        return 1;
+    } else return 0
+};
+
+async function check_player_credential(nome, senha){
+    if (!api_healthcheck) return
+
+    var url = api_url+'/player/' + nome + '?query=credentials'
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    if (data.length > 0 && data[0].senha == senha){
+        //player existe
+        return 1;
+    } else return 0
 };
 
 //POST
@@ -182,11 +194,12 @@ export {
     get_centro,
     get_evento,
     get_leaderboard,
-    getPoints,
+    get_player_points,
     //PUT
     atualiza_pontos,
     //ETL
     verify_player,
+    check_player_credential,
     //POST
     cria_usuario,
     //DELETE

@@ -1,20 +1,14 @@
 import {
     //GET
-    get_centro,
-    get_evento,
-    get_leaderboard,
-    getPoints,
+    get_centro, get_evento, get_leaderboard, get_player_points,
     //PUT
     atualiza_pontos,
     //ETL
-    verify_player,
+    verify_player, get_data_from_JSON, leaderboard_from_JSON,
     //POST
     cria_usuario,
     //DELETE
-    deleta_usuario,
-    //ETL
-    get_data_from_JSON,
-    leaderboard_from_JSON
+    deleta_usuario, 
 } from './http.js'
  
 var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
@@ -45,6 +39,8 @@ var entered = false;
 var infoBox;
 
 var pontuacao;
+
+var playerName;
 
 class Evento {
     constructor(name, center)
@@ -86,11 +82,14 @@ document.getElementById('leaderboard-button').addEventListener('click', function
 });
 
 async function main() {
+    const urlParams = new URLSearchParams(window.location.search);
+    playerName = urlParams.get('user') || 'admin';
+    //console.log('player eh: ' + player);  
 
     const centros = await get_centro('all')
     const eventosAll = await get_evento('all')
 
-    pontuacao = await getPoints();
+    pontuacao = await get_player_points(playerName);
 
     // Crie um elemento <div> para a caixa de exibição
     infoBox = document.getElementById('pontuacao');
@@ -147,9 +146,11 @@ async function main() {
     {
         console.log("erro nos eventos")
     }
+    /*
     eventos.forEach(evento => {
         evento.print()
     });
+    */
 }
 
 // Chame a função main para iniciar o processo
@@ -167,7 +168,7 @@ UFSM.on('contextmenu', async function (e) {
         beat.play();
         //  var conteudoDoPopup = marcadorClicado.getPopup().getContent();
         var sigla = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0].split(' - ')[1];
-        console.log("Clicou no marcador: " + sigla);
+        //console.log("Clicou no marcador: " + sigla);
         
         var dados = await get_evento(sigla);
         var eventosCentro = await get_data_from_JSON(dados)
@@ -187,7 +188,7 @@ UFSM.on('contextmenu', async function (e) {
         
     }
     else if(marcadorClicado && marcadorClicado.getRadius()){
-        console.log("Clicou no circulo de um marcador:");
+        //console.log("Clicou no circulo de um marcador:");
     }
     // aqui que iremos habilitar uma chamada aos eventos do centro clicado!
 });
@@ -255,19 +256,19 @@ player.on('move', function (e) {
         pontuacao = parseInt(pontuacao);
         pontuacao += 10;
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
-        atualiza_pontos(pontuacao);
+        atualiza_pontos(playerName, pontuacao);
 
         let beat = new Audio("audio/points.mp3");
         beat.play();
         open_entered_box();
-        console.log("entrou no círculo");
+        //console.log("entrou no círculo");
 
     } else if (insideCircles.length == 0 && entered) {
         entered = false;
         qtd_cir = 0;
 
         close_entered_box();
-        console.log("saiu do círculo");
+        //console.log("saiu do círculo");
     }
 });
 

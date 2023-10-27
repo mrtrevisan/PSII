@@ -7,25 +7,26 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="body">
+    <div class="main">
+        <h1 class="fixed-title">Verificação de Usuário</h1>
+        <form id ="login_form"  method="get">
+            <label for="username">Nome de Usuário:</label>
+            <br><hr>
+            <input type="text" id="username" name="username" required>
+            <br><hr>
+            <label for="password">Senha:</label>
+            <br><hr>
+            <input type="password" id="password" name="password" required>
+            <br><hr>
+        </form>
+        <button class="btn-primary Anim" id="submit">Login</button><br><br>
+    </div>
+    <div class="secnd">
+        <h2 class="secundary-title">Cadastre-se grátis:</h2><br>
+        <button class="btn-secundary Anim" id= "SignUp">Sign Up</button>
+    </div>
     
-    <h1 class="fixed-title">Verificação de Usuário</h1>
-    <form id ="login_form"  method="get">
-        <label for="username">Nome de Usuário:</label>
-        <br><hr>
-        <input type="text" id="username" name="username" required>
-        <br><hr>
-        <label for="password">Senha:</label>
-        <br><hr>
-        <input type="password" id="password" name="password" required>
-        <br><hr><hr>
-        <input class="btn-primary" type="submit" value="Login">
-    </form>
-
-
-    <h2 class="secundary-title">Cadastre-se grátis:</h2>
-    <button class="btn-secundary" id= "SignUp">Sign Up</button>
-
     <script>
         document.getElementById('SignUp').addEventListener('click', function() {
             window.location.href = './cadastro.html';
@@ -34,25 +35,29 @@
 
     <script type="module">
         //action="RENDER URL"
-        import { verify_player } from "../src/http.js";
-        const form = document.getElementById("login_form");
+        import { verify_player, check_player_credential } from "../src/http.js";
+        const button = document.getElementById("submit");
 
-        form.addEventListener("submit", async function(event) {            
+        button.addEventListener("click", async function(event) {            
             event.preventDefault();
             
             const nome = document.getElementById("username").value;
             const senha = document.getElementById("password").value;
-            let resultado = await verify_player(nome, senha);
-            console.log(resultado);
+            let existe = await verify_player(nome);
+            //console.log(resultado);
             
-            if(resultado == 1){
-                alert("Usuário verificado com sucesso!");
-                window.location.href = "../index.html";
+            if(existe == 1){
+                let pass = await check_player_credential(nome, senha);
+                if (pass == 1) {
+                    alert("Usuário verificado com sucesso!");
+                    window.location.href = "../index.html?user=" + nome;
+                } else if (pass == 0){
+                    alert("Senha incorreta");
+                } else {
+                    alert("Erro desconhecido PANIQUEI");
+                }   
             }
-            else if(resultado == 0){
-                alert("Senha incorreta");
-            }
-            else if(resultado == -1){
+            else if(existe == 0){
                 alert("Usuário não encontrado");
             }
             else{
