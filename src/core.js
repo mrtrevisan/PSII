@@ -83,8 +83,8 @@ document.getElementById('leaderboard-button').addEventListener('click', function
 
 function achievements(){
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
-    myModal.show(); // Exibe o modal
+
+    myModal.show();
 
     document.getElementsByClassName('modal-title')[0].innerHTML = 'Conquistas';
     
@@ -102,6 +102,23 @@ function achievements(){
 document.getElementById('achievement-button').addEventListener('click', function() {
     achievements();
 });
+
+function win_achievement(){
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+
+    myModal.show();
+
+    document.getElementsByClassName('modal-title')[0].innerHTML = 'Conquista desbloqueada!';
+
+    document.getElementsByClassName('modal-body')[0].innerHTML = 'Parabéns, você desbloqueou uma nova conquista!'
+
+    var imgHtml = '<img src="img/Furry.png" width="400" height="400">';
+
+    document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
+
+    let beat = new Audio("audio/achievement.mp3");
+    beat.play();
+}
 
 async function main() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -280,9 +297,15 @@ player.on('move', function (e) {
         infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
         atualiza_pontos(playerName, pontuacao);
 
-        let beat = new Audio("audio/points.mp3");
-        beat.play();
-        open_entered_box();
+        if (pontuacao == 10 || pontuacao == 50 || pontuacao == 100 || pontuacao == 150){
+            win_achievement();
+        }
+        else
+        {
+            open_entered_box();
+            let beat = new Audio("audio/points.mp3");
+            beat.play();
+        }
         //console.log("entrou no círculo");
 
     } else if (insideCircles.length == 0 && entered) {
