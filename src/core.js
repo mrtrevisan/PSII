@@ -56,6 +56,8 @@ class Evento {
     }
 }
 
+var sidebarOpen = false;
+
 // Em core.js
 document.getElementById('gps-button').addEventListener('click', function() {
     gps_button.style.display = 'none';
@@ -67,8 +69,21 @@ document.getElementById('centralize-button').addEventListener('click', function(
 });
 
 document.getElementById('sidebar-button').addEventListener('click', function() {
-   var sidebar = document.getElementById('sidebar');
-   sidebar.classList.add('active')
+    var sidebar = document.getElementById('sidebar');
+    var sidebarBtn = document.getElementById('sidebar-button');
+    var centralizeBtn = document.getElementById('centralize-button');
+
+    if (sidebarOpen){
+        sidebar.classList.remove('active')
+        sidebarBtn.style.transform = 'translateX(0px)'
+        centralizeBtn.style.transform = 'translateX(0px)'
+        sidebarOpen = false;
+    } else {
+        sidebar.classList.add('active')
+        sidebarBtn.style.transform = 'translateX(150px)'
+        centralizeBtn.style.transform = 'translateX(150px)'
+        sidebarOpen = true;
+    }
 });
 
 async function leaderboard(){

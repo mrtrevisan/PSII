@@ -128,20 +128,28 @@
 
 #sidebar-button {
   border-radius: 10px;
+  padding: none;
+  margin-top: 12px;
+  margin-left: 12px;
 }
+
+#sidebar-button i {
+  font-size: 26px;
+}
+
 
 /* The side navigation menu */
 .sidebar {
     background-color: #b8b8b8;
     height: 100vh;
-    width: 300px;
+    width: 150px;
     z-index: 2006;
     position: fixed;
     transform: translateX(-100%);
 }
 
 .sidebar.active {
-    transform: translateX(0px);
+    transform: translateX(0%);
 }
   
   /* Sidebar links */
@@ -155,6 +163,7 @@
     margin:inherit;
     border: solid black;
     border-radius: 10px;
+    width: inherit;
   }
   
   /* Active/current link */
@@ -185,6 +194,7 @@
     border-radius: 10px;
     margin-top: 16px;
     margin-bottom: 16px;
+    width: inherit;
   }
 
   .sidebar button:hover{
@@ -192,11 +202,6 @@
     color: white;
     border: solid white;
     border-radius: 10px;
-  }
-
-  .sb_close {
-    padding: 10px;
-    text-align: right;
   }
   
   /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
