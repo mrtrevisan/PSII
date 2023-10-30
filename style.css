@@ -124,6 +124,7 @@
     left: 2%;
     bottom: 2%;
     z-index: 2007;
+    transition: 0.25s;
 }
 
 #sidebar-button {
@@ -131,6 +132,7 @@
   padding: none;
   margin-top: 12px;
   margin-left: 12px;
+  transition: 0.25s;
 }
 
 #sidebar-button i {
@@ -146,6 +148,7 @@
     z-index: 2006;
     position: fixed;
     transform: translateX(-100%);
+    transition: 0.25s;
 }
 
 .sidebar.active {
