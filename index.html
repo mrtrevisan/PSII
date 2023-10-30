@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UFSM GO</title>
+    <link rel="icon" type="image/x-icon" href="/img/Icon00.png">
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
@@ -48,11 +49,13 @@
 
     <!-- Buttons -->
     <div class="buttons">
-        <button type="button" class="btn btn-primary" id="gps-button" style="display: none;">Ativar Localização</button>
+        <button type="button" class="btn btn-primary" id="gps-button">
+            <i class="bi bi-compass"></i>
+        </button>
         <button type="button" class="btn btn-primary rounded-circle" id="centralize-button">
             <img src="img/center.png" alt ="Recentralizar" width="30" length = "30"> </img>
         </button>
-        <button class="btn btn-primary" id="sidebar-button">
+        <button type="button" class="btn btn-primary" id="sidebar-button">
             <i class="bi bi-list"></i>
         </button>
     </div>
@@ -80,10 +83,9 @@
     <div class="sidebar" id="sidebar">
         <button type ="button" id="leaderboard-button">Leaderboard</button>
         <button type ="button" id="achievement-button">Conquistas</button>
-        <a href="forms/login.html">Login</a><br>
-        <a href="forms/cadastro.html">Sign up</a><br>
-        <a href="forms/excluir.html">Adeus</a><br>
-    
+        <a href="forms/login.html">Login</a>
+        <a href="forms/cadastro.html">Sign up</a>
+        <a href="forms/excluir.html">Excluir conta</a>
     </div>
 
     <!-- Bootstrap JS -->

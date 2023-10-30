@@ -3,8 +3,7 @@
     padding: 0;
 }
 #map{
-    margin-left: 10%;
-    width: 90%;
+    width: 100%;
     height: 100vh;
     position: absolute;
     z-index: -1;
@@ -18,6 +17,7 @@
 }
 
 .fixed-title {
+    top: 1%;
     border-radius: 10px;
     position: fixed;
     color: white;
@@ -34,7 +34,7 @@
 
 .btn.btn-primary{
     position: fixed;
-    z-index: 2004;
+    z-index: 2;
     text-align: center;
     padding: 10px;
     background-color: blue;
@@ -44,7 +44,7 @@
 
 .form-control{
     position: fixed;
-    z-index: 2002;
+    z-index: 0;
     text-align: left;
     right: 10%;
     transform: translate( 50%, 10%);
@@ -57,7 +57,7 @@
     border-color: white;
     background-color: blue;
     position: absolute;
-    z-index: 2003;
+    z-index: 1;
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -84,7 +84,7 @@
 #pontuacao {
     border-radius: 10px;
     position: fixed;
-    z-index: 2004;
+    z-index: 2;
     top: 2%;
     right: 2%;
     background-color: white;
@@ -116,89 +116,118 @@
 }
 
 #gps-button {
-    right: 2%;
-    bottom: 2%;
+  left: 1%;
+  bottom: 12%;
+  z-index: 3;
+  transition: 0.25s;
+
+  line-height:30px;
+  width: 60px;
+  height: 60px;
+  text-decoration:none;
+  border-radius: 50%;
+}
+
+#gps-button i {
+  text-align: center;
+  padding: none;
+  margin: none;
+  font-size: 30px;
 }
 
 #centralize-button {
-    left: 2%;
-    bottom: 2%;
-    z-index: 2007;
-    transition: 0.25s;
+  left: 1%;
+  bottom: 2%;
+  z-index: 3;
+  transition: 0.25s;
+
+  width: 60px;
+  height: 60px;
 }
 
 #sidebar-button {
   border-radius: 10px;
-  padding: none;
-  margin-top: 12px;
-  margin-left: 12px;
+  padding: 5px;
+  left: 1%;
+  top: 2%;
   transition: 0.25s;
+  z-index: 4;
 }
 
 #sidebar-button i {
   font-size: 26px;
 }
 
-
 /* The side navigation menu */
 .sidebar {
-    background-color: #b8b8b8;
-    height: 100vh;
-    width: 150px;
-    z-index: 2006;
-    position: fixed;
-    transform: translateX(-100%);
-    transition: 0.25s;
+  background-color: rgba(0, 0, 255, 0.6);
+  height: 100vh;
+  width: 180px;
+  z-index: 5;
+  position: fixed;
+  border-radius: 10px;
+
+  transform: translateX(-100%);
+  transition: 0.25s;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .sidebar.active {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
   
-  /* Sidebar links */
-  .sidebar a {
-    text-align: center;
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
-    font-weight: bold;
-    margin:inherit;
-    border: solid black;
-    border-radius: 10px;
-    width: inherit;
-  }
-  
-  /* Active/current link */
-  .sidebar a.active {
-    background-color: blue;
-    color: white;
-  }
-  
-  /* Links on mouse-over */
-  .sidebar a:hover {
-    background-color: blue;
-    color: white;
-    border: solid white;
-    border-radius: 10px;
-  } 
 
-  .sidebar button {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
-    font-weight: bold;
-    border : none;
-    border-radius: inherit;
-    margin: inherit;
-    background-color: #b8b8b8;
-    border: solid black;
-    border-radius: 10px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    width: inherit;
-  }
+/* Sidebar links */
+.sidebar a {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+
+  color: #404040;
+  background-color: #d5d5d5;
+  border: solid #404040;
+  border-radius: 10px;
+
+  padding: 16px;
+  width: 90%;
+  margin-top: 0;
+  margin-left: 5%;  
+}
+  
+/* Active/current link */
+.sidebar a.active {
+  background-color: blue;
+  color: white;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover {
+  background-color: blue;
+  color: white;
+  border: solid white;
+  border-radius: 10px;
+} 
+
+.sidebar button {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+
+  color: #404040;
+  background-color: #d5d5d5;
+  border: solid #404040;
+  border-radius: 10px;
+
+  padding: 16px;
+  width: 90%;
+  margin-top: 0;
+  margin-left: 5%;
+}
 
   .sidebar button:hover{
     background-color: blue;
@@ -209,26 +238,11 @@
   
   /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
   div.content {
-    margin-left: 200px;
     padding: 1px 16px;
     height: 1000px;
   }
-
-  /* On screens that are less than 700px wide, make the sidebar into a topbar */
-@media screen and (max-width: 700px) {
-    .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
   
-  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+  /* On screens that are less than 400px */
   @media screen and (max-width: 400px) {
-    .sidebar a {
-      text-align: center;
-      float: none;
-    }
+
   }

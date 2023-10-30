@@ -1,3 +1,4 @@
+//######################### IMPORTAÇÕES #########################
 import {
     //GET
     get_centro, get_evento, get_leaderboard, get_player_points,
@@ -10,38 +11,8 @@ import {
     //DELETE
     deleta_usuario, 
 } from './http.js'
- 
-var map = L.map('map').setView([-29.7209, -53.7148], 100); // coordenadas e zoom inicial do mapa
 
-// para outras opções de mapas, acesse: https://leaflet-extras.github.io/leaflet-providers/preview/
-var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-osm.addTo(map);
-
-// como personalizar nossos icones
-var playerIcon = L.icon({
-    iconUrl: 'img/walking.png',
-    iconSize: [50, 50],
-    popupAnchor: [0, -40]
-});
-
-var UFSM = L.featureGroup([]).addTo(map);
-
-const markers = []; // Array para armazenar os marcadores
-
-const ranges = []; // Array para armazenar os ranges
-
-const eventos = []; // Array para armazenar os eventos
-
-var entered = false;
-
-var infoBox;
-
-var pontuacao;
-
-var playerName;
-
+//######################### CLASSES #########################
 class Evento {
     constructor(name, center)
     {
@@ -56,35 +27,67 @@ class Evento {
     }
 }
 
+//######################### VARIÁVEIS #########################
+var map = L.map('map', {
+    zoomControl: false
+}).setView([-29.7209, -53.7148], 200); // coordenadas e zoom inicial do mapa
+
+var zoomCtrl = L.control.zoom({
+    position: 'bottomright'
+}).addTo(map);
+
+// para outras opções de mapas, acesse: https://leaflet-extras.github.io/leaflet-providers/preview/
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+osm.addTo(map);
+
+var playerIcon = L.icon({
+    iconUrl: 'img/walking.png',
+    iconSize: [50, 50],
+    popupAnchor: [0, -40]
+});
+
+var UFSM = L.featureGroup([]).addTo(map);
+
+const markers = []; // Array para armazenar os marcadores
+const ranges = []; // Array para armazenar os ranges
+const eventos = []; // Array para armazenar os eventos
+
+var entered = false;
+var infoBox;
+var pontuacao;
+var playerName;
 var sidebarOpen = false;
+var qtd_cir=0;
+var insideCircles = [];
 
-// Em core.js
-document.getElementById('gps-button').addEventListener('click', function() {
-    gps_button.style.display = 'none';
-    watcher = navigator.geolocation.watchPosition(success, error);
-});
+var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).addTo(map);
 
-document.getElementById('centralize-button').addEventListener('click', function() {
-    map.setView([player.getLatLng().lat, player.getLatLng().lng]);
-});
-
-document.getElementById('sidebar-button').addEventListener('click', function() {
-    var sidebar = document.getElementById('sidebar');
-    var sidebarBtn = document.getElementById('sidebar-button');
-    var centralizeBtn = document.getElementById('centralize-button');
-
-    if (sidebarOpen){
-        sidebar.classList.remove('active')
-        sidebarBtn.style.transform = 'translateX(0px)'
-        centralizeBtn.style.transform = 'translateX(0px)'
-        sidebarOpen = false;
-    } else {
-        sidebar.classList.add('active')
-        sidebarBtn.style.transform = 'translateX(150px)'
-        centralizeBtn.style.transform = 'translateX(150px)'
-        sidebarOpen = true;
-    }
-});
+//######################### FUNÇÕES MODULARES #########################
+function locate_player(){
+    map.locate({
+            setView: true, 
+            watch: true, 
+            maxZoom : 200,
+            timeout : 5000,
+            maximumAge : 1000,
+        }) /* This will return map so you can do chaining */
+        .on('locationfound', function(e){
+            //encontrou o player
+            const lat = e.latitude;
+            const lng = e.longitude;
+            //atualiza a posiçao do marker
+            player = player.setLatLng([lat, lng]).update();
+            player.bindPopup('Você está aqui! Vamos explorar a UFSM! :)').openPopup();
+            
+        })
+        .on('locationerror', function(e){
+            //paniquei
+            console.log(e);
+            alert("Acesso negado à localização.");
+        });
+}
 
 async function leaderboard(){
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
@@ -96,10 +99,6 @@ async function leaderboard(){
     document.getElementsByClassName('modal-title')[0].innerHTML = 'Leaderboard';
     document.getElementsByClassName('modal-body')[0].innerHTML = leaderboard;
 }
-
-document.getElementById('leaderboard-button').addEventListener('click', function() {
-    leaderboard();
-});
 
 function achievements(){
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
@@ -119,10 +118,6 @@ function achievements(){
     }
 }
 
-document.getElementById('achievement-button').addEventListener('click', function() {
-    achievements();
-});
-
 function win_achievement(){
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
 
@@ -140,6 +135,46 @@ function win_achievement(){
     beat.play();
 }
 
+//######################### MANIPULAÇÃO DE HTML #########################
+document.getElementById('gps-button').addEventListener('click', function() {
+    //watcher = navigator.geolocation.watchPosition(success, error);
+    locate_player();
+});
+
+document.getElementById('centralize-button').addEventListener('click', function() {
+    map.setView([player.getLatLng().lat, player.getLatLng().lng]);
+});
+
+document.getElementById('sidebar-button').addEventListener('click', function() {
+    var sidebar = document.getElementById('sidebar');
+    var sidebarBtn = document.getElementById('sidebar-button');
+    var centralizeBtn = document.getElementById('centralize-button');
+    var gpsBtn = document.getElementById('gps-button');
+
+    if (sidebarOpen){
+        sidebar.classList.remove('active')
+        sidebarBtn.style.transform = 'translateX(0px)'
+        centralizeBtn.style.transform = 'translateX(0px)'
+        gpsBtn.style.transform = 'translateX(0px)'
+        sidebarOpen = false;
+    } else {
+        sidebar.classList.add('active')
+        sidebarBtn.style.transform = 'translateX(180px)'
+        centralizeBtn.style.transform = 'translateX(180px)'
+        gpsBtn.style.transform = 'translateX(180px)'
+        sidebarOpen = true;
+    }
+});
+
+document.getElementById('leaderboard-button').addEventListener('click', function() {
+    leaderboard();
+});
+
+document.getElementById('achievement-button').addEventListener('click', function() {
+    achievements();
+});
+
+//######################### MAIN #########################
 async function main() {
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
@@ -210,14 +245,13 @@ async function main() {
         evento.print()
     });
     */
+   locate_player();
 }
 
-// Chame a função main para iniciar o processo
+// Chama a função main para iniciar o processo
 main();
 
-var gps_button = document.getElementById('gps-button');
-
-/// EVENTOS
+/// ######################### EVENTOS #########################
 UFSM.on('contextmenu', async function (e) {
     const marcadorClicado = e.layer; // Obtém o marcador clicado
 
@@ -252,14 +286,11 @@ UFSM.on('contextmenu', async function (e) {
     // aqui que iremos habilitar uma chamada aos eventos do centro clicado!
 });
 
-
-var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).bindPopup('Vamos explorar a UFSM!').addTo(map).openPopup();
-
+/*
 // Função para pegar a localização do usuário em tempo real
 var watcher = navigator.geolocation.watchPosition(success, error);
 
 function success(position) {
-    gps_button.style.display = 'none';
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
 
@@ -272,15 +303,16 @@ function error(err) {
     if(err.code === 1){
         alert("Please allow location access.");
     }
+    else {
+        alert("Erro ao pegar localização: " + err);
+    }
 }
+*/
 
 player.on('drag', function(e){
-    navigator.geolocation.clearWatch(watcher);
-    gps_button.style.display = 'block';
+    //navigator.geolocation.clearWatch(watcher);
+    map.stopLocate();
 });
-
-var qtd_cir=0;
-var insideCircles = [];
 
 player.on('move', function (e) {
     // Loop para verificar todos os círculos
@@ -336,5 +368,3 @@ player.on('move', function (e) {
         //console.log("saiu do círculo");
     }
 });
-
-
