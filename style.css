@@ -126,16 +126,23 @@
     z-index: 2007;
 }
 
+#sidebar-button {
+  border-radius: 10px;
+}
+
 /* The side navigation menu */
 .sidebar {
-    margin: 0;
-    padding: 0;
     background-color: #b8b8b8;
-    position: fixed;
-    height: 100%;
-    overflow:auto;
+    height: 100vh;
+    width: 300px;
     z-index: 2006;
-  }
+    position: fixed;
+    transform: translateX(-100%);
+}
+
+.sidebar.active {
+    transform: translateX(0px);
+}
   
   /* Sidebar links */
   .sidebar a {
@@ -185,6 +192,11 @@
     color: white;
     border: solid white;
     border-radius: 10px;
+  }
+
+  .sb_close {
+    padding: 10px;
+    text-align: right;
   }
   
   /* Page content. The value of the margin-left property should match the value of the sidebar's width property */

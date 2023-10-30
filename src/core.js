@@ -66,6 +66,11 @@ document.getElementById('centralize-button').addEventListener('click', function(
     map.setView([player.getLatLng().lat, player.getLatLng().lng]);
 });
 
+document.getElementById('sidebar-button').addEventListener('click', function() {
+   var sidebar = document.getElementById('sidebar');
+   sidebar.classList.add('active')
+});
+
 async function leaderboard(){
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
     var leaderboard = await get_leaderboard();
