@@ -125,13 +125,10 @@
   width: 60px;
   height: 60px;
   text-decoration:none;
-  border-radius: 50%;
 }
 
-#gps-button i {
+#gps-button span {
   text-align: center;
-  padding: none;
-  margin: none;
   font-size: 30px;
 }
 
@@ -154,7 +151,7 @@
   z-index: 4;
 }
 
-#sidebar-button i {
+#sidebar-button span{
   font-size: 26px;
 }
 
@@ -177,8 +174,20 @@
 
 .sidebar.active {
   transform: translateX(0%);
+  transition: 0.25s;
 }
-  
+
+\\IDEIA lista de eventos
+.sidebar ul{
+  list-style-type: none;
+  margin-left: 5%;
+  padding: 0;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
 
 /* Sidebar links */
 .sidebar a {
@@ -197,19 +206,12 @@
   margin-top: 0;
   margin-left: 5%;  
 }
-  
-/* Active/current link */
-.sidebar a.active {
-  background-color: blue;
-  color: white;
-}
 
 /* Links on mouse-over */
 .sidebar a:hover {
   background-color: blue;
   color: white;
-  border: solid white;
-  border-radius: 10px;
+  border-color: white;
 } 
 
 .sidebar button {
@@ -229,20 +231,14 @@
   margin-left: 5%;
 }
 
-  .sidebar button:hover{
-    background-color: blue;
-    color: white;
-    border: solid white;
-    border-radius: 10px;
-  }
-  
-  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-  div.content {
-    padding: 1px 16px;
-    height: 1000px;
-  }
-  
-  /* On screens that are less than 400px */
-  @media screen and (max-width: 400px) {
+.sidebar button:hover{
+  background-color: blue;
+  color: white;
+  border-color: white;
+}
 
-  }
+
+/* Trabalhar depois com telas menores, vulgo celular */
+@media screen and (max-width: 400px) {
+
+}

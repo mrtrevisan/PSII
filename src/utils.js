@@ -18,3 +18,14 @@ function close_entered_box(){
         box[0].style.display = 'none';
     }
 }
+
+function tocarAudio(caminhoDoAudio) {
+    var audio = new Audio(caminhoDoAudio);
+    audio.play();
+}
+
+export{
+    open_entered_box,
+    close_entered_box,
+    tocarAudio  
+}

@@ -12,6 +12,11 @@ import {
     deleta_usuario, 
 } from './http.js'
 
+import {
+    open_entered_box, 
+    close_entered_box,
+    tocarAudio
+} from './utils.js'
 //######################### CLASSES #########################
 class Evento {
     constructor(name, center)
@@ -110,8 +115,11 @@ function achievements(){
     document.getElementsByClassName('modal-body')[0].innerHTML = ''
 
     for (let i = 0; i < 4; i++) {
+        let num
+        i==0 ? num =10 : num =50*i;
+
         if (pontuacao >= i * 50 && pontuacao > 0)
-            var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100">';
+            var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100" title=" Conquistou ' +String(num)+ ' pontos" >';
         else
             var imgHtml = '<img src="img/Blocked.png" width="100" height="100">';
         document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
@@ -131,8 +139,8 @@ function win_achievement(){
 
     document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
 
-    let beat = new Audio("audio/achievement.mp3");
-    beat.play();
+    tocarAudio("audio/achievement.mp3");
+
 }
 
 //######################### MANIPULAÇÃO DE HTML #########################
@@ -145,7 +153,9 @@ document.getElementById('centralize-button').addEventListener('click', function(
     map.setView([player.getLatLng().lat, player.getLatLng().lng]);
 });
 
+
 document.getElementById('sidebar-button').addEventListener('click', function() {
+    tocarAudio("audio/menu.mp3")
     var sidebar = document.getElementById('sidebar');
     var sidebarBtn = document.getElementById('sidebar-button');
     var centralizeBtn = document.getElementById('centralize-button');
@@ -168,10 +178,12 @@ document.getElementById('sidebar-button').addEventListener('click', function() {
 
 document.getElementById('leaderboard-button').addEventListener('click', function() {
     leaderboard();
+    tocarAudio("audio/clickMenu.mp3");
 });
 
 document.getElementById('achievement-button').addEventListener('click', function() {
     achievements();
+    tocarAudio("audio/clickMenu.mp3");
 });
 
 //######################### MAIN #########################
@@ -187,7 +199,7 @@ async function main() {
 
     // Crie um elemento <div> para a caixa de exibição
     infoBox = document.getElementById('pontuacao');
-    infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+    infoBox.innerHTML = 'Pontuação: ' + pontuacao;
 
     // Adicione a caixa diretamente ao DOM da página
     document.body.appendChild(infoBox);
@@ -257,8 +269,9 @@ UFSM.on('contextmenu', async function (e) {
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
-        let beat = new Audio("audio/center.mp3");
-        beat.play();
+
+        tocarAudio("audio/center.mp3");
+
         //  var conteudoDoPopup = marcadorClicado.getPopup().getContent();
         var sigla = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0].split(' - ')[1];
         //console.log("Clicou no marcador: " + sigla);
@@ -355,8 +368,7 @@ player.on('move', function (e) {
         else
         {
             open_entered_box();
-            let beat = new Audio("audio/points.mp3");
-            beat.play();
+            tocarAudio("audio/points.mp3");
         }
         //console.log("entrou no círculo");
 
