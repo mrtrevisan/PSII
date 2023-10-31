@@ -55,6 +55,7 @@
     color: white;
     border: 5px solid;
     border-color: white;
+    border-radius: 10px;
     background-color: blue;
     position: absolute;
     z-index: 1;
@@ -100,11 +101,19 @@
 #back-button {
     margin: 0;
     position: absolute;
-    top: 22%;
-    left: 94%;
+    top: 24%;
+    left: 92%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     padding-block: 5px;
+    line-height: 20px;
+    width: auto;
+    border: solid 2px white;
+}
+
+#back-button span {
+  padding: none;
+  margin: none;
 }
 
 #event-button {
