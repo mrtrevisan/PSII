@@ -1,10 +1,10 @@
-@font-face { font-family: college_block; src: url('font/college_block/College\ Block.otf'); } 
-@font-face { font-family: college_block; font-weight: bold; src: url('font/college_block/College\ Block.otf');}
-@font-face { font-family: college_block; font-style: italic; src: url('font/college_block/College\ Block.otf');}
-@font-face { font-family: college_block; font-weight: bold; font-style: italic; src: url('font/college_block/College\ Block.otf');}
+@font-face { font-family: bombardier; src: url('font/bombardier/BOMBARD_.ttf'); } 
+@font-face { font-family: bombardier; font-weight: bold; src: url('font/bombardier/BOMBARD_.ttf');}
+@font-face { font-family: bombardier; font-style: italic; src: url('font/bombardier/BOMBARD_.ttf');}
+@font-face { font-family: bombardier; font-weight: bold; font-style: italic; src: url('font/bombardier/BOMBARD_.ttf');}
 
 * {
-  font-family: college_block;
+  font-family: bombardier;
 }
 
 .body{

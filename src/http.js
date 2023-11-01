@@ -177,8 +177,20 @@ async function leaderboard_from_JSON(json){
     var i = 1
     console.log(json)
     json.forEach(e => {
-        let modal = 
-            "<p>" + i + "º - " + e.jogador + " - " + e.pontuação + " pontos</p>";
+        let modal;
+        if (i == 1){
+            modal = 
+                "<p><h3>" + i + "º - " + e.jogador + " - " + e.pontuação + " pontos</h3></p>";
+        } else if (i == 2) {
+            modal = 
+                "<p><h4>" + i + "º - " + e.jogador + " - " + e.pontuação + " pontos</h4></p>";
+        } else if (i == 3) {
+            modal = 
+                "<p><h5>" + i + "º - " + e.jogador + " - " + e.pontuação + " pontos</h5></p>";
+        } else {
+            modal = 
+                "<p><h6>" + i + "º - " + e.jogador + " - " + e.pontuação + " pontos</h6></p>";
+        }
         rank += modal
         i+=1
     })
