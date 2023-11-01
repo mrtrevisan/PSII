@@ -1,3 +1,12 @@
+@font-face { font-family: college_block; src: url('font/college_block/College\ Block.otf'); } 
+@font-face { font-family: college_block; font-weight: bold; src: url('font/college_block/College\ Block.otf');}
+@font-face { font-family: college_block; font-style: italic; src: url('font/college_block/College\ Block.otf');}
+@font-face { font-family: college_block; font-weight: bold; font-style: italic; src: url('font/college_block/College\ Block.otf');}
+
+* {
+  font-family: college_block;
+}
+
 .body{
     margin: 0;
     padding: 0;
@@ -27,9 +36,13 @@
     transform: translate(-50%, 0%);
     background-color: blue;
     padding: 10px;
-    padding-inline: 20px;
     border: 5px solid;
     border-color: white;
+}
+
+.fixed-title h1 {
+  padding: 2px;
+  margin: auto;
 }
 
 .btn.btn-primary{
