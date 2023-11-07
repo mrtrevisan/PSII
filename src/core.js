@@ -191,6 +191,10 @@ document.getElementById('achievement-button').addEventListener('click', function
     tocarAudio("audio/clickMenu.mp3");
 });
 
+document.getElementById('back-button').addEventListener('click', function() {
+    close_entered_box();
+});
+
 //######################### MAIN #########################
 
 
