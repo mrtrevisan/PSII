@@ -17,6 +17,9 @@ import {
     close_entered_box,
     tocarAudio
 } from './utils.js'
+
+
+
 //######################### CLASSES #########################
 class Evento {
     constructor(name, center)
@@ -52,6 +55,8 @@ var playerIcon = L.icon({
     iconSize: [50, 50],
     popupAnchor: [0, -40]
 });
+
+
 
 var UFSM = L.featureGroup([]).addTo(map);
 
@@ -119,8 +124,8 @@ function achievements(){
         i==0 ? num =10 : num =50*i;
 
         if (pontuacao >= i * 50 && pontuacao > 0)
-            var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100" title=" Conquistou ' +String(num)+ ' pontos" >';
-        else
+        var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100" title=" Conquistou ' +String(num)+ ' pontos" >';
+    else
             var imgHtml = '<img src="img/Blocked.png" width="100" height="100">';
         document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
     }
@@ -132,7 +137,7 @@ function win_achievement(){
     myModal.show();
 
     document.getElementsByClassName('modal-title')[0].innerHTML = 'Conquista desbloqueada!';
-
+    
     document.getElementsByClassName('modal-body')[0].innerHTML = 'Parabéns, você desbloqueou uma nova conquista!'
 
     var imgHtml = '<img src="img/Furry.png" width="400" height="400">';
@@ -187,7 +192,46 @@ document.getElementById('achievement-button').addEventListener('click', function
 });
 
 //######################### MAIN #########################
+
+
+var turismoIcon = L.icon({
+    iconUrl : 'img/statue.png',
+    iconSize: [25, 25],
+    popupAnchor: [0, -20],
+    
+
+});
+const data = L.geoJSON(pontos_turisticos, {
+    pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, {icon: turismoIcon});
+    },
+    
+    onEachFeature: function(feature, layer) {
+        layer.bindPopup(feature.properties.nome);
+    }
+}).addTo(map);
+
 async function main() {
+
+    /*
+    var turismoIcon = L.icon({
+        
+        radius: 2,
+        fillColor: "#ff7800",
+        color: "#000",
+        weight: 100,
+        opacity: 1,
+        fillOpacity: 0.8
+    });
+    
+    
+    
+*/
+    
+
+
+
+
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
     //console.log('player eh: ' + player);  
@@ -262,6 +306,25 @@ async function main() {
 
 // Chama a função main para iniciar o processo
 main();
+
+data.on('contextmenu', function(e){
+    //console.log(e.layer.feature.properties.nome);
+    const nome = e.layer.feature.properties.nome;
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+
+    myModal.show();
+
+    document.getElementsByClassName('modal-title')[0].innerHTML = 'Infos sobre a estátua ' + nome + ':';
+    document.getElementsByClassName('modal-body')[0].innerHTML = '';
+
+    
+    for (const key in e.layer.feature.properties) {
+        if (key != "nome"){
+            document.getElementsByClassName('modal-body')[0].innerHTML += '<b>' + key + '</b>' + ': ' + e.layer.feature.properties[key] + '<br>';   
+        }
+    }
+});
+
 
 /// ######################### EVENTOS #########################
 UFSM.on('contextmenu', async function (e) {

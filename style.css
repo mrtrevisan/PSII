@@ -80,6 +80,19 @@
     word-wrap: break-word;
     padding: 10px;
 }
+.modal-header{
+  background-color: blue;
+}
+
+.modal-header .modal-title {
+  color: white;
+}
+
+.modal-content{
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
 
 #pontuacao {
     border-radius: 10px;

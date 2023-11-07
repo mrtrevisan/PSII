@@ -1,321 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generator": "overpass-ide",
-  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2023-09-19T13:24:21Z",
   "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "relation/8115513",
-        "leisure": "garden",
-        "type": "multipolygon"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7181843,
-              -29.7227213
-            ],
-            [
-              -53.7182322,
-              -29.7227031
-            ],
-            [
-              -53.7182373,
-              -29.7227079
-            ],
-            [
-              -53.7182337,
-              -29.7227285
-            ],
-            [
-              -53.7181843,
-              -29.7227213
-            ]
-          ]
-        ]
-      },
-      "id": "relation/8115513"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "relation/8659996",
-        "garden:type": "botanical",
-        "leisure": "garden",
-        "name": "Jardim Botânico",
-        "type": "multipolygon"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.73221,
-              -29.7167837
-            ],
-            [
-              -53.7310907,
-              -29.7184754
-            ],
-            [
-              -53.7291523,
-              -29.7214052
-            ],
-            [
-              -53.7277287,
-              -29.7210015
-            ],
-            [
-              -53.7276593,
-              -29.7189878
-            ],
-            [
-              -53.727543,
-              -29.7170073
-            ],
-            [
-              -53.7305685,
-              -29.7167651
-            ],
-            [
-              -53.7318023,
-              -29.7166719
-            ],
-            [
-              -53.73221,
-              -29.7167837
-            ]
-          ]
-        ]
-      },
-      "id": "relation/8659996"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/110682484",
-        "leisure": "pitch",
-        "sport": "soccer"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7092254,
-              -29.7191927
-            ],
-            [
-              -53.7099074,
-              -29.7192838
-            ],
-            [
-              -53.7097434,
-              -29.7202098
-            ],
-            [
-              -53.7090614,
-              -29.7201187
-            ],
-            [
-              -53.7092254,
-              -29.7191927
-            ]
-          ]
-        ]
-      },
-      "id": "way/110682484"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/110682757",
-        "building": "stadium",
-        "building:levels": "4",
-        "leisure": "sports_centre",
-        "name": "Centro de Educação Física",
-        "ref": "51"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7103773,
-              -29.7191264
-            ],
-            [
-              -53.7104371,
-              -29.7193499
-            ],
-            [
-              -53.710461,
-              -29.7196042
-            ],
-            [
-              -53.7104184,
-              -29.7198885
-            ],
-            [
-              -53.7103324,
-              -29.7201632
-            ],
-            [
-              -53.7100784,
-              -29.7200761
-            ],
-            [
-              -53.7101496,
-              -29.7198353
-            ],
-            [
-              -53.7101816,
-              -29.7196088
-            ],
-            [
-              -53.7101682,
-              -29.7194054
-            ],
-            [
-              -53.7101286,
-              -29.7191964
-            ],
-            [
-              -53.7103773,
-              -29.7191264
-            ]
-          ]
-        ]
-      },
-      "id": "way/110682757"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/110682913",
-        "indoor": "yes",
-        "leisure": "swimming_pool"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7109725,
-              -29.7217282
-            ],
-            [
-              -53.7109444,
-              -29.7218704
-            ],
-            [
-              -53.7106207,
-              -29.7218221
-            ],
-            [
-              -53.7106488,
-              -29.7216799
-            ],
-            [
-              -53.7109725,
-              -29.7217282
-            ]
-          ]
-        ]
-      },
-      "id": "way/110682913"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/110682914",
-        "building": "yes",
-        "leisure": "sports_centre",
-        "name": "Ginásio Didático II",
-        "ref": "56"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7109193,
-              -29.7220616
-            ],
-            [
-              -53.7108653,
-              -29.7223298
-            ],
-            [
-              -53.7107198,
-              -29.7223077
-            ],
-            [
-              -53.7105035,
-              -29.7222748
-            ],
-            [
-              -53.7103695,
-              -29.7222544
-            ],
-            [
-              -53.7104235,
-              -29.7219863
-            ],
-            [
-              -53.7109193,
-              -29.7220616
-            ]
-          ]
-        ]
-      },
-      "id": "way/110682914"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/182410571",
-        "building": "roof",
-        "leisure": "playground",
-        "source": "Bing"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7172963,
-              -29.7118015
-            ],
-            [
-              -53.7170659,
-              -29.7117636
-            ],
-            [
-              -53.7170781,
-              -29.711706
-            ],
-            [
-              -53.7173257,
-              -29.7116187
-            ],
-            [
-              -53.7173063,
-              -29.7117413
-            ],
-            [
-              -53.7172963,
-              -29.7118015
-            ]
-          ]
-        ]
-      },
-      "id": "way/182410571"
-    },
     {
       "type": "Feature",
       "properties": {
@@ -324,7 +9,6 @@
         "leisure": "recreation_ground"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -372,125 +56,9 @@
               -29.7118232
             ]
           ]
-        ]
-      },
-      "id": "way/182431396"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/182565663",
-        "landuse": "grass",
-        "leisure": "recreation_ground"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.716067,
-              -29.714537
-            ],
-            [
-              -53.7161199,
-              -29.7146056
-            ],
-            [
-              -53.7161509,
-              -29.7146816
-            ],
-            [
-              -53.7161371,
-              -29.7147376
-            ],
-            [
-              -53.7160689,
-              -29.7148038
-            ],
-            [
-              -53.7160201,
-              -29.714796
-            ],
-            [
-              -53.716067,
-              -29.714537
-            ]
-          ]
-        ]
-      },
-      "id": "way/182565663"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/183198375",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7150925,
-              -29.7157831
-            ],
-            [
-              -53.7149682,
-              -29.7157628
-            ],
-            [
-              -53.7150018,
-              -29.7156077
-            ],
-            [
-              -53.7151261,
-              -29.715628
-            ],
-            [
-              -53.7150925,
-              -29.7157831
-            ]
-          ]
-        ]
-      },
-      "id": "way/183198375"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/183217111",
-        "leisure": "pitch",
-        "name": "Pista Central do CE",
-        "surface": "unpaved"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7125768,
-              -29.7240048
-            ],
-            [
-              -53.7124636,
-              -29.7246001
-            ],
-            [
-              -53.7114234,
-              -29.7244753
-            ],
-            [
-              -53.7115307,
-              -29.723865
-            ],
-            [
-              -53.7125768,
-              -29.7240048
-            ]
-          ]
-        ]
-      },
-      "id": "way/183217111"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -500,7 +68,6 @@
         "leisure": "park"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -700,16 +267,24 @@
               -29.7215869
             ],
             [
-              -53.71502,
-              -29.7215815
+              -53.715118888729286,
+              -29.721451295654305
             ],
             [
-              -53.7152428,
-              -29.7215496
+              -53.71523004016397,
+              -29.721092498734063
             ],
             [
-              -53.7158919,
-              -29.7216754
+              -53.71575154180361,
+              -29.72116566335671
+            ],
+            [
+              -53.71590177028693,
+              -29.721247461527273
+            ],
+            [
+              -53.715992834323636,
+              -29.721432416774185
             ],
             [
               -53.7159563,
@@ -768,9 +343,1022 @@
               -29.724983
             ]
           ]
-        ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/515028204",
+        "amenity": "shelter",
+        "bench": "yes",
+        "leisure": "picnic_table"
       },
-      "id": "way/183237653"
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.712664,
+              -29.7183843
+            ],
+            [
+              -53.7126511,
+              -29.7184489
+            ],
+            [
+              -53.7126126,
+              -29.7184432
+            ],
+            [
+              -53.7126173,
+              -29.7184195
+            ],
+            [
+              -53.7125644,
+              -29.7184116
+            ],
+            [
+              -53.7125725,
+              -29.7183705
+            ],
+            [
+              -53.712664,
+              -29.7183843
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/515028207",
+        "amenity": "shelter",
+        "bench": "yes",
+        "leisure": "picnic_table"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7134968,
+              -29.7187581
+            ],
+            [
+              -53.7134839,
+              -29.7188228
+            ],
+            [
+              -53.7134454,
+              -29.718817
+            ],
+            [
+              -53.7134501,
+              -29.7187934
+            ],
+            [
+              -53.7133972,
+              -29.7187855
+            ],
+            [
+              -53.7134054,
+              -29.7187444
+            ],
+            [
+              -53.7134968,
+              -29.7187581
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/515028208",
+        "amenity": "shelter",
+        "bench": "yes",
+        "leisure": "picnic_table"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.713863,
+              -29.718809
+            ],
+            [
+              -53.7138501,
+              -29.7188737
+            ],
+            [
+              -53.7138116,
+              -29.7188679
+            ],
+            [
+              -53.7138163,
+              -29.7188443
+            ],
+            [
+              -53.7137634,
+              -29.7188364
+            ],
+            [
+              -53.7137716,
+              -29.7187953
+            ],
+            [
+              -53.713863,
+              -29.718809
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/515028209",
+        "barrier": "fence",
+        "leisure": "pitch",
+        "sport": "beachvolleyball",
+        "surface": "sand"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.713569,
+              -29.7187487
+            ],
+            [
+              -53.7134554,
+              -29.7187328
+            ],
+            [
+              -53.7133357,
+              -29.7187161
+            ],
+            [
+              -53.7133592,
+              -29.718589
+            ],
+            [
+              -53.7134793,
+              -29.7186058
+            ],
+            [
+              -53.7135926,
+              -29.7186216
+            ],
+            [
+              -53.713569,
+              -29.7187487
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/608798383",
+        "leisure": "park"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7166306,
+              -29.719553
+            ],
+            [
+              -53.7164538,
+              -29.720655
+            ],
+            [
+              -53.7120257,
+              -29.7200387
+            ],
+            [
+              -53.7122366,
+              -29.7188536
+            ],
+            [
+              -53.7145524,
+              -29.7192153
+            ],
+            [
+              -53.7166306,
+              -29.719553
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/631378198",
+        "leisure": "pitch",
+        "sport": "soccer"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7137976,
+              -29.719214
+            ],
+            [
+              -53.7142813,
+              -29.7192943
+            ],
+            [
+              -53.7142136,
+              -29.71961
+            ],
+            [
+              -53.7137298,
+              -29.7195324
+            ],
+            [
+              -53.7137976,
+              -29.719214
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5030583660",
+        "leisure": "picnic_table"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.7148243,
+          -29.7183166
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5030625431",
+        "leisure": "picnic_table"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.7132955,
+          -29.7184866
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5143294815",
+        "leisure": "picnic_table"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.713962,
+          -29.7181372
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Relógio de Sol Equatorial e Horizontal"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71687106258511,
+          -29.719664260845143
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Estátua de São Miguel",
+        "artista": "Silvestre Peciar"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71690919888243,
+          -29.72220919362067
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Homenagem ao Conhecimento",
+        "artista": "Luiz Gonzaga"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71429353116882,
+          -29.72052076275756
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/183198375",
+        "leisure": "garden"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7150925,
+              -29.7157831
+            ],
+            [
+              -53.7149682,
+              -29.7157628
+            ],
+            [
+              -53.7150018,
+              -29.7156077
+            ],
+            [
+              -53.7151261,
+              -29.715628
+            ],
+            [
+              -53.7150925,
+              -29.7157831
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/333362891",
+        "leisure": "garden",
+        "name": "Jardim do Politécnico"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7177606,
+              -29.7210642
+            ],
+            [
+              -53.7182541,
+              -29.721134
+            ],
+            [
+              -53.7181361,
+              -29.7218561
+            ],
+            [
+              -53.717605,
+              -29.7217863
+            ],
+            [
+              -53.7177606,
+              -29.7210642
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/529468848",
+        "leisure": "garden"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7149128,
+              -29.7171751
+            ],
+            [
+              -53.7148284,
+              -29.7171681
+            ],
+            [
+              -53.7148425,
+              -29.717083
+            ],
+            [
+              -53.7149249,
+              -29.7170919
+            ],
+            [
+              -53.7149128,
+              -29.7171751
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/608798379",
+        "landuse": "recreation_ground",
+        "leisure": "recreation_ground"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7162881,
+              -29.7139881
+            ],
+            [
+              -53.716195,
+              -29.7152247
+            ],
+            [
+              -53.7159223,
+              -29.7151812
+            ],
+            [
+              -53.7161188,
+              -29.7139688
+            ],
+            [
+              -53.7162881,
+              -29.7139881
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/608798380",
+        "landuse": "recreation_ground",
+        "leisure": "recreation_ground"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7162127,
+              -29.7153902
+            ],
+            [
+              -53.7159113,
+              -29.716168
+            ],
+            [
+              -53.7156662,
+              -29.7166891
+            ],
+            [
+              -53.7158845,
+              -29.7153521
+            ],
+            [
+              -53.7162127,
+              -29.7153902
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "a descobrir"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71539126695146,
+          -29.717990971929908
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "a descobrir"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71544363759962,
+          -29.717747813759132
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Relógio Solar Tupi-Guaraní"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71729009825816,
+          -29.719825390631392
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ponte sobre o Lagão do Ouro",
+        "@id": "way/2",
+        "musica": "A sanga do Pedro Lira"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.71312661376328,
+              -29.714039541518467
+            ],
+            [
+              -53.71365562781514,
+              -29.714081396535974
+            ],
+            [
+              -53.71365124674635,
+              -29.714105177788106
+            ],
+            [
+              -53.713123327961725,
+              -29.714058566528557
+            ],
+            [
+              -53.71312661376328,
+              -29.714039541518467
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/8659996",
+        "garden:type": "botanical",
+        "leisure": "garden",
+        "name": "Jardim Botânico",
+        "type": "multipolygon"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.73221,
+              -29.7167837
+            ],
+            [
+              -53.7310907,
+              -29.7184754
+            ],
+            [
+              -53.7291523,
+              -29.7214052
+            ],
+            [
+              -53.7277287,
+              -29.7210015
+            ],
+            [
+              -53.7276593,
+              -29.7189878
+            ],
+            [
+              -53.727543,
+              -29.7170073
+            ],
+            [
+              -53.7305685,
+              -29.7167651
+            ],
+            [
+              -53.7318023,
+              -29.7166719
+            ],
+            [
+              -53.73221,
+              -29.7167837
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/182410571",
+        "building": "roof",
+        "leisure": "playground",
+        "source": "Bing"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7172963,
+              -29.7118015
+            ],
+            [
+              -53.7170659,
+              -29.7117636
+            ],
+            [
+              -53.7170781,
+              -29.711706
+            ],
+            [
+              -53.7173257,
+              -29.7116187
+            ],
+            [
+              -53.7173063,
+              -29.7117413
+            ],
+            [
+              -53.7172963,
+              -29.7118015
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/427525533",
+        "leisure": "pitch",
+        "sport": "soccer",
+        "surface": "grass"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7208735,
+              -29.7133017
+            ],
+            [
+              -53.7205537,
+              -29.7132499
+            ],
+            [
+              -53.7206429,
+              -29.7128344
+            ],
+            [
+              -53.7209627,
+              -29.7128861
+            ],
+            [
+              -53.7208735,
+              -29.7133017
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/510037702",
+        "leisure": "garden"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.715338,
+              -29.7129925
+            ],
+            [
+              -53.715059,
+              -29.7129611
+            ],
+            [
+              -53.71506,
+              -29.7129212
+            ],
+            [
+              -53.7153608,
+              -29.712883
+            ],
+            [
+              -53.715338,
+              -29.7129925
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "O galo",
+        "artista": "Antenor Specht"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.716602539278355,
+          -29.71187076682687
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Memorial de Mariano da Rocha",
+        "artista": "Antonio Carlos de Lemos",
+        "engenheiro": "Pedro Saurin"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71490886663146,
+          -29.719741197465453
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Intihuatana"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.717123658189294,
+          -29.71982712597518
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "leisure": "garden",
+        "@id": "way/1"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.71485979219433,
+              -29.712816673274688
+            ],
+            [
+              -53.714914712242916,
+              -29.712452707003465
+            ],
+            [
+              -53.71524900819078,
+              -29.71243196814487
+            ],
+            [
+              -53.71530154041113,
+              -29.712765863247704
+            ],
+            [
+              -53.71485979219433,
+              -29.712816673274688
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/110682484",
+        "leisure": "pitch",
+        "sport": "soccer"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7092254,
+              -29.7191927
+            ],
+            [
+              -53.7099074,
+              -29.7192838
+            ],
+            [
+              -53.7097434,
+              -29.7202098
+            ],
+            [
+              -53.7090614,
+              -29.7201187
+            ],
+            [
+              -53.7092254,
+              -29.7191927
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/110682913",
+        "indoor": "yes",
+        "leisure": "swimming_pool"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7109725,
+              -29.7217282
+            ],
+            [
+              -53.7109444,
+              -29.7218704
+            ],
+            [
+              -53.7106207,
+              -29.7218221
+            ],
+            [
+              -53.7106488,
+              -29.7216799
+            ],
+            [
+              -53.7109725,
+              -29.7217282
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/110682914",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Ginásio Didático II",
+        "ref": "56"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7109193,
+              -29.7220616
+            ],
+            [
+              -53.7108653,
+              -29.7223298
+            ],
+            [
+              -53.7107198,
+              -29.7223077
+            ],
+            [
+              -53.7105035,
+              -29.7222748
+            ],
+            [
+              -53.7103695,
+              -29.7222544
+            ],
+            [
+              -53.7104235,
+              -29.7219863
+            ],
+            [
+              -53.7109193,
+              -29.7220616
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/182565663",
+        "landuse": "grass",
+        "leisure": "recreation_ground"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.716067,
+              -29.714537
+            ],
+            [
+              -53.7161199,
+              -29.7146056
+            ],
+            [
+              -53.7161509,
+              -29.7146816
+            ],
+            [
+              -53.7161371,
+              -29.7147376
+            ],
+            [
+              -53.7160689,
+              -29.7148038
+            ],
+            [
+              -53.7160201,
+              -29.714796
+            ],
+            [
+              -53.716067,
+              -29.714537
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/183217111",
+        "leisure": "pitch",
+        "name": "Pista Central do CE",
+        "surface": "unpaved"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              -53.7125768,
+              -29.7240048
+            ],
+            [
+              -53.7124636,
+              -29.7246001
+            ],
+            [
+              -53.7114234,
+              -29.7244753
+            ],
+            [
+              -53.7115307,
+              -29.723865
+            ],
+            [
+              -53.7125768,
+              -29.7240048
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -781,7 +1369,6 @@
         "surface": "grass"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -805,9 +1392,10 @@
               -29.7204681
             ]
           ]
-        ]
+        ],
+        "type": "Polygon"
       },
-      "id": "way/333361186"
+      "id": 37
     },
     {
       "type": "Feature",
@@ -817,7 +1405,6 @@
         "sport": "tennis"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -841,9 +1428,9 @@
               -29.7210013
             ]
           ]
-        ]
-      },
-      "id": "way/333361257"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -854,7 +1441,6 @@
         "sport": "volleyball"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -878,9 +1464,9 @@
               -29.7210496
             ]
           ]
-        ]
-      },
-      "id": "way/333361697"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -891,7 +1477,6 @@
         "surface": "grass"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -915,9 +1500,9 @@
               -29.721332
             ]
           ]
-        ]
-      },
-      "id": "way/333361698"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -928,7 +1513,6 @@
         "surface": "sand"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -952,9 +1536,9 @@
               -29.7213374
             ]
           ]
-        ]
-      },
-      "id": "way/333361767"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -964,7 +1548,6 @@
         "sport": "football"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -988,9 +1571,9 @@
               -29.721436
             ]
           ]
-        ]
-      },
-      "id": "way/333361797"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1002,7 +1585,6 @@
         "sport": "basketball"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1042,9 +1624,9 @@
               -29.7209342
             ]
           ]
-        ]
-      },
-      "id": "way/333361846"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1054,7 +1636,6 @@
         "sport": "tennis"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1078,9 +1659,9 @@
               -29.7210345
             ]
           ]
-        ]
-      },
-      "id": "way/333362104"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1090,7 +1671,6 @@
         "sport": "tennis"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1114,9 +1694,9 @@
               -29.7210487
             ]
           ]
-        ]
-      },
-      "id": "way/333362148"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1127,7 +1707,6 @@
         "sport": "equestrian"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1171,9 +1750,9 @@
               -29.7260908
             ]
           ]
-        ]
-      },
-      "id": "way/333362588"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1183,7 +1762,6 @@
         "sport": "equestrian"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1207,9 +1785,9 @@
               -29.724187
             ]
           ]
-        ]
-      },
-      "id": "way/333362656"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1219,7 +1797,6 @@
         "sport": "equestrian"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1243,45 +1820,9 @@
               -29.7243801
             ]
           ]
-        ]
-      },
-      "id": "way/333362662"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/333362891",
-        "leisure": "garden",
-        "name": "Jardim do Politécnico"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7177606,
-              -29.7210642
-            ],
-            [
-              -53.7182541,
-              -29.721134
-            ],
-            [
-              -53.7181361,
-              -29.7218561
-            ],
-            [
-              -53.717605,
-              -29.7217863
-            ],
-            [
-              -53.7177606,
-              -29.7210642
-            ]
-          ]
-        ]
-      },
-      "id": "way/333362891"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1295,7 +1836,6 @@
         "sport": "volleyball"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1319,46 +1859,9 @@
               -29.7214379
             ]
           ]
-        ]
-      },
-      "id": "way/379099899"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/427525533",
-        "leisure": "pitch",
-        "sport": "soccer",
-        "surface": "grass"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7208735,
-              -29.7133017
-            ],
-            [
-              -53.7205537,
-              -29.7132499
-            ],
-            [
-              -53.7206429,
-              -29.7128344
-            ],
-            [
-              -53.7209627,
-              -29.7128861
-            ],
-            [
-              -53.7208735,
-              -29.7133017
-            ]
-          ]
-        ]
-      },
-      "id": "way/427525533"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -1368,7 +1871,6 @@
         "leisure": "bleachers"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -1416,1123 +1918,9 @@
               -29.7241252
             ]
           ]
-        ]
-      },
-      "id": "way/456091515"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/510037686",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7148672,
-              -29.7129983
-            ],
-            [
-              -53.7148196,
-              -29.7132476
-            ],
-            [
-              -53.71477,
-              -29.7132406
-            ],
-            [
-              -53.714819,
-              -29.7129517
-            ],
-            [
-              -53.714939,
-              -29.712929
-            ],
-            [
-              -53.7149363,
-              -29.7129686
-            ],
-            [
-              -53.7149242,
-              -29.7129849
-            ],
-            [
-              -53.7148672,
-              -29.7129983
-            ]
-          ]
-        ]
-      },
-      "id": "way/510037686"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/510037702",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.715338,
-              -29.7129925
-            ],
-            [
-              -53.715059,
-              -29.7129611
-            ],
-            [
-              -53.71506,
-              -29.7129212
-            ],
-            [
-              -53.7153608,
-              -29.712883
-            ],
-            [
-              -53.715338,
-              -29.7129925
-            ]
-          ]
-        ]
-      },
-      "id": "way/510037702"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515013103",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7138938,
-              -29.7150179
-            ],
-            [
-              -53.7139745,
-              -29.7150305
-            ],
-            [
-              -53.7139723,
-              -29.7150408
-            ],
-            [
-              -53.7138917,
-              -29.7150282
-            ],
-            [
-              -53.7138938,
-              -29.7150179
-            ]
-          ]
-        ]
-      },
-      "id": "way/515013103"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515013104",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7138892,
-              -29.7150384
-            ],
-            [
-              -53.7139698,
-              -29.715051
-            ],
-            [
-              -53.7139676,
-              -29.7150612
-            ],
-            [
-              -53.713887,
-              -29.7150486
-            ],
-            [
-              -53.7138892,
-              -29.7150384
-            ]
-          ]
-        ]
-      },
-      "id": "way/515013104"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515013109",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7137418,
-              -29.7150158
-            ],
-            [
-              -53.7138225,
-              -29.7150284
-            ],
-            [
-              -53.7138203,
-              -29.7150387
-            ],
-            [
-              -53.7137396,
-              -29.7150261
-            ],
-            [
-              -53.7137418,
-              -29.7150158
-            ]
-          ]
-        ]
-      },
-      "id": "way/515013109"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515013110",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7137278,
-              -29.7150138
-            ],
-            [
-              -53.7137257,
-              -29.715024
-            ],
-            [
-              -53.7136482,
-              -29.7150123
-            ],
-            [
-              -53.7136502,
-              -29.715002
-            ],
-            [
-              -53.7137278,
-              -29.7150138
-            ]
-          ]
-        ]
-      },
-      "id": "way/515013110"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515013111",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7137324,
-              -29.7149933
-            ],
-            [
-              -53.7137304,
-              -29.7150036
-            ],
-            [
-              -53.7136529,
-              -29.7149918
-            ],
-            [
-              -53.7136549,
-              -29.7149816
-            ],
-            [
-              -53.7137324,
-              -29.7149933
-            ]
-          ]
-        ]
-      },
-      "id": "way/515013111"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515013113",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7137465,
-              -29.7149954
-            ],
-            [
-              -53.7138271,
-              -29.715008
-            ],
-            [
-              -53.713825,
-              -29.7150183
-            ],
-            [
-              -53.7137443,
-              -29.7150057
-            ],
-            [
-              -53.7137465,
-              -29.7149954
-            ]
-          ]
-        ]
-      },
-      "id": "way/515013113"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515028204",
-        "amenity": "shelter",
-        "bench": "yes",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.712664,
-              -29.7183843
-            ],
-            [
-              -53.7126511,
-              -29.7184489
-            ],
-            [
-              -53.7126126,
-              -29.7184432
-            ],
-            [
-              -53.7126173,
-              -29.7184195
-            ],
-            [
-              -53.7125644,
-              -29.7184116
-            ],
-            [
-              -53.7125725,
-              -29.7183705
-            ],
-            [
-              -53.712664,
-              -29.7183843
-            ]
-          ]
-        ]
-      },
-      "id": "way/515028204"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515028207",
-        "amenity": "shelter",
-        "bench": "yes",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7134968,
-              -29.7187581
-            ],
-            [
-              -53.7134839,
-              -29.7188228
-            ],
-            [
-              -53.7134454,
-              -29.718817
-            ],
-            [
-              -53.7134501,
-              -29.7187934
-            ],
-            [
-              -53.7133972,
-              -29.7187855
-            ],
-            [
-              -53.7134054,
-              -29.7187444
-            ],
-            [
-              -53.7134968,
-              -29.7187581
-            ]
-          ]
-        ]
-      },
-      "id": "way/515028207"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515028208",
-        "amenity": "shelter",
-        "bench": "yes",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.713863,
-              -29.718809
-            ],
-            [
-              -53.7138501,
-              -29.7188737
-            ],
-            [
-              -53.7138116,
-              -29.7188679
-            ],
-            [
-              -53.7138163,
-              -29.7188443
-            ],
-            [
-              -53.7137634,
-              -29.7188364
-            ],
-            [
-              -53.7137716,
-              -29.7187953
-            ],
-            [
-              -53.713863,
-              -29.718809
-            ]
-          ]
-        ]
-      },
-      "id": "way/515028208"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515028209",
-        "barrier": "fence",
-        "leisure": "pitch",
-        "sport": "beachvolleyball",
-        "surface": "sand"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.713569,
-              -29.7187487
-            ],
-            [
-              -53.7134554,
-              -29.7187328
-            ],
-            [
-              -53.7133357,
-              -29.7187161
-            ],
-            [
-              -53.7133592,
-              -29.718589
-            ],
-            [
-              -53.7134793,
-              -29.7186058
-            ],
-            [
-              -53.7135926,
-              -29.7186216
-            ],
-            [
-              -53.713569,
-              -29.7187487
-            ]
-          ]
-        ]
-      },
-      "id": "way/515028209"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515048541",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7162187,
-              -29.7121241
-            ],
-            [
-              -53.7162135,
-              -29.7121593
-            ],
-            [
-              -53.7161893,
-              -29.7121566
-            ],
-            [
-              -53.7161945,
-              -29.7121214
-            ],
-            [
-              -53.7162187,
-              -29.7121241
-            ]
-          ]
-        ]
-      },
-      "id": "way/515048541"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515048542",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7162047,
-              -29.7121858
-            ],
-            [
-              -53.7161918,
-              -29.7122578
-            ],
-            [
-              -53.7161667,
-              -29.7122544
-            ],
-            [
-              -53.7161796,
-              -29.7121824
-            ],
-            [
-              -53.7162047,
-              -29.7121858
-            ]
-          ]
-        ]
-      },
-      "id": "way/515048542"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515048546",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7161762,
-              -29.7123601
-            ],
-            [
-              -53.7161453,
-              -29.7125144
-            ],
-            [
-              -53.7161187,
-              -29.7125105
-            ],
-            [
-              -53.7161444,
-              -29.7123567
-            ],
-            [
-              -53.7161762,
-              -29.7123601
-            ]
-          ]
-        ]
-      },
-      "id": "way/515048546"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/515048550",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7154111,
-              -29.7127636
-            ],
-            [
-              -53.7153997,
-              -29.7127473
-            ],
-            [
-              -53.7154144,
-              -29.7127491
-            ],
-            [
-              -53.7154111,
-              -29.7127636
-            ]
-          ]
-        ]
-      },
-      "id": "way/515048550"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/529468848",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7149128,
-              -29.7171751
-            ],
-            [
-              -53.7148284,
-              -29.7171681
-            ],
-            [
-              -53.7148425,
-              -29.717083
-            ],
-            [
-              -53.7149249,
-              -29.7170919
-            ],
-            [
-              -53.7149128,
-              -29.7171751
-            ]
-          ]
-        ]
-      },
-      "id": "way/529468848"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/569142183",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7167397,
-              -29.7108797
-            ],
-            [
-              -53.7167605,
-              -29.7107443
-            ],
-            [
-              -53.7168333,
-              -29.7107522
-            ],
-            [
-              -53.7168183,
-              -29.7108856
-            ],
-            [
-              -53.7167397,
-              -29.7108797
-            ]
-          ]
-        ]
-      },
-      "id": "way/569142183"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/569960206",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7184627,
-              -29.7227304
-            ],
-            [
-              -53.7182787,
-              -29.7227057
-            ],
-            [
-              -53.7182817,
-              -29.722692
-            ],
-            [
-              -53.7183088,
-              -29.7226809
-            ],
-            [
-              -53.7184674,
-              -29.7226999
-            ],
-            [
-              -53.7184627,
-              -29.7227304
-            ]
-          ]
-        ]
-      },
-      "id": "way/569960206"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/569960210",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7181064,
-              -29.7221621
-            ],
-            [
-              -53.7181049,
-              -29.7221721
-            ],
-            [
-              -53.7179965,
-              -29.7221595
-            ],
-            [
-              -53.7179981,
-              -29.7221495
-            ],
-            [
-              -53.7181064,
-              -29.7221621
-            ]
-          ]
-        ]
-      },
-      "id": "way/569960210"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/569960227",
-        "leisure": "garden"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7183099,
-              -29.7225418
-            ],
-            [
-              -53.7183123,
-              -29.7225571
-            ],
-            [
-              -53.7183039,
-              -29.7225708
-            ],
-            [
-              -53.7182878,
-              -29.7225775
-            ],
-            [
-              -53.7182703,
-              -29.7225748
-            ],
-            [
-              -53.7182579,
-              -29.7225636
-            ],
-            [
-              -53.7182555,
-              -29.7225483
-            ],
-            [
-              -53.7182639,
-              -29.7225346
-            ],
-            [
-              -53.71828,
-              -29.7225279
-            ],
-            [
-              -53.7182975,
-              -29.7225306
-            ],
-            [
-              -53.7183099,
-              -29.7225418
-            ]
-          ]
-        ]
-      },
-      "id": "way/569960227"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/608798379",
-        "landuse": "recreation_ground",
-        "leisure": "recreation_ground"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7162881,
-              -29.7139881
-            ],
-            [
-              -53.716195,
-              -29.7152247
-            ],
-            [
-              -53.7159223,
-              -29.7151812
-            ],
-            [
-              -53.7161188,
-              -29.7139688
-            ],
-            [
-              -53.7162881,
-              -29.7139881
-            ]
-          ]
-        ]
-      },
-      "id": "way/608798379"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/608798380",
-        "landuse": "recreation_ground",
-        "leisure": "recreation_ground"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7162127,
-              -29.7153902
-            ],
-            [
-              -53.7159113,
-              -29.716168
-            ],
-            [
-              -53.7156662,
-              -29.7166891
-            ],
-            [
-              -53.7158845,
-              -29.7153521
-            ],
-            [
-              -53.7162127,
-              -29.7153902
-            ]
-          ]
-        ]
-      },
-      "id": "way/608798380"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/608798383",
-        "leisure": "park"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7166306,
-              -29.719553
-            ],
-            [
-              -53.7164538,
-              -29.720655
-            ],
-            [
-              -53.7120257,
-              -29.7200387
-            ],
-            [
-              -53.7122366,
-              -29.7188536
-            ],
-            [
-              -53.7145524,
-              -29.7192153
-            ],
-            [
-              -53.7166306,
-              -29.719553
-            ]
-          ]
-        ]
-      },
-      "id": "way/608798383"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/608799851",
-        "leisure": "park"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7152045,
-              -29.721055
-            ],
-            [
-              -53.7159363,
-              -29.7211735
-            ],
-            [
-              -53.7160128,
-              -29.7212861
-            ],
-            [
-              -53.7160494,
-              -29.7214768
-            ],
-            [
-              -53.7160294,
-              -29.7216126
-            ],
-            [
-              -53.7160095,
-              -29.7216848
-            ],
-            [
-              -53.7152428,
-              -29.7215496
-            ],
-            [
-              -53.71502,
-              -29.7215815
-            ],
-            [
-              -53.7143489,
-              -29.7215824
-            ],
-            [
-              -53.7142622,
-              -29.7215583
-            ],
-            [
-              -53.7137703,
-              -29.7214215
-            ],
-            [
-              -53.7136716,
-              -29.7213506
-            ],
-            [
-              -53.7131507,
-              -29.7212887
-            ],
-            [
-              -53.7132453,
-              -29.7211504
-            ],
-            [
-              -53.7136211,
-              -29.7211937
-            ],
-            [
-              -53.71414,
-              -29.7212428
-            ],
-            [
-              -53.7144261,
-              -29.7212659
-            ],
-            [
-              -53.7147554,
-              -29.7213006
-            ],
-            [
-              -53.7149916,
-              -29.7213266
-            ],
-            [
-              -53.7150415,
-              -29.7210521
-            ],
-            [
-              -53.7152045,
-              -29.721055
-            ]
-          ]
-        ]
-      },
-      "id": "way/608799851"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/616444658",
-        "landuse": "forest",
-        "leisure": "park"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.71697,
-              -29.7094098
-            ],
-            [
-              -53.7170127,
-              -29.7099324
-            ],
-            [
-              -53.717033,
-              -29.7104055
-            ],
-            [
-              -53.7169964,
-              -29.710688
-            ],
-            [
-              -53.7168785,
-              -29.7106704
-            ],
-            [
-              -53.7168887,
-              -29.7104285
-            ],
-            [
-              -53.7168684,
-              -29.7100471
-            ],
-            [
-              -53.7168257,
-              -29.7097293
-            ],
-            [
-              -53.7168329,
-              -29.7094406
-            ],
-            [
-              -53.71697,
-              -29.7094098
-            ]
-          ]
-        ]
-      },
-      "id": "way/616444658"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/631378198",
-        "leisure": "pitch",
-        "sport": "soccer"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              -53.7137976,
-              -29.719214
-            ],
-            [
-              -53.7142813,
-              -29.7192943
-            ],
-            [
-              -53.7142136,
-              -29.71961
-            ],
-            [
-              -53.7137298,
-              -29.7195324
-            ],
-            [
-              -53.7137976,
-              -29.719214
-            ]
-          ]
-        ]
-      },
-      "id": "way/631378198"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -2543,7 +1931,6 @@
         "sport": "running"
       },
       "geometry": {
-        "type": "Polygon",
         "coordinates": [
           [
             [
@@ -2603,297 +1990,9 @@
               -29.7201426
             ]
           ]
-        ]
-      },
-      "id": "way/1055198655"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "way/183215266",
-        "access": "destination",
-        "bicycle": "no",
-        "foot": "yes",
-        "leisure": "track",
-        "motor_vehicle": "no",
-        "postal_code": "97105-900",
-        "sport": "running",
-        "surface": "gravel"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            -53.7154241,
-            -29.7225089
-          ],
-          [
-            -53.7154736,
-            -29.722514
-          ],
-          [
-            -53.7155808,
-            -29.7225233
-          ],
-          [
-            -53.7156881,
-            -29.7225233
-          ],
-          [
-            -53.7157686,
-            -29.7225047
-          ],
-          [
-            -53.7158378,
-            -29.7224525
-          ],
-          [
-            -53.7158652,
-            -29.7223323
-          ],
-          [
-            -53.7159242,
-            -29.7220621
-          ],
-          [
-            -53.7159671,
-            -29.7217919
-          ],
-          [
-            -53.7159993,
-            -29.7216289
-          ],
-          [
-            -53.7160156,
-            -29.721511
-          ],
-          [
-            -53.7160146,
-            -29.7214266
-          ],
-          [
-            -53.7160022,
-            -29.7213573
-          ],
-          [
-            -53.7159786,
-            -29.7213019
-          ],
-          [
-            -53.7159428,
-            -29.7212455
-          ],
-          [
-            -53.7158972,
-            -29.721207
-          ],
-          [
-            -53.7158443,
-            -29.7211735
-          ],
-          [
-            -53.7157889,
-            -29.7211458
-          ],
-          [
-            -53.7157343,
-            -29.7211248
-          ],
-          [
-            -53.7156729,
-            -29.7211113
-          ],
-          [
-            -53.7156042,
-            -29.7211055
-          ],
-          [
-            -53.7152853,
-            -29.7210735
-          ],
-          [
-            -53.715261,
-            -29.7210747
-          ],
-          [
-            -53.7152307,
-            -29.7210825
-          ],
-          [
-            -53.7152146,
-            -29.7210937
-          ],
-          [
-            -53.7151983,
-            -29.7211149
-          ],
-          [
-            -53.7151477,
-            -29.7213272
-          ],
-          [
-            -53.7151339,
-            -29.7213716
-          ],
-          [
-            -53.7151185,
-            -29.721417
-          ],
-          [
-            -53.715086,
-            -29.7214692
-          ],
-          [
-            -53.7150477,
-            -29.7215058
-          ],
-          [
-            -53.7150051,
-            -29.7215333
-          ],
-          [
-            -53.7149471,
-            -29.7215531
-          ],
-          [
-            -53.7148625,
-            -29.7215719
-          ],
-          [
-            -53.7147472,
-            -29.7215777
-          ],
-          [
-            -53.7145951,
-            -29.7215795
-          ],
-          [
-            -53.7145473,
-            -29.72158
-          ],
-          [
-            -53.7143537,
-            -29.7215567
-          ],
-          [
-            -53.7142622,
-            -29.7215583
-          ],
-          [
-            -53.7141423,
-            -29.7215195
-          ],
-          [
-            -53.7139318,
-            -29.7214577
-          ],
-          [
-            -53.7136638,
-            -29.7213708
-          ],
-          [
-            -53.7135438,
-            -29.7212681
-          ],
-          [
-            -53.7132656,
-            -29.7212296
-          ],
-          [
-            -53.7128754,
-            -29.7212285
-          ],
-          [
-            -53.7122866,
-            -29.7212268
-          ],
-          [
-            -53.7122181,
-            -29.7212382
-          ],
-          [
-            -53.7121669,
-            -29.7212542
-          ],
-          [
-            -53.7121106,
-            -29.7212871
-          ],
-          [
-            -53.7120696,
-            -29.7213247
-          ],
-          [
-            -53.7120499,
-            -29.7213757
-          ],
-          [
-            -53.7120309,
-            -29.721454
-          ],
-          [
-            -53.7120213,
-            -29.7215225
-          ],
-          [
-            -53.711976,
-            -29.7218279
-          ],
-          [
-            -53.7119738,
-            -29.7218842
-          ],
-          [
-            -53.7119945,
-            -29.7219371
-          ],
-          [
-            -53.7120242,
-            -29.7219782
-          ],
-          [
-            -53.7120668,
-            -29.7220109
-          ],
-          [
-            -53.7128749,
-            -29.7221313
-          ],
-          [
-            -53.7134116,
-            -29.7222167
-          ],
-          [
-            -53.7137815,
-            -29.7222664
-          ],
-          [
-            -53.714081,
-            -29.7223111
-          ],
-          [
-            -53.7147358,
-            -29.7224086
-          ],
-          [
-            -53.7148285,
-            -29.7224224
-          ],
-          [
-            -53.7152467,
-            -29.7224847
-          ],
-          [
-            -53.7153267,
-            -29.7224967
-          ],
-          [
-            -53.7153678,
-            -29.7225028
-          ]
-        ]
-      },
-      "id": "way/183215266"
+        ],
+        "type": "Polygon"
+      }
     },
     {
       "type": "Feature",
@@ -2903,7 +2002,6 @@
         "leisure": "track"
       },
       "geometry": {
-        "type": "LineString",
         "coordinates": [
           [
             -53.7089392,
@@ -2993,84 +2091,9 @@
             -53.7089392,
             -29.7200811
           ]
-        ]
-      },
-      "id": "way/281345943"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/5030583660",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -53.7148243,
-          -29.7183166
-        ]
-      },
-      "id": "node/5030583660"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/5030625431",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -53.7132955,
-          -29.7184866
-        ]
-      },
-      "id": "node/5030625431"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/5143294815",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -53.713962,
-          -29.7181372
-        ]
-      },
-      "id": "node/5143294815"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/5143294816",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -53.7139177,
-          -29.7180755
-        ]
-      },
-      "id": "node/5143294816"
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "@id": "node/5143294817",
-        "leisure": "picnic_table"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -53.7139875,
-          -29.7180254
-        ]
-      },
-      "id": "node/5143294817"
+        ],
+        "type": "LineString"
+      }
     }
   ]
 }
