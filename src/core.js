@@ -39,10 +39,12 @@ var zoomCtrl = L.control.zoom({
 }).addTo(map);
 
 // para outras opções de mapas, acesse: https://leaflet-extras.github.io/leaflet-providers/preview/
-var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
-osm.addTo(map);
+var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+}).addTo(map);
+
 
 var playerIcon = L.icon({
     iconUrl: 'img/walking.png',
@@ -192,7 +194,7 @@ document.getElementById('back-button').addEventListener('click', function() {
 
 var turismoIcon = L.icon({
     iconUrl : 'img/statue.png',
-    iconSize: [25, 25],
+    iconSize: [35, 35],
     popupAnchor: [0, -20],
     
 
