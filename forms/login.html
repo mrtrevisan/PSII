@@ -35,7 +35,7 @@
 
     <script type="module">
         //action="RENDER URL"
-        import { verify_player, check_player_credential } from "../src/http.js";
+        import { login } from "../src/http.js";
         const button = document.getElementById("submit");
 
         button.addEventListener("click", async function(event) {            
@@ -43,25 +43,13 @@
             
             const nome = document.getElementById("username").value;
             const senha = document.getElementById("password").value;
-            let existe = await verify_player(nome);
-            //console.log(resultado);
-            
-            if(existe == 1){
-                let pass = await check_player_credential(nome, senha);
-                if (pass == 1) {
-                    alert("Usuário verificado com sucesso!");
-                    window.location.href = "../index.html?user=" + nome;
-                } else if (pass == 0){
-                    alert("Senha incorreta");
-                } else {
-                    alert("Erro desconhecido PANIQUEI");
-                }   
-            }
-            else if(existe == 0){
-                alert("Usuário não encontrado");
-            }
-            else{
-                alert("Erro desconhecido PANIQUEI");
+
+            if (await login(nome, senha)){
+                alert("Usuário verificado com sucesso!");
+                window.location.href = "../index.html?user=" + nome;
+            } 
+            else {
+                alert('Usuário não existe ou senha incorreta.');
             }
             
         });

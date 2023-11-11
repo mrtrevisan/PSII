@@ -29,7 +29,7 @@
 
     <script type="module">
         //action="RENDER URL"
-        import { verify_player, cria_usuario } from "../src/http.js";
+        import { cria_usuario } from "../src/http.js";
         const button = document.getElementById("submit");
 
         button.addEventListener("click", async function(event) {            
@@ -44,22 +44,14 @@
                 return;
             }
 
-            let resultado = await verify_player(nome);
-            //console.log(resultado);
-            
-            if(resultado == 1){
-                alert("Usuário já existe.");
-            }
-            else if(resultado == 0){ //usuário não existe, será criado
-                await cria_usuario(nome, senha);
+            if (await cria_usuario(nome, senha)){
                 alert("Usuário criado com sucesso!");
                 // encaminha para o jogo
-                window.location.href = "../index.html?user=" + nome;
+                //window.location.href = "../index.html?user=" + nome;
+            } 
+            else {
+                alert("Nome já está em uso.");
             }
-            else{
-                alert("Erro desconhecido PANIQUEI");
-            }
-            
         });
     </script>
 </body>

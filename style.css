@@ -122,7 +122,19 @@
     vertical-align: middle;
     background-color: blue;
     color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items : center;
 }
+
+#score {
+  line-height: 24px;
+  font-size: 20px;
+  display: block;
+  margin-left: 5px;
+  padding-bottom: 3px;
+}
+
 
 #back-button {
     margin: 0;

@@ -1,5 +1,3 @@
-
-
 /*
 var inputElement = document.getElementById("pontuacao");
 var valorDaFuncao = getPoints();
