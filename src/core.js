@@ -5,11 +5,7 @@ import {
     //PUT
     atualiza_pontos,
     //ETL
-    verify_player, get_data_from_JSON, leaderboard_from_JSON,
-    //POST
-    cria_usuario,
-    //DELETE
-    deleta_usuario, 
+    get_data_from_JSON, leaderboard_from_JSON,
 } from './http.js'
 
 import {
@@ -17,8 +13,6 @@ import {
     close_entered_box,
     tocarAudio
 } from './utils.js'
-
-
 
 //######################### CLASSES #########################
 class Evento {
@@ -55,8 +49,6 @@ var playerIcon = L.icon({
     iconSize: [50, 50],
     popupAnchor: [0, -40]
 });
-
-
 
 var UFSM = L.featureGroup([]).addTo(map);
 
@@ -216,7 +208,6 @@ const data = L.geoJSON(pontos_turisticos, {
 }).addTo(map);
 
 async function main() {
-
     /*
     var turismoIcon = L.icon({
         
@@ -227,15 +218,8 @@ async function main() {
         opacity: 1,
         fillOpacity: 0.8
     });
+    */
     
-    
-    
-*/
-    
-
-
-
-
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
     //console.log('player eh: ' + player);  
@@ -247,7 +231,7 @@ async function main() {
 
     // Crie um elemento <div> para a caixa de exibição
     infoBox = document.getElementById('pontuacao');
-    infoBox.innerHTML = 'Pontuação: ' + pontuacao;
+    infoBox.innerHTML = '<i class="bi bi-coin"></i>' + '<span id="score">'+ pontuacao + '</span></p>';
 
     // Adicione a caixa diretamente ao DOM da página
     document.body.appendChild(infoBox);
@@ -328,7 +312,6 @@ data.on('contextmenu', function(e){
         }
     }
 });
-
 
 /// ######################### EVENTOS #########################
 UFSM.on('contextmenu', async function (e) {
@@ -426,7 +409,7 @@ player.on('move', function (e) {
 
         pontuacao = parseInt(pontuacao);
         pontuacao += 10;
-        infoBox.innerHTML = 'Sua pontuação: ' + pontuacao;
+        infoBox.innerHTML = '<i class="bi bi-coin"></i>' + pontuacao;
         atualiza_pontos(playerName, pontuacao);
 
         if (pontuacao == 10 || pontuacao == 50 || pontuacao == 100 || pontuacao == 150){

@@ -29,7 +29,7 @@
 
     <script type="module">
         //action="RENDER URL"
-        import {verify_player, deleta_usuario, check_player_credential } from "../src/http.js";
+        import { deleta_usuario } from "../src/http.js";
 
         const button = document.getElementById("submit");
 
@@ -43,29 +43,15 @@
             if(confirmar !== "EXCLUIR"){
                 alert("Confirmação incorreta");
                 return;
-            }
+            } 
 
-            let existe = await verify_player(nome);
-            
-            if(existe == 1){
-                let pass = await check_player_credential(nome, senha);
-                if (pass == 1) {
-                    await deleta_usuario(nome, senha);
-                    alert("Usuário foi deletado.");
-                    window.location.href = "./login.html";
-                } else if (pass == 0) {
-                    alert('Não foi possível excluir - senha incorreta.');
-                } else {
-                    alert('Erro brabo. PANIQUEI')
-                }
+            if (await deleta_usuario(nome, senha)){
+                alert("Usuário foi deletado.");
+                //window.location.href = "./login.html";
+            } 
+            else {
+                alert("Senha ou nome incorretos.");
             }
-            else if(existe == 0){
-                alert("Este usuário não existe");
-            }
-            else{
-                alert("Erro brabo. PANIQUEI");
-            }
-            
         });
     </script>
 </body>
