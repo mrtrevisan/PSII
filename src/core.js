@@ -54,8 +54,6 @@ var playerIcon = L.icon({
 
 var UFSM = L.featureGroup([]).addTo(map);
 
-const markers = []; // Array para armazenar os marcadores
-const ranges = []; // Array para armazenar os ranges
 const eventos = []; // Array para armazenar os eventos
 
 var entered = false;
@@ -210,18 +208,7 @@ const data = L.geoJSON(pontos_turisticos, {
 }).addTo(map);
 
 async function main() {
-    /*
-    var turismoIcon = L.icon({
-        
-        radius: 2,
-        fillColor: "#ff7800",
-        color: "#000",
-        weight: 100,
-        opacity: 1,
-        fillOpacity: 0.8
-    });
-    */
-    
+    const raioFixo = 40;    
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
     //console.log('player eh: ' + player);  
@@ -244,23 +231,16 @@ async function main() {
             const sigla = centro.sigla;
             var lat = centro.latitude;
             var long = centro.longitude;
-            var marker = L.marker([lat,long]);
+            var marker = L.circleMarker([lat,long], {
+                radius: raioFixo,
+                fillColor: "red",
+                color: "red",
+                id: sigla
+            });
             marker.bindPopup('<b>' + nome + ' - ' + sigla + '</b>' + '<br>Universidade Federal de Santa Maria </br>');
 
             if (marker){
                 marker.addTo(UFSM)
-                var circle = L.circle([marker.getLatLng().lat, marker.getLatLng().lng ], {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5,
-                    radius: 50,
-                    draggable:false,
-                    id: sigla
-                }).addTo(UFSM);
-                
-                marker = L.featureGroup([marker, circle]);
-                ranges.push(circle)
-                markers.push(marker)
             }
             else{
                 console.log("erro no marker")
@@ -381,27 +361,31 @@ player.on('drag', function(e){
 
 player.on('move', function (e) {
     // Loop para verificar todos os círculos
-    ranges.forEach(function (range) {
-        var d = map.distance(e.latlng, range.getLatLng());
+    UFSM.eachLayer(function (layer) {
+        var d = map.distance(e.latlng, layer.getLatLng());
         // Verifica se o marcador está dentro do círculo
-        if (d < range.getRadius()) {
-            range.setStyle({
+        if (d < layer.getRadius()) {
+            layer.setStyle({
                 fillColor: 'green'
             });
-            if(insideCircles.indexOf(range.options.id) == -1){
-                insideCircles.push(range.options.id);
+            
+            if(insideCircles.indexOf(layer.options.id) == -1){
+                insideCircles.push(layer.options.id);
             }
+            
         } 
         else {
-            range.setStyle({
+            layer.setStyle({
                 fillColor: '#f03'
             });
 
             // Remove o círculo da lista insideCircles se ele estiver lá
-            var index = insideCircles.indexOf(range.options.id);
+            
+            var index = insideCircles.indexOf(layer.options.id);
             if (index !== -1) {
                 insideCircles.splice(index, 1);
             }
+            
         }
     });
 
