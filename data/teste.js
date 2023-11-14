@@ -1,3 +1,18 @@
+/** Faltam:
+ * 19
+ * 20
+ * 21
+ * 22
+ * 26
+ * 32
+ * 33
+ * 36
+ * 38
+ * 40
+ * 46
+ * 47
+ * 48
+ */
 var estatuas = {
   "type": "FeatureCollection",
   "features": [
@@ -28,7 +43,7 @@ var estatuas = {
         "ano": 1994,
         "contexto": "Ateliê de Escultura1",
         "material": "fibra de vidro, resina, massa plástica",
-        "dimensoes": "L 0.16 x A  3.15 x P 0.17 m"
+        "dimensoes": "L 0.16 x A 3.15 x P 0.17 m"
       },
       "geometry": {
         "coordinates": [
@@ -45,7 +60,8 @@ var estatuas = {
         "nome": "Paternidade",
         "artista": "Ciza Dias",
         "ano": 2013,
-        "contexto": "Ateliê de Escultura2"
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, queima de terracota posterior, junção com pátina em cimento"
       },
       "geometry": {
         "coordinates": [
@@ -81,7 +97,7 @@ var estatuas = {
         "ano": 2015,
         "contexto": "Ateliê de Escultura2",
         "material": "chapas de metal soldados",
-        "dimensoes": "L 0.27 x A  3.50 x P 1.80 m"
+        "dimensoes": "L 0.27 x A 3.50 x P 1.80m"
       },
       "geometry": {
         "coordinates": [
@@ -126,8 +142,12 @@ var estatuas = {
     {
       "type": "Feature",
       "properties": {
-        "nome": "Estátua de São Miguel",
-        "artista": "Silvestre Peciar"
+        "nome": "São Miguel",
+        "artista": "Silvestre Peciar",
+        "ano": 1989,
+        "contexto": "Esta obra permaneceu por muitos anos na Praça de Esculturas do Centro de Artes e Letras. Foi restaurada pelo Prof. José Francisco Goulart e transferida para a frente do Centro de Convenções, sendo reinaugurada em 2021",
+        "material": "argila, técnica da fôrma perdida",
+        "dimensoes": "L 0.65 x A 2.24 x P 0.77m"
       },
       "geometry": {
         "coordinates": [
@@ -141,7 +161,11 @@ var estatuas = {
       "type": "Feature",
       "properties": {
         "nome": "Homenagem ao Conhecimento",
-        "artista": "Luiz Gonzaga"
+        "artista": "Luiz Gonzaga",
+        "ano": 1977,
+        "contexto": "sem contexto",
+        "material": "escultura em resina(massa plástica)",
+        "dimensoes": "L 1.72 x A 2.75 x P 0.48m"
       },
       "geometry": {
         "coordinates": [
@@ -168,7 +192,11 @@ var estatuas = {
       "type": "Feature",
       "properties": {
         "nome": "O galo",
-        "artista": "Antenor Specht"
+        "artista": "Antenor Specht",
+        "ano": 1982,
+        "contexto": "Ateliê de Escultura1",
+        "material": "argila, técnica da fôrma",
+        "dimensoes": "L 1.33 x A 2.03 x P 1.22m"
       },
       "geometry": {
         "coordinates": [
@@ -252,7 +280,7 @@ var estatuas = {
         "ano": "sem data",
         "contexto": "Ateliê de Escultura1",
         "material": "chapas de ferro soldadas alojadas sobre pedra de mármore gaúcho",
-        "dimensoes": "L 0.60 x A  1.46 x P 1.05 m"
+        "dimensoes": "L 0.60 x A 1.46 x P 1.05 m"
       },
       "geometry": {
         "coordinates": [
@@ -343,7 +371,7 @@ var estatuas = {
       "type": "Feature",
       "properties": {
         "nome": "Sem título",
-        "artista": "João Gularte",
+        "artista": "Jorge Gularte",
         "ano": 2010,
         "contexto": "Ateliê de Escultura2",
         "material": "argila, queima de terracota, junção com massa de cimento",
@@ -361,31 +389,12 @@ var estatuas = {
     {
       "type": "Feature",
       "properties": {
-        "nome": "Sem título",
-        "artista": "João Gularte",
-        "ano": 2010,
-        "contexto": "Ateliê de Escultura2",
-        "material": "argila, queima de terracota, junção com massa de cimento",
-        "dimensoes": "L 0.69 x A 0.60 x P 0.82m"
-      },
-      "geometry": {
-        "coordinates": [
-          -53.7156,
-          -2
-        ],
-        "type": "Point"
-      },
-      "id": 55
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "nome": "Sem Título",
         "artista": "Tania Tolfo",
         "ano": "sem data",
-        "contexto": "Ateliê de Escultura1",
+        "contexto": "Ateliê de Escultura1, sofreu vandalismo e necessita reparos",
         "material": "pedra arenita entalhada, vergalhões de ferro",
-        "dimensoes": "L 0.94 x A 0.53 x P0.42m"
+        "dimensoes": "L 0.94 x A 0.53 x P 0.42m"
       },
       "geometry": {
         "coordinates": [
@@ -461,7 +470,7 @@ var estatuas = {
         "ano": 1994,
         "contexto": "Ateliê de Escultura1",
         "material": "fibra de vidro, resina",
-        "dimensoes": "L 0.66 x A 1.30 x P 0.60m"
+        "dimensoes": "L 0.40 x A 1.90 x P 0.23m"
       },
       "geometry": {
         "coordinates": [
