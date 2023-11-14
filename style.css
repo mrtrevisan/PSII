@@ -114,7 +114,6 @@
     z-index: 2;
     top: 2%;
     right: 2%;
-    background-color: white;
     padding: 10px;
     border: 5px solid;
     height: 55px;
@@ -133,6 +132,7 @@
   display: block;
   margin-left: 5px;
   padding-bottom: 3px;
+  color:gold;
 }
 
 
@@ -283,6 +283,14 @@
   color: white;
   border-color: white;
 }
+
+.bi-coin{
+  color:gold;
+}
+#score{
+  color:gold;
+}
+
 
 
 /* Trabalhar depois com telas menores, vulgo celular */

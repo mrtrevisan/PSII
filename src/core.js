@@ -11,7 +11,8 @@ import {
 import {
     open_entered_box, 
     close_entered_box,
-    tocarAudio
+    tocarAudio,
+    criaModal
 } from './utils.js'
 
 //######################### CLASSES #########################
@@ -94,52 +95,42 @@ function locate_player(){
 }
 
 async function leaderboard(){
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-    var leaderboard = await get_leaderboard();
+    let leaderboard = await get_leaderboard();
     leaderboard = await leaderboard_from_JSON(leaderboard);
     // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
-    myModal.show(); // Exibe o modal
-
-    document.getElementsByClassName('modal-title')[0].innerHTML = 'Leaderboard';
-    document.getElementsByClassName('modal-body')[0].innerHTML = leaderboard;
+    criaModal('Leaderboard', leaderboard);
 }
 
 function achievements(){
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-
-    myModal.show();
-
-    document.getElementsByClassName('modal-title')[0].innerHTML = 'Conquistas';
-    
-    document.getElementsByClassName('modal-body')[0].innerHTML = ''
+    let titulo = 'Conquistas';
+    let body ='';
 
     for (let i = 0; i < 4; i++) {
-        let num
-        i==0 ? num =10 : num =50*i;
+        let num;
+        i==0 ? num =10 : num = 50*i;
 
-    if (pontuacao >= i * 50 && pontuacao > 0)
-        var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100" title=" Conquistou ' +String(num)+ ' pontos" >';
-    else
-            var imgHtml = '<img src="img/Blocked.png" width="100" height="100">';
-        document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
+        if (pontuacao >= i * 50 && pontuacao > 0){
+            body += `<img src= "img/Icon0${String(i)}.png" width= "100" height= "100" title= "Conquistou ${String(num)} pontos" >`
+        }
+        else{
+            body += '<img src="img/Blocked.png" width="100" height="100" title= "Conquista Bloqueada">';
+        }
     }
+
+    criaModal(titulo, body);
 }
 
 function win_achievement(){
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-
-    myModal.show();
-
-    document.getElementsByClassName('modal-title')[0].innerHTML = 'Conquista desbloqueada!';
+    let titulo = 'Conquista desbloqueada!';
     
-    document.getElementsByClassName('modal-body')[0].innerHTML = 'Parabéns, você desbloqueou uma nova conquista!'
+    let body = 'Parabéns, você desbloqueou uma nova conquista!'
 
-    var imgHtml = '<img src="img/Furry.png" width="400" height="400">';
+    let imgHtml = '<img src="img/Furry.png" width="400" height="400">';
 
-    document.getElementsByClassName('modal-body')[0].innerHTML += imgHtml;
+    body += imgHtml;
 
+    criaModal(titulo, body)
     tocarAudio("audio/achievement.mp3");
-
 }
 
 //######################### MANIPULAÇÃO DE HTML #########################
@@ -196,8 +187,6 @@ var turismoIcon = L.icon({
     iconUrl : 'img/statue.png',
     iconSize: [35, 35],
     popupAnchor: [0, -20],
-    
-
 });
 
 var id = 0;
@@ -240,19 +229,7 @@ const data2 = L.geoJSON(recreacao,{
     }
 }).addTo(map);
 
-async function main() {
-    /*
-    var turismoIcon = L.icon({
-        
-        radius: 2,
-        fillColor: "#ff7800",
-        color: "#000",
-        weight: 100,
-        opacity: 1,
-        fillOpacity: 0.8
-    });
-    */
-    
+async function main() {    
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
     //console.log('player eh: ' + player);  
@@ -329,24 +306,16 @@ async function main() {
 main();
 
 data.on('contextmenu', function(e){
-    //console.log(e.layer.feature.properties.nome);
-    console.log(e);
-
     const nome = e.layer.feature.properties.nome;
-    console.log(nome);
-    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+    let titulo = `Infos sobre a estátua ${nome}:`;
+    let body ='';
 
-    myModal.show();
-
-    document.getElementsByClassName('modal-title')[0].innerHTML = 'Infos sobre a estátua ' + nome + ':';
-    document.getElementsByClassName('modal-body')[0].innerHTML = '';
-
-    
     for (const key in e.layer.feature.properties) {
         if (key != "nome"){
-            document.getElementsByClassName('modal-body')[0].innerHTML += '<b>' + key + '</b>' + ': ' + e.layer.feature.properties[key] + '<br>';   
+            body += '<b>' + key + '</b>' + ': ' + e.layer.feature.properties[key] + '<br>';   
         }
     }
+    criaModal(titulo, body);
 });
 
 /// ######################### EVENTOS #########################
@@ -356,61 +325,26 @@ UFSM.on('contextmenu', async function (e) {
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
-
         tocarAudio("audio/center.mp3");
 
-        //  var conteudoDoPopup = marcadorClicado.getPopup().getContent();
         var sigla = marcadorClicado.getPopup().getContent().split('<br>')[0].split('<b>')[1].split('</b>')[0].split(' - ')[1];
-        //console.log("Clicou no marcador: " + sigla);
-        
         var dados = await get_evento(sigla);
         var eventosCentro = await get_data_from_JSON(dados)
-        //var eventosCentro = JSON.stringify(dados)
-        //console.log(eventosCentro)
-
-        var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-
-        // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
-        myModal.show(); // Exibe o modal
-
-        document.getElementsByClassName('modal-title')[0].innerHTML = 'Eventos do ' + sigla + ':';
+        
+        let titulo = `Eventos do ${sigla}:`;
         if(eventosCentro == ""){
             eventosCentro = "Não há eventos cadastrados para este centro!"
         }
-        document.getElementsByClassName('modal-body')[0].innerHTML = eventosCentro ;
+        criaModal(titulo, eventosCentro);
         
     }
     else if(marcadorClicado && marcadorClicado.getRadius()){
         //console.log("Clicou no circulo de um marcador:");
     }
-    // aqui que iremos habilitar uma chamada aos eventos do centro clicado!
 });
 
-/*
-// Função para pegar a localização do usuário em tempo real
-var watcher = navigator.geolocation.watchPosition(success, error);
-
-function success(position) {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-
-    player = player.setLatLng([lat, lng]).update();
-
-    map.setView([lat, lng]);
-}
-
-function error(err) {
-    if(err.code === 1){
-        alert("Please allow location access.");
-    }
-    else {
-        alert("Erro ao pegar localização: " + err);
-    }
-}
-*/
 
 player.on('drag', function(e){
-    //navigator.geolocation.clearWatch(watcher);
     map.stopLocate();
 });
 
@@ -427,11 +361,11 @@ player.on('move', function (e) {
             if(insideCircles.indexOf(range.options.id) == -1){
                 insideCircles.push(range.options.id);
             }
-            if(range.options.estatua != true){
-                winPoints = 10;
+            if(range.options.estatua == true){
+                winPoints = 5;
             }
             else{
-                winPoints = 5;
+                winPoints = 10;
             }
         } 
         else {
