@@ -1,5 +1,539 @@
-var pontos_turisticos = {
-    "type": "FeatureCollection",
+var estatuas = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Em busca da essência do ser",
+        "artista": "Carmen Ligia Schmitz",
+        "ano": 1985,
+        "contexto": "Ateliê de Escultura1",
+        "material": "entalhada em isopor, fundição em alumínio",
+        "dimensoes": "L 0.40 x A 2.61 x P 0.32m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71539126695146,
+          -29.717990971929908
+        ],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Geovani Gonçaslves",
+        "ano": 1994,
+        "contexto": "Ateliê de Escultura1",
+        "material": "fibra de vidro, resina, massa plástica",
+        "dimensoes": "L 0.16 x A  3.15 x P 0.17 m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71544363759962,
+          -29.717747813759132
+        ],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Paternidade",
+        "artista": "Ciza Dias",
+        "ano": 2013,
+        "contexto": "Ateliê de Escultura2"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71525863014334,
+          -29.71263619343364
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Figura",
+        "artista": "Téoura benetti",
+        "ano": 2001,
+        "contexto ": "Ateliê de Escultura1, Ateliê de Escultura2",
+        "material": "argila, técnica da fôrma perdida",
+        "dimensoes": "L 1.85 x A 1.90 x P 0.95m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.718443018046685,
+          -29.714812316637413
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Psicobélico",
+        "artista": "Mateus Bolson",
+        "ano": 2015,
+        "contexto": "Ateliê de Escultura2",
+        "material": "chapas de metal soldados",
+        "dimensoes": "L 0.27 x A  3.50 x P 1.80 m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.718339622552676,
+          -29.71475774890687
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Observador do Céu",
+        "artista": "Anderson Mota",
+        "ano": 2010,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, queima de terracota em forno cerâmico",
+        "dimensoes": "L 0.64 x A  1.50 x P 0.63 m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.718250200654694,
+          -29.71474714747022
+        ],
+        "type": "Point"
+      },
+      "id": 9
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Relógio de Sol Equatorial e Horizontal"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71687106258511,
+          -29.719664260845143
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Estátua de São Miguel",
+        "artista": "Silvestre Peciar"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71690919888243,
+          -29.72220919362067
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Homenagem ao Conhecimento",
+        "artista": "Luiz Gonzaga"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71429353116882,
+          -29.72052076275756
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Relógio Solar Tupi-Guaraní"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71729009825816,
+          -29.719825390631392
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "O galo",
+        "artista": "Antenor Specht"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.716602539278355,
+          -29.71187076682687
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Memorial de Mariano da Rocha",
+        "artista": "Antonio Carlos de Lemos",
+        "engenheiro": "Pedro Saurin"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71490886663146,
+          -29.719741197465453
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Intihuatana"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.717123658189294,
+          -29.71982712597518
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "Juliano Siqueira",
+        "ano": 2003,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, técnica da fôrma perdida, fibra de vidro, resina com corante",
+        "dimensoes": "L 0.54 x A 2.40 x P 0.27m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71796886144864,
+          -29.71473642086019
+        ],
+        "type": "Point"
+      },
+      "id": 48
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "Jair Fávero",
+        "ano": 2005,
+        "contexto": "Ateliê de Escultura2",
+        "material": "concreto, pedra arenito, pedra talco, madeira, aço",
+        "dimensoes": "L 0.37 x A 1.80 x P 0.50m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71805540000692,
+          -29.71476470653448
+        ],
+        "type": "Point"
+      },
+      "id": 50
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Cabeça de Cavalo",
+        "artista": "Augusto Sachs",
+        "ano": "sem data",
+        "contexto": "Ateliê de Escultura1",
+        "material": "chapas de ferro soldadas alojadas sobre pedra de mármore gaúcho",
+        "dimensoes": "L 0.60 x A  1.46 x P 1.05 m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71818186704,
+          -29.714731861393915
+        ],
+        "type": "Point"
+      },
+      "id": 51
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "Camila Mesquita Santos",
+        "ano": 2009,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, queima de terracota, acabamento com massa de cimento",
+        "dimensoes": "L 0.61 x A 0.74 x P 0.70m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71817089192915,
+          -29.71478769126191
+        ],
+        "type": "Point"
+      },
+      "id": 52
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Escultura-Banco-Escultura 1",
+        "artista": "Carina Plein",
+        "ano": "sem data",
+        "contexto": "Ateliê de Escultura2",
+        "material": "sucatas, massa de cimento",
+        "dimensoes": "L 2.00 x A 1.00 x P 1.40m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71813810488882,
+          -29.71472566856888
+        ],
+        "type": "Point"
+      },
+      "id": 53
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "Catiuscia Bordin Dotto",
+        "ano": 2006,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, queima de terracota",
+        "dimensoes": "L 0.71 x A 1.83 x P 0.77m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.718096046399054,
+          -29.7147142354779
+        ],
+        "type": "Point"
+      },
+      "id": 54
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Triangulações N1",
+        "artista": "Douglas Medeiros",
+        "ano": 2015,
+        "contexto": "Ateliê de Escultura2",
+        "material": "cimento, chapas e barras de ferro soldados",
+        "dimensoes": "L 1.10 x A 2.50 x P 0.47m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.718009914102254,
+          -29.71475413153462
+        ],
+        "type": "Point"
+      },
+      "id": 54
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "João Gularte",
+        "ano": 2010,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, queima de terracota, junção com massa de cimento",
+        "dimensoes": "L 0.69 x A 0.60 x P 0.82m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71801946240872,
+          -29.714699273681838
+        ],
+        "type": "Point"
+      },
+      "id": 55
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "João Gularte",
+        "ano": 2010,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, queima de terracota, junção com massa de cimento",
+        "dimensoes": "L 0.69 x A 0.60 x P 0.82m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.7156,
+          -2
+        ],
+        "type": "Point"
+      },
+      "id": 55
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Tania Tolfo",
+        "ano": "sem data",
+        "contexto": "Ateliê de Escultura1",
+        "material": "pedra arenita entalhada, vergalhões de ferro",
+        "dimensoes": "L 0.94 x A 0.53 x P0.42m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.715431694307455,
+          -29.71803415731005
+        ],
+        "type": "Point"
+      },
+      "id": 22
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem título",
+        "artista": "Antenor Specht",
+        "ano": "1985",
+        "contexto": "Ateliê de Escultura1",
+        "material": "modelada em argila, técnica de fôrma",
+        "dimensoes": "L 0.94 x A 0.53 x P0.42m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.715480021647,
+          -29.717910819043
+        ],
+        "type": "Point"
+      },
+      "id": 23
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Círia Moro",
+        "ano": 1993,
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila, fibra de vidro, resina",
+        "dimensoes": "L 0.61 x A 0.93 x P 0.65m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71544840772607,
+          -29.71791807155791
+        ],
+        "type": "Point"
+      },
+      "id": 24
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Marcony Ribas Mendes",
+        "ano": 1992,
+        "contexto": "Ateliê de Escultura1",
+        "material": "fibra de vidro, resina",
+        "dimensoes": "L 0.66 x A 1.30 x P 0.60m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71544756203558,
+          -29.717969214672458
+        ],
+        "type": "Point"
+      },
+      "id": 25
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Das Almas",
+        "artista": "José Goulart",
+        "ano": 1994,
+        "contexto": "Ateliê de Escultura1",
+        "material": "fibra de vidro, resina",
+        "dimensoes": "L 0.66 x A 1.30 x P 0.60m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.7154717811392,
+          -29.717954012715666
+        ],
+        "type": "Point"
+      },
+      "id": 26
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Norma Kicheloski",
+        "ano": "1977",
+        "contexto": "Uma das primeiras esculturas instaladas no campus",
+        "material": "cimento",
+        "dimensoes": "L 0.40 x A 1.10 x P 0.41m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.715489642928716,
+          -29.717982673983272
+        ],
+        "type": "Point"
+      },
+      "id": 27
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Carina Plein",
+        "ano": "sem data",
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila sem queima, posterior aplicação de massa de cimento",
+        "dimensoes": "L 0.97 x A 0.80 x P 1.46m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.71548739147492,
+          -29.717694343120797
+        ],
+        "type": "Point"
+      },
+      "id": 28
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "nome": "Sem Título",
+        "artista": "Carina Plein",
+        "ano": "sem data",
+        "contexto": "Ateliê de Escultura2",
+        "material": "argila sem queima, aplicação posterior",
+        "dimensoes": "L 2.16 x A 0.62 x P 0.71m"
+      },
+      "geometry": {
+        "coordinates": [
+          -53.715533518761134,
+          -29.717722912425415
+        ],
+        "type": "Point"
+      },
+      "id": 29
+    }
+  ]
+}
+
+var recreacao = {
+  "type": "FeatureCollection",
     "features": [
       {
         "type": "Feature",
@@ -56,42 +590,6 @@ var pontos_turisticos = {
           "coordinates": [
             -53.7148243,
             -29.7183166
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Em busca da essência do ser",
-          "artista": "Carmen Ligia Schmitz",
-          "ano": 1985,
-          "contexto": "Ateliê de Escultura1",
-          "material": "entalhada em isopor, fundição em alumínio",
-          "dimensoes": "L 0.40 x A 2.61 x P 0.32m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71539126695146,
-            -29.717990971929908
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Sem Título",
-          "artista": "Geovani Gonçaslves",
-          "ano": 1994,
-          "contexto": "Ateliê de Escultura1",
-          "material": "fibra de vidro, resina, massa plástica",
-          "dimensoes": "L 0.16 x A  3.15 x P 0.17 m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71544363759962,
-            -29.717747813759132
           ],
           "type": "Point"
         }
@@ -172,77 +670,6 @@ var pontos_turisticos = {
           ],
           "type": "Polygon"
         }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Paternidade",
-          "artista": "Ciza Dias",
-          "ano": 2013,
-          "contexto": "Ateliê de Escultura2"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71525863014334,
-            -29.71263619343364
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Figura",
-          "artista": "Téoura benetti",
-          "ano": 2001,
-          "contexto ": "Ateliê de Escultura1, Ateliê de Escultura2",
-          "material": "argila, técnica da fôrma perdida",
-          "dimensoes": "L 1.85 x A 1.90 x P 0.95m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.718443018046685,
-            -29.714812316637413
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Psicobélico",
-          "artista": "Mateus Bolson",
-          "ano": 2015,
-          "contexto": "Ateliê de Escultura2",
-          "material": "chapas de metal soldados",
-          "dimensoes": "L 0.27 x A  3.50 x P 1.80 m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.718339622552676,
-            -29.71475774890687
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Observador do Céu",
-          "artista": "Anderson Mota",
-          "ano": 2010,
-          "contexto": "Ateliê de Escultura2",
-          "material": "argila, queima de terracota em forno cerâmico",
-          "dimensoes": "L 0.64 x A  1.50 x P 0.63 m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.718250200654694,
-            -29.71474714747022
-          ],
-          "type": "Point"
-        },
-        "id": 9
       },
       {
         "type": "Feature",
@@ -1147,47 +1574,6 @@ var pontos_turisticos = {
       {
         "type": "Feature",
         "properties": {
-          "nome": "Relógio de Sol Equatorial e Horizontal"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71687106258511,
-            -29.719664260845143
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Estátua de São Miguel",
-          "artista": "Silvestre Peciar"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71690919888243,
-            -29.72220919362067
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Homenagem ao Conhecimento",
-          "artista": "Luiz Gonzaga"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71429353116882,
-            -29.72052076275756
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
           "@id": "way/183198375",
           "leisure": "garden"
         },
@@ -1361,19 +1747,6 @@ var pontos_turisticos = {
       {
         "type": "Feature",
         "properties": {
-          "nome": "Relógio Solar Tupi-Guaraní"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71729009825816,
-            -29.719825390631392
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
           "nome": "Ponte sobre o Lagão do Ouro",
           "@id": "way/2",
           "musica": "A sanga do Pedro Lira"
@@ -1533,48 +1906,6 @@ var pontos_turisticos = {
             ]
           ],
           "type": "Polygon"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "O galo",
-          "artista": "Antenor Specht"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.716602539278355,
-            -29.71187076682687
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Memorial de Mariano da Rocha",
-          "artista": "Antonio Carlos de Lemos",
-          "engenheiro": "Pedro Saurin"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71490886663146,
-            -29.719741197465453
-          ],
-          "type": "Point"
-        }
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Intihuatana"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.717123658189294,
-            -29.71982712597518
-          ],
-          "type": "Point"
         }
       },
       {
@@ -1797,157 +2128,5 @@ var pontos_turisticos = {
           "type": "Polygon"
         }
       },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Sem título",
-          "artista": "Juliano Siqueira",
-          "ano": 2003,
-          "contexto": "Ateliê de Escultura2",
-          "material": "argila, técnica da fôrma perdida, fibra de vidro, resina com corante",
-          "dimensoes": "L 0.54 x A 2.40 x P 0.27m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71796886144864,
-            -29.71473642086019
-          ],
-          "type": "Point"
-        },
-        "id": 48
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Sem título",
-          "artista": "Jair Fávero",
-          "ano": 2005,
-          "contexto": "Ateliê de Escultura2",
-          "material": "concreto, pedra arenito, pedra talco, madeira, aço",
-          "dimensoes": "L 0.37 x A 1.80 x P 0.50m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71805540000692,
-            -29.71476470653448
-          ],
-          "type": "Point"
-        },
-        "id": 50
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Cabeça de Cavalo",
-          "artista": "Augusto Sachs",
-          "ano": "sem data",
-          "contexto": "Ateliê de Escultura1",
-          "material": "chapas de ferro soldadas alojadas sobre pedra de mármore gaúcho",
-          "dimensoes": "L 0.60 x A  1.46 x P 1.05 m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71818186704,
-            -29.714731861393915
-          ],
-          "type": "Point"
-        },
-        "id": 51
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Sem título",
-          "artista": "Camila Mesquita Santos",
-          "ano": 2009,
-          "contexto": "Ateliê de Escultura2",
-          "material": "argila, queima de terracota,, acabamento com massa de cimento",
-          "dimensoes": "L 0.61 x A 0.74 x P 0.70m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71817089192915,
-            -29.71478769126191
-          ],
-          "type": "Point"
-        },
-        "id": 52
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Escultura-Banco-Escultura 1",
-          "artista": "Carina Plein",
-          "ano": "sem data",
-          "contexto": "Ateliê de Escultura2",
-          "material": "sucatas, massa de cimento",
-          "dimensoes": "L 2.00 x A 1.00 x P 1.40m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71813810488882,
-            -29.71472566856888
-          ],
-          "type": "Point"
-        },
-        "id": 53
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Sem título",
-          "artista": "Catiuscia Bordin Dotto",
-          "ano": 2006,
-          "contexto": "Ateliê de Escultura2",
-          "material": "argila, queima de terracota",
-          "dimensoes": "L 0.71 x A 1.83 x P 0.77m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.718096046399054,
-            -29.7147142354779
-          ],
-          "type": "Point"
-        },
-        "id": 54
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Triangulações N1",
-          "artista": "Douglas Medeiros",
-          "ano": 2015,
-          "contexto": "Ateliê de Escultura2",
-          "material": "cimento, chapas e barras de ferro soldados",
-          "dimensoes": "L 1.10 x A 2.50 x P 0.47m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.718009914102254,
-            -29.71475413153462
-          ],
-          "type": "Point"
-        },
-        "id": 54
-      },
-      {
-        "type": "Feature",
-        "properties": {
-          "nome": "Sem título",
-          "artista": "João Gularte",
-          "ano": 2010,
-          "contexto": "Ateliê de Escultura2",
-          "material": "argila, queima de terracota, junção com massa de cimento",
-          "dimensoes": "L 0.69 x A 0.60 x P 0.82m"
-        },
-        "geometry": {
-          "coordinates": [
-            -53.71801946240872,
-            -29.714699273681838
-          ],
-          "type": "Point"
-        },
-        "id": 55
-      }
     ]
-  }
+}

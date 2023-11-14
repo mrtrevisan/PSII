@@ -117,7 +117,7 @@ function achievements(){
         let num
         i==0 ? num =10 : num =50*i;
 
-        if (pontuacao >= i * 50 && pontuacao > 0)
+    if (pontuacao >= i * 50 && pontuacao > 0)
         var imgHtml = '<img src="img/Icon0' + String(i) + '.png" width="100" height="100" title=" Conquistou ' +String(num)+ ' pontos" >';
     else
             var imgHtml = '<img src="img/Blocked.png" width="100" height="100">';
@@ -199,11 +199,17 @@ var turismoIcon = L.icon({
     
 
 });
-const data = L.geoJSON(pontos_turisticos, {
+const data = L.geoJSON(estatuas, {
     pointToLayer: function (feature, latlng) {
         return L.marker(latlng, {icon: turismoIcon});
     },
     
+    onEachFeature: function(feature, layer) {
+        layer.bindPopup(feature.properties.nome);
+    }
+}).addTo(map);
+
+const data2 = L.geoJSON(recreacao,{
     onEachFeature: function(feature, layer) {
         layer.bindPopup(feature.properties.nome);
     }
