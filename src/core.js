@@ -207,20 +207,21 @@ const data = L.geoJSON(estatuas, {
     pointToLayer: function (feature, latlng) {
         var marker = L.marker(latlng, {icon: turismoIcon});
         if (marker){
-            marker.addTo(UFSM)
             var circle = L.circle([marker.getLatLng().lat, marker.getLatLng().lng ], {
-                color: 'red',
+                color: 'yellow',
+                fillColor: 'yellow',
                 fillOpacity: 0.5,
                 radius: 10,
                 draggable:false,
-                id: id
+                id: id,
+                estatua:true
             }).addTo(UFSM);
             
             id++;
 
-            marker = L.featureGroup([marker, circle]);
+            let marker2 = L.featureGroup([marker, circle]);
             ranges.push(circle)
-            markers.push(marker)
+            markers.push(marker2)
         }
         else{
             console.log("erro no marker")
@@ -329,7 +330,10 @@ main();
 
 data.on('contextmenu', function(e){
     //console.log(e.layer.feature.properties.nome);
+    console.log(e);
+
     const nome = e.layer.feature.properties.nome;
+    console.log(nome);
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
 
     myModal.show();
@@ -348,6 +352,7 @@ data.on('contextmenu', function(e){
 /// ######################### EVENTOS #########################
 UFSM.on('contextmenu', async function (e) {
     const marcadorClicado = e.layer; // Obtém o marcador clicado
+    console.log(e);
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
@@ -411,6 +416,7 @@ player.on('drag', function(e){
 
 player.on('move', function (e) {
     // Loop para verificar todos os círculos
+    var winPoints = 0;
     ranges.forEach(function (range) {
         var d = map.distance(e.latlng, range.getLatLng());
         // Verifica se o marcador está dentro do círculo
@@ -421,11 +427,24 @@ player.on('move', function (e) {
             if(insideCircles.indexOf(range.options.id) == -1){
                 insideCircles.push(range.options.id);
             }
+            if(range.options.estatua != true){
+                winPoints = 10;
+            }
+            else{
+                winPoints = 5;
+            }
         } 
         else {
-            range.setStyle({
-                fillColor: '#f03'
-            });
+            if(range.options.estatua != true){
+                range.setStyle({
+                    fillColor: '#f03'
+                });
+            }
+            else{
+                range.setStyle({
+                    fillColor: 'yellow'
+                });
+            }
 
             // Remove o círculo da lista insideCircles se ele estiver lá
             var index = insideCircles.indexOf(range.options.id);
@@ -438,9 +457,8 @@ player.on('move', function (e) {
     if (insideCircles.length > qtd_cir) {
         qtd_cir = insideCircles.length;
         entered = true;
-
         pontuacao = parseInt(pontuacao);
-        pontuacao += 10;
+        pontuacao += winPoints;
         infoBox.innerHTML = '<i class="bi bi-coin"></i>' + pontuacao;
         atualiza_pontos(playerName, pontuacao);
 
