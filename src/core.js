@@ -199,9 +199,33 @@ var turismoIcon = L.icon({
     
 
 });
+
+var id = 0;
+
 const data = L.geoJSON(pontos_turisticos, {
+
     pointToLayer: function (feature, latlng) {
-        return L.marker(latlng, {icon: turismoIcon});
+        var marker = L.marker(latlng, {icon: turismoIcon});
+        if (marker){
+            marker.addTo(UFSM)
+            var circle = L.circle([marker.getLatLng().lat, marker.getLatLng().lng ], {
+                color: 'red',
+                fillOpacity: 0.5,
+                radius: 30,
+                draggable:false,
+                id: id
+            }).addTo(UFSM);
+            
+            id++;
+
+            marker = L.featureGroup([marker, circle]);
+            ranges.push(circle)
+            markers.push(marker)
+        }
+        else{
+            console.log("erro no marker")
+        }
+        return marker;
     },
     
     onEachFeature: function(feature, layer) {
