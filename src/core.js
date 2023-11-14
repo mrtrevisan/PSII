@@ -202,7 +202,7 @@ var turismoIcon = L.icon({
 
 var id = 0;
 
-const data = L.geoJSON(pontos_turisticos, {
+const data = L.geoJSON(estatuas, {
 
     pointToLayer: function (feature, latlng) {
         var marker = L.marker(latlng, {icon: turismoIcon});
@@ -211,7 +211,7 @@ const data = L.geoJSON(pontos_turisticos, {
             var circle = L.circle([marker.getLatLng().lat, marker.getLatLng().lng ], {
                 color: 'red',
                 fillOpacity: 0.5,
-                radius: 30,
+                radius: 10,
                 draggable:false,
                 id: id
             }).addTo(UFSM);
