@@ -1,5 +1,6 @@
 //const api_url = 'https://ufsmgo-api.cloud.local'
-const api_url = 'https://ufsmgo-api.az.trevisantec.com'
+// const api_url = 'https://ufsmgo-api.az.trevisantec.com'
+const api_url = 'https://ufsmgo-api.onrender.com';
 
 //verifica o estado da API
 async function api_healthcheck(){

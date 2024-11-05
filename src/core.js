@@ -237,7 +237,7 @@ async function main() {
     const centros = await get_centro('all')
     const eventosAll = await get_evento('all')
 
-    pontuacao = await get_player_points(playerName);
+    pontuacao = await get_player_points(playerName) ?? 0;
 
     // Crie um elemento <div> para a caixa de exibição
     infoBox = document.getElementById('pontuacao');
