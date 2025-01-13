@@ -125,7 +125,7 @@ function win_achievement(){
     
     let body = 'Parabéns, você desbloqueou uma nova conquista!'
 
-    let imgHtml = '<img src="img/Furry.png" width="400" height="400">';
+    let imgHtml = '<img src="img/achievement.png" width="400" height="400">';
 
     body += imgHtml;
 
