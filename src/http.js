@@ -1,44 +1,60 @@
-const api_url = 'https://ufsmgo-api.onrender.com';
+import { API_URL } from "./config.js";
+import { centros } from "../data/centros.js";
 
 //verifica o estado da API
-async function api_healthcheck(){
-    var healthcheck = api_url+'/healthcheck';
-    var res = await fetch(healthcheck);
+async function api_healthcheck() {
+    var healthcheck = API_URL+'/healthcheck';
 
-    if (res.status != 200) {
-        console.log('Erro interno no sistema. Sem resposta do banco de dados');
+    try {
+        var res = await fetch(healthcheck);
+    
+        if (res.status != 200) {
+            throw new Error('Erro na API: ' + res.status);
+        }
+        
+        return true;
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
         return false;
     }
-    else return true;
 }
 
 //GET pega os dados de um centro ou de todos
-async function get_centro(sigla){
-    if (!api_healthcheck) return;
+async function get_centro(sigla) {
+    // if (!api_healthcheck) return;
+    var url = API_URL + '/centro';
 
-    var url = api_url+'/centro';
     if (sigla == 'all'){
         url += '/all';
     } else {
         url += '/' + sigla;
     }
-    let res = await fetch(url);
 
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
-        return null;
-    }
-    else{
-        let data = await res.json();
-        return data;
+    try {
+        let res = await fetch(url);
+
+        if (res.status == 200) {
+            let data = await res.json();
+            return data;
+        }
+        else {
+            throw new Error('Erro na API: ' + res.status);
+        }
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message + ' | Usando dados locais');
+        
+        if (sigla == 'all') {
+            return centros;
+        } else {
+            return centros.find(c => c.sigla == sigla);
+        }
     }
 }
 
 //GET pega os dados dos eventos de um centro, ou todos os eventos
-async function get_evento(centro){
-    if (!api_healthcheck) return;
-
-    var url = api_url+'/evento';
+async function get_evento(centro) {
+    // if (!api_healthcheck) return;
+    var url = API_URL + '/evento';
 
     if (centro == 'all'){
         url += "/all";
@@ -47,166 +63,190 @@ async function get_evento(centro){
         //pega os eventos FUTUROS do centro 
         url += "?centro=" + centro + "&sort=data_inicio&order=ASC" 
     }
-    let res = await fetch(url);
 
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
-        return null;
-    }
-    else{
-        let data = await res.json();
-        return data;
-    }
+    try {
+        let res = await fetch(url);
 
+        if (res.status == 200){
+            let data = await res.json();
+            return data;
+        }
+        else{
+            throw new Error('Erro na API: ' + res.status);
+        }
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
+        return [];
+    }
 }
 
 //GET pega os 10 jogadores com mais pontos
-async function get_leaderboard(){
-    if (!api_healthcheck) return
+async function get_leaderboard() {
+    // if (!api_healthcheck) return
+    var url = API_URL + '/leaderboard';
 
-    var url = api_url+'/leaderboard';
-    let res = await fetch(url);
-
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
-        return null;
-    }
-    else{
-        let data = await res.json();
-        return data;
+    try {
+        let res = await fetch(url);
+    
+        if (res.status == 200){
+            let data = await res.json();
+            return data;
+        }
+        else {
+            throw new Error('Erro na API: ' + res.status);
+        }
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
+        return [];
     }
 }
 
 //GET pega a pontuação do player
-async function get_player_points(playerName){
-    if (!api_healthcheck) return;
+async function get_player_points(playerName) {
+    // if (!api_healthcheck) return;
+    var url = API_URL + '/player/' + playerName;
 
-    var url = api_url+'/player/' + playerName;
-
-    let res = await fetch(url);
-
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
-        return null;
-    }
-    else{
-        let data = await res.json();
-        return parseInt(data[0].pontos);
+    try {
+        let res = await fetch(url);
+    
+        if (res.status == 200){
+            let data = await res.json();
+            return parseInt(data[0].pontos);
+        }
+        else{
+            throw new Error('Erro na API: ' + res.status);
+        }
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
+        return 0;
     }
 }
 
 //PUT atualiza os pontos do player
-async function atualiza_pontos(playerName, pontos){
-    if (!api_healthcheck) return;
+async function atualiza_pontos(playerName, pontos) {
+    // if (!api_healthcheck) return;
+    var url = API_URL + '/player/pontos';
 
-    var url = api_url+'/player/pontos';
     const data = {"nome" : playerName, "pontos" : String(pontos)};
 
-    let res = await fetch(url, {
-        method: 'PUT',
-        body : JSON.stringify(data),
-        headers : {
-            "Content-Type" : "application/json; charset=UTF-8"
+    try {
+        let res = await fetch(url, {
+            method: 'PUT',
+            body : JSON.stringify(data),
+            headers : {
+                "Content-Type" : "application/json; charset=UTF-8"
+            }
+        });
+    
+        if (res.status == 500) {
+            throw new Error('Erro interno no servidor');
         }
-    });
-
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
-        return false;
-    }
-    else if (res.status == 401){
-        console.log('Erro de autenticação');
-        return false;
-    }
-    else{
+        else if (res.status == 401) {
+            throw new Error('Erro de autenticação');
+        }
+        
         return true;
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
+        return false;
     }
 }
 
-async function login(nome, senha){
-    if (!api_healthcheck) return false;
+async function login(nome, senha) {
+    // if (!api_healthcheck) return false;
+    var url = API_URL + '/login';
 
-    var url = api_url + '/login';
     const data = {"nome" : nome, "senha" : senha};
 
-    let res = await fetch(url, {
-        method : 'POST',
-        body : JSON.stringify(data),
-        headers : {
-            "Content-Type" : "application/json; charset=UTF-8"
+    try {
+        let res = await fetch(url, {
+            method : 'POST',
+            body : JSON.stringify(data),
+            headers : {
+                "Content-Type" : "application/json; charset=UTF-8"
+            }
+        });
+    
+        if (res.status == 401){
+            throw new Error('Erro: Nome ou senha incorretos');
         }
-    });
 
-    //console.log('status do login: ' + res.status);
-    if (res.status == 200){
+        if (res.status != 200){
+            throw new Error('Erro na API: ' + res.status);
+        }
+        
         return true;
-    }
-    else if (res.status == 401){
-        console.log('Erro: Nome ou senha incorretos');
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
         return false;
     }
 }
 
 //POST cria novo usuário
-async function cria_usuario(nome, senha){
-    if (!api_healthcheck) return;
+async function cria_usuario(nome, senha) {
+    // if (!api_healthcheck) return;
+    var url = API_URL + '/player';
 
-    var url = api_url + '/player';
     const data = {"nome" : nome, "senha" : senha};
 
-    let res = await fetch(url, {
-        method : 'POST',
-        body : JSON.stringify(data),
-        headers : {
-            "Content-Type" : "application/json; charset=UTF-8"
+    try {
+        let res = await fetch(url, {
+            method : 'POST',
+            body : JSON.stringify(data),
+            headers : {
+                "Content-Type" : "application/json; charset=UTF-8"
+            }
+        });
+    
+        if (res.status == 500) {
+            throw new Error('Erro interno no servidor');
         }
-    });
-
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
+        else if (res.status == 401) {
+            throw new Error('Erro: Nome de usuário já está em uso');
+        }
+        else {
+            return true;
+        }
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
         return false;
-    }
-    else if (res.status == 401){
-        console.log('Erro: Nome de usuário já está em uso');
-        return false;
-    }
-    else{
-        return true;
     }
 };
 
 //DELETE exclui o usuário
-async function deleta_usuario(nome,senha){
-    if (!api_healthcheck) return
+async function deleta_usuario(nome,senha) {
+    // if (!api_healthcheck) return
+    var url = API_URL + '/player';
 
-    var url = api_url + '/player';
     const data = {"nome" : nome, "senha" : senha};
 
-    let res = await fetch(url, {
-        method : 'DELETE',
-        body : JSON.stringify(data),
-        headers : {
-            "Content-Type" : "application/json; charset=UTF-8"
+    try {
+        let res = await fetch(url, {
+            method : 'DELETE',
+            body : JSON.stringify(data),
+            headers : {
+                "Content-Type" : "application/json; charset=UTF-8"
+            }
+        });
+        
+        if (res.status == 500) {
+            throw new Error('Erro interno no servidor');
         }
-    });
-    
-    if (res.status == 500){
-        console.log('Erro interno no servidor');
+        else if (res.status == 401) {
+            throw new Error('Erro: Nome ou senha incorretos');
+        }
+        else {
+            return true;
+        }
+    } catch (e) {
+        console.log('Ocorreu um erro: ' + e.message);
         return false;
-    }
-    else if (res.status == 401){
-        console.log('Erro: Nome ou senha incorretos');
-        return false;
-    }
-    else{
-        return true;
     }
 }
 
 //ETL
-async function get_data_from_JSON(json){
+async function get_data_from_JSON(json) {
     var dados = ""
-    console.log(json)
 
     const option = {
         year: 'numeric',
@@ -234,10 +274,10 @@ async function get_data_from_JSON(json){
 }
 
 //ETL
-async function leaderboard_from_JSON(json){
+async function leaderboard_from_JSON(json) {
     let rank = ""    
     var i = 1
-    console.log(json)
+
     json.forEach(e => {
         let modal;
         if (i == 1){

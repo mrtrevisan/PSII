@@ -46,7 +46,6 @@ var CartoDB_Voyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles
 	maxZoom: 20
 }).addTo(map);
 
-
 var playerIcon = L.icon({
     iconUrl: 'img/walking.png',
     iconSize: [50, 50],
@@ -70,7 +69,7 @@ var insideCircles = [];
 var player = L.marker([-29.7160, -53.7172],{draggable:true ,icon: playerIcon} ).addTo(map);
 
 //######################### FUNÇÕES MODULARES #########################
-function locate_player(){
+function locate_player() {
     map.locate({
             setView: true, 
             watch: true, 
@@ -78,7 +77,7 @@ function locate_player(){
             timeout : 5000,
             maximumAge : 1000,
         }) /* This will return map so you can do chaining */
-        .on('locationfound', function(e){
+        .on('locationfound', function(e) {
             //encontrou o player
             const lat = e.latitude;
             const lng = e.longitude;
@@ -87,32 +86,31 @@ function locate_player(){
             player.bindPopup('Você está aqui! Vamos explorar a UFSM! :)').openPopup();
             
         })
-        .on('locationerror', function(e){
+        .on('locationerror', function(e) {
             //paniquei
-            console.log(e);
+            console.log(e.message);
             alert("Acesso negado à localização.");
         });
 }
 
-async function leaderboard(){
+async function leaderboard() {
     let leaderboard = await get_leaderboard();
     leaderboard = await leaderboard_from_JSON(leaderboard);
-    // Em algum ponto posterior, você pode atualizar os campos do modal diretamente
     criaModal('Leaderboard', leaderboard);
 }
 
-function achievements(){
+function achievements() {
     let titulo = 'Conquistas';
     let body ='';
 
     for (let i = 0; i < 4; i++) {
         let num;
-        i==0 ? num =10 : num = 50*i;
+        i == 0 ? num = 10 : num = 50*i;
 
-        if (pontuacao >= i * 50 && pontuacao > 0){
+        if (pontuacao >= i * 50 && pontuacao > 0) {
             body += `<img src= "img/Icon0${String(i)}.png" width= "100" height= "100" title= "Conquistou ${String(num)} pontos" >`
         }
-        else{
+        else {
             body += '<img src="img/Blocked.png" width="100" height="100" title= "Conquista Bloqueada">';
         }
     }
@@ -120,11 +118,9 @@ function achievements(){
     criaModal(titulo, body);
 }
 
-function win_achievement(){
+function win_achievement() {
     let titulo = 'Conquista desbloqueada!';
-    
     let body = 'Parabéns, você desbloqueou uma nova conquista!'
-
     let imgHtml = '<img src="img/achievement.png" width="400" height="400">';
 
     body += imgHtml;
@@ -181,8 +177,6 @@ document.getElementById('back-button').addEventListener('click', function() {
 });
 
 //######################### MAIN #########################
-
-
 var turismoIcon = L.icon({
     iconUrl : 'img/statue.png',
     iconSize: [35, 35],
@@ -192,7 +186,6 @@ var turismoIcon = L.icon({
 var id = 0;
 
 const data = L.geoJSON(estatuas, {
-
     pointToLayer: function (feature, latlng) {
         var marker = L.marker(latlng, {icon: turismoIcon});
         if (marker){
@@ -212,9 +205,7 @@ const data = L.geoJSON(estatuas, {
             ranges.push(circle)
             markers.push(marker2)
         }
-        else{
-            console.log("erro no marker")
-        }
+
         return marker;
     },
     
@@ -232,7 +223,6 @@ const data2 = L.geoJSON(recreacao,{
 async function main() {    
     const urlParams = new URLSearchParams(window.location.search);
     playerName = urlParams.get('user') || 'admin';
-    //console.log('player eh: ' + player);  
 
     const centros = await get_centro('all')
     const eventosAll = await get_evento('all')
@@ -255,8 +245,8 @@ async function main() {
             var marker = L.marker([lat,long]);
             marker.bindPopup('<b>' + nome + ' - ' + sigla + '</b>' + '<br>Universidade Federal de Santa Maria </br>');
 
-            if (marker){
-                marker.addTo(UFSM)
+            if (marker) {
+                marker.addTo(UFSM);
                 var circle = L.circle([marker.getLatLng().lat, marker.getLatLng().lng ], {
                     color: 'red',
                     fillColor: '#f03',
@@ -267,45 +257,28 @@ async function main() {
                 }).addTo(UFSM);
                 
                 marker = L.featureGroup([marker, circle]);
-                ranges.push(circle)
-                markers.push(marker)
+                ranges.push(circle);
+                markers.push(marker);
             }
-            else{
-                console.log("erro no marker")
-            }
-            
         });
     }
-    else{
-        console.log("erro nos centros")
-    }
 
-    if(eventosAll)
-    {
+    if(eventosAll) {
         eventosAll.forEach(evento => {
             centros.forEach(centro => {
                 if (evento.centro == centro.sigla){
-                    eventos.push(new Evento(evento.nome, centro.sigla))     
+                    eventos.push(new Evento(evento.nome, centro.sigla));  
                 }
             });
         });
     }
-    else
-    {
-        console.log("erro nos eventos")
-    }
-    /*
-    eventos.forEach(evento => {
-        evento.print()
-    });
-    */
-   locate_player();
+
+    locate_player();
 }
 
-// Chama a função main para iniciar o processo
 main();
 
-data.on('contextmenu', function(e){
+data.on('contextmenu', function(e) {
     const nome = e.layer.feature.properties.nome;
     let titulo = `Infos sobre a estátua ${nome}:`;
     let body ='';
@@ -321,7 +294,6 @@ data.on('contextmenu', function(e){
 /// ######################### EVENTOS #########################
 UFSM.on('contextmenu', async function (e) {
     const marcadorClicado = e.layer; // Obtém o marcador clicado
-    console.log(e);
 
     // Verifique se o marcador possui um pop-up vinculado
     if (marcadorClicado && marcadorClicado.getPopup()) {
@@ -338,11 +310,7 @@ UFSM.on('contextmenu', async function (e) {
         criaModal(titulo, eventosCentro);
         
     }
-    else if(marcadorClicado && marcadorClicado.getRadius()){
-        //console.log("Clicou no circulo de um marcador:");
-    }
 });
-
 
 player.on('drag', function(e){
     map.stopLocate();
